@@ -1,9 +1,9 @@
 package eval
 
 import (
-	"reflect"
 	"go/ast"
 	"go/token"
+	"reflect"
 )
 
 func checkCallExpr(call *ast.CallExpr, env Env) (acall *CallExpr, errs []error) {
@@ -101,7 +101,7 @@ func checkCallFunExpr(call *CallExpr, env Env) (*CallExpr, []error) {
 	ftype, err := expectSingleType(fun)
 	if err != nil {
 		return call, append(errs, err)
-	// catch nil casts, e.g. nil(1)
+		// catch nil casts, e.g. nil(1)
 	} else if ftype == ConstNil {
 		return call, []error{ErrUntypedNil{fun}}
 	} else if ftype.Kind() != reflect.Func {
@@ -142,7 +142,6 @@ func checkCallFunExpr(call *CallExpr, env Env) (*CallExpr, []error) {
 		}
 	}
 
-
 	call.arg0MultiValued = arg0MultiValued
 	if arg0MultiValued {
 		// Check all but the last arg which will be handled specially
@@ -161,7 +160,7 @@ func checkCallFunExpr(call *CallExpr, env Env) (*CallExpr, []error) {
 			}
 			argNT = ftype.In(i)
 		} else {
-			if len(arg0T) < numIn - 1 {
+			if len(arg0T) < numIn-1 {
 				return call, append(errs, ErrWrongNumberOfArgs{call, len(arg0T)})
 			}
 			argNT = ftype.In(i).Elem()
@@ -210,9 +209,9 @@ func checkCallFunExpr(call *CallExpr, env Env) (*CallExpr, []error) {
 			}
 			argNT = ftype.In(numIn - 1)
 		} else {
-			if len(call.Args) < numIn - 1 {
+			if len(call.Args) < numIn-1 {
 				return call, append(errs, ErrWrongNumberOfArgs{call, len(call.Args)})
-			} else if len(call.Args) == numIn - 1 {
+			} else if len(call.Args) == numIn-1 {
 				// Variadic function with no ... args
 				return call, errs
 			}

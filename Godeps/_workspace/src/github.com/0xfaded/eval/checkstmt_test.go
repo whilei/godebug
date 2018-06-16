@@ -7,7 +7,7 @@ import (
 )
 
 func TestGotoBackward(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 target:
 	_ = 1+1
 	goto target
@@ -19,7 +19,7 @@ target:
 }
 
 func TestGotoForward(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 	goto target
 	_ = 1+1
 target:
@@ -31,7 +31,7 @@ target:
 }
 
 func TestGotoEscapeBlockBackward(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 target:
 	_ = 1+1
 	{
@@ -45,7 +45,7 @@ target:
 }
 
 func TestGotoEscapeBlockForwards(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 	{
 		goto target
 	}
@@ -59,7 +59,7 @@ target:
 }
 
 func TestGotoIntoBlockBackwards(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 	{
 		target:
 	}
@@ -73,7 +73,7 @@ func TestGotoIntoBlockBackwards(t *testing.T) {
 }
 
 func TestGotoIntoBlockForward(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 	goto target
 	_ = 1+1
 	{
@@ -87,7 +87,7 @@ func TestGotoIntoBlockForward(t *testing.T) {
 }
 
 func TestGotoBetweenBlocksBackwards(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 	{
 		target:
 	}
@@ -103,7 +103,7 @@ func TestGotoBetweenBlocksBackwards(t *testing.T) {
 }
 
 func TestGotoBetweenBlocksForward(t *testing.T) {
-	_, ctx:= checkString(`{
+	_, ctx := checkString(`{
 	{
 		goto target
 	}

@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 // Test Complex()
@@ -8020,7 +8020,7 @@ func TestCheckBuiltinAppendSliceDouble(t *testing.T) {
 // Test Append([]int{}, []int{1,2}...)
 func TestCheckBuiltinAppendSliceEllipsis(t *testing.T) {
 	env := MakeSimpleEnv()
-	expectType(t, `append([]int{}, []int{1,2}...)`, env, reflect.TypeOf(append([]int{}, []int{1,2}...)))
+	expectType(t, `append([]int{}, []int{1,2}...)`, env, reflect.TypeOf(append([]int{}, []int{1, 2}...)))
 }
 
 // Test Append(map[int]int{})

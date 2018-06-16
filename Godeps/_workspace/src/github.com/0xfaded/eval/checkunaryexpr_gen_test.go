@@ -8,28 +8,28 @@ import (
 func TestCheckUnaryExprAddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ 4`, env, NewConstInt64(+ 4), ConstInt)
+	expectConst(t, `+ 4`, env, NewConstInt64(+4), ConstInt)
 }
 
 // Test + Rune
 func TestCheckUnaryExprAddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ '@'`, env, NewConstRune(+ '@'), ConstRune)
+	expectConst(t, `+ '@'`, env, NewConstRune(+'@'), ConstRune)
 }
 
 // Test + Float
 func TestCheckUnaryExprAddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ 2.0`, env, NewConstFloat64(+ 2.0), ConstFloat)
+	expectConst(t, `+ 2.0`, env, NewConstFloat64(+2.0), ConstFloat)
 }
 
 // Test + Complex
 func TestCheckUnaryExprAddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ 8.0i`, env, NewConstComplex128(+ 8.0i), ConstComplex)
+	expectConst(t, `+ 8.0i`, env, NewConstComplex128(+8.0i), ConstComplex)
 }
 
 // Test + Bool
@@ -66,28 +66,28 @@ func TestCheckUnaryExprAddNil(t *testing.T) {
 func TestCheckUnaryExprSubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- 4`, env, NewConstInt64(- 4), ConstInt)
+	expectConst(t, `- 4`, env, NewConstInt64(-4), ConstInt)
 }
 
 // Test - Rune
 func TestCheckUnaryExprSubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- '@'`, env, NewConstRune(- '@'), ConstRune)
+	expectConst(t, `- '@'`, env, NewConstRune(-'@'), ConstRune)
 }
 
 // Test - Float
 func TestCheckUnaryExprSubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- 2.0`, env, NewConstFloat64(- 2.0), ConstFloat)
+	expectConst(t, `- 2.0`, env, NewConstFloat64(-2.0), ConstFloat)
 }
 
 // Test - Complex
 func TestCheckUnaryExprSubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- 8.0i`, env, NewConstComplex128(- 8.0i), ConstComplex)
+	expectConst(t, `- 8.0i`, env, NewConstComplex128(-8.0i), ConstComplex)
 }
 
 // Test - Bool
@@ -124,14 +124,14 @@ func TestCheckUnaryExprSubNil(t *testing.T) {
 func TestCheckUnaryExprXorInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `^ 4`, env, NewConstInt64(^ 4), ConstInt)
+	expectConst(t, `^ 4`, env, NewConstInt64(^4), ConstInt)
 }
 
 // Test ^ Rune
 func TestCheckUnaryExprXorRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `^ '@'`, env, NewConstRune(^ '@'), ConstRune)
+	expectConst(t, `^ '@'`, env, NewConstRune(^'@'), ConstRune)
 }
 
 // Test ^ Float
@@ -228,7 +228,7 @@ func TestCheckUnaryExprNotComplex(t *testing.T) {
 func TestCheckUnaryExprNotBool(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `! true`, env, (! true), ConstBool)
+	expectConst(t, `! true`, env, (!true), ConstBool)
 }
 
 // Test ! String

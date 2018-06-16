@@ -2,8 +2,8 @@ package eval
 
 import (
 	"errors"
-	"reflect"
 	"go/ast"
+	"reflect"
 )
 
 // Type check an ast.Expr to produce an Expr. Errors are accumulated and
@@ -110,7 +110,7 @@ func checkType(expr ast.Expr, env Env) (Expr, reflect.Type, bool, []error) {
 		if node.Len != nil {
 			return arrayT, nil, true, []error{errors.New("array types not implemented")}
 		} else {
-			elt, eltT, _, errs := checkType(node.Elt, env);
+			elt, eltT, _, errs := checkType(node.Elt, env)
 			arrayT.Elt = elt
 			if errs != nil {
 				return arrayT, nil, true, errs
@@ -154,7 +154,7 @@ func checkType(expr ast.Expr, env Env) (Expr, reflect.Type, bool, []error) {
 		return mapT, nil, true, errs
 	case *ast.ChanType:
 		chanT := &ChanType{ChanType: node}
-		value, valueT, _, errs := checkType(node.Value, env);
+		value, valueT, _, errs := checkType(node.Value, env)
 		chanT.Value = value
 		if errs != nil {
 			return chanT, nil, true, errs
@@ -186,7 +186,7 @@ func checkFieldList(list *ast.FieldList, env Env) (*FieldList, []error) {
 	}
 	alist.List = make([]*Field, len(list.List))
 	for i, field := range list.List {
-		alist.List [i], moreErrs = checkField(field, env)
+		alist.List[i], moreErrs = checkField(field, env)
 		errs = append(errs, moreErrs...)
 	}
 	return alist, nil

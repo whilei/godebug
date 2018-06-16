@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"reflect"
 	"go/ast"
+	"reflect"
 )
 
 func checkIndexExpr(index *ast.IndexExpr, env Env) (*IndexExpr, []error) {

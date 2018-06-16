@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"reflect"
 	"go/ast"
+	"reflect"
 )
 
 func checkIdent(ident *ast.Ident, env Env) (_ *Ident, errs []error) {
@@ -19,7 +19,7 @@ func checkIdent(ident *ast.Ident, env Env) (_ *Ident, errs []error) {
 	case "false":
 		aexpr.constValue = constValueOf(false)
 		aexpr.knownType = []reflect.Type{ConstBool}
-        default:
+	default:
 		for searchEnv := env; searchEnv != nil; searchEnv = searchEnv.PopScope() {
 			if v := searchEnv.Var(aexpr.Name); v.IsValid() {
 				aexpr.knownType = knownType{v.Elem().Type()}
@@ -41,6 +41,6 @@ func checkIdent(ident *ast.Ident, env Env) (_ *Ident, errs []error) {
 			}
 		}
 		return aexpr, append(errs, ErrUndefined{aexpr})
-        }
+	}
 	return aexpr, errs
 }

@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestCompositeArrayEmpty(t *testing.T) {
@@ -11,7 +11,7 @@ func TestCompositeArrayEmpty(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { }
+	expected := Alice{}
 	expr := "Alice {}"
 
 	expectResult(t, expr, env, expected)
@@ -23,7 +23,7 @@ func TestCompositeArrayValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { 1, 2, 3 }
+	expected := Alice{1, 2, 3}
 	expr := "Alice { 1, 2, 3 }"
 
 	expectResult(t, expr, env, expected)
@@ -35,7 +35,7 @@ func TestCompositeArrayKeyValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { 1: 1, 2 }
+	expected := Alice{1: 1, 2}
 	expr := "Alice { 1: 1, 2 }"
 
 	expectResult(t, expr, env, expected)
@@ -47,7 +47,7 @@ func TestCompositeArrayIncompleteValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { 1, 2 }
+	expected := Alice{1, 2}
 	expr := "Alice { 1, 2 }"
 
 	expectResult(t, expr, env, expected)
@@ -59,7 +59,7 @@ func TestCompositeSliceEmpty(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { }
+	expected := Alice{}
 	expr := "Alice { }"
 
 	expectResult(t, expr, env, expected)
@@ -71,7 +71,7 @@ func TestCompositeSliceValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { 1, 2, 3 }
+	expected := Alice{1, 2, 3}
 	expr := "Alice { 1, 2, 3 }"
 
 	expectResult(t, expr, env, expected)
@@ -83,7 +83,7 @@ func TestCompositeSliceKeyValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { 1, 10: 1 }
+	expected := Alice{1, 10: 1}
 	expr := "Alice { 1, 10: 1 }"
 
 	expectResult(t, expr, env, expected)
@@ -97,7 +97,7 @@ func TestCompositeStructValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { 10 }
+	expected := Alice{10}
 	expr := "Alice{ 10 }"
 
 	expectResult(t, expr, env, expected)
@@ -111,7 +111,7 @@ func TestCompositeStructKeyValues(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Types["Alice"] = reflect.TypeOf(Alice{})
 
-	expected := Alice { Bob: 10 }
+	expected := Alice{Bob: 10}
 	expr := "Alice{ Bob: 10 }"
 
 	expectResult(t, expr, env, expected)

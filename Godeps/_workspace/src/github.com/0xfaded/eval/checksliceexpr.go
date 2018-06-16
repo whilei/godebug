@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"reflect"
 	"go/ast"
+	"reflect"
 )
 
 // TODO[crc] support [::] syntax after go1.2 upgrade

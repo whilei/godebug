@@ -151,7 +151,7 @@ func evalBuiltinAppendExpr(call *CallExpr, env Env) ([]reflect.Value, error) {
 			if x, err := evalTypedExpr(call.Args[i], xT, env); err != nil {
 				return nil, err
 			} else {
-				tail.Index(i-1).Set(x[0])
+				tail.Index(i - 1).Set(x[0])
 			}
 		}
 	}
@@ -192,4 +192,3 @@ func evalBuiltinPanicExpr(call *CallExpr, env Env) ([]reflect.Value, error) {
 		return []reflect.Value{}, err
 	}
 }
-

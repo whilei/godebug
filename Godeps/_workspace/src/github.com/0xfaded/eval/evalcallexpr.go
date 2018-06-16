@@ -52,7 +52,7 @@ func evalCallFunExpr(call *CallExpr, env Env) ([]reflect.Value, error) {
 		}
 	} else if len(args) != 0 {
 		var i int
-		for i = 0; i < numIn - 1; i += 1 {
+		for i = 0; i < numIn-1; i += 1 {
 			arg := call.Args[i]
 			argType := knownType{ft.In(i)}
 			if argV, err := evalTypedExpr(arg, argType, env); err != nil {

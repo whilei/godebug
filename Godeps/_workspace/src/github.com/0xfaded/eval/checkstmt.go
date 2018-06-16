@@ -9,9 +9,9 @@ import (
 )
 
 type checkCtx struct {
-	outerFunc reflect.Type
+	outerFunc     reflect.Type
 	emptyReturnOk bool
-	stack []Stmt
+	stack         []Stmt
 }
 
 // Place holder for something more substantial
@@ -46,8 +46,8 @@ func checkStmt(stmt ast.Stmt, env Env, ctx checkCtx) (Stmt, []error) {
 	case *ast.AssignStmt:
 		a := &AssignStmt{
 			AssignStmt: s,
-			Lhs: make([]Expr, len(s.Lhs)),
-			Rhs: make([]Expr, len(s.Rhs)),
+			Lhs:        make([]Expr, len(s.Lhs)),
+			Rhs:        make([]Expr, len(s.Rhs)),
 		}
 
 		names := map[int]string{}
@@ -190,7 +190,7 @@ func checkStmt(stmt ast.Stmt, env Env, ctx checkCtx) (Stmt, []error) {
 				env.AddVar(name, reflect.New(types[i]))
 			}
 		}
-done:
+	done:
 		a.newNames = names
 		a.types = types
 		return a, errs
@@ -239,15 +239,15 @@ done:
 
 		// one.End() is after the ++/--
 		one := &ast.BasicLit{
-			ValuePos: s.TokPos + 1,  // Pos of second +/- in ++/--
-			Kind: token.INT,
-			Value: "1",
+			ValuePos: s.TokPos + 1, // Pos of second +/- in ++/--
+			Kind:     token.INT,
+			Value:    "1",
 		}
 		assign := &ast.AssignStmt{
-			Lhs: []ast.Expr{s.X},
+			Lhs:    []ast.Expr{s.X},
 			TokPos: s.TokPos,
-			Tok: tok,
-			Rhs: []ast.Expr{one},
+			Tok:    tok,
+			Rhs:    []ast.Expr{one},
 		}
 		return checkStmt(assign, env, ctx)
 
@@ -293,7 +293,7 @@ done:
 			if kt := r.KnownType(); len(kt) > 1 {
 				numResults = len(kt)
 				astmt.Results[0] = r
-				for i = 0; i < numOut && i < numResults ; i += 1 {
+				for i = 0; i < numOut && i < numResults; i += 1 {
 					t := ctx.outerFunc.Out(i)
 					if !typeAssignableTo(kt[i], ctx.outerFunc.Out(1)) {
 						errs = append(errs, ErrBadReturnValue{astmt.Results[0], t, i})
@@ -316,7 +316,7 @@ done:
 			astmt.Results[i], moreErrs = CheckExpr(s.Results[i], env)
 			errs = append(errs, moreErrs...)
 		}
-checkcount:
+	checkcount:
 		if ctx.outerFunc != nil && numResults != numOut && !(numOut == 0 && ctx.emptyReturnOk) {
 			errs = append(errs, ErrWrongNumberOfReturnValues{astmt, ctx.outerFunc})
 		}
@@ -447,7 +447,7 @@ checkcount:
 					if moreErrs == nil || aexpr.IsConst() {
 						errs = append(errs, ErrBuiltinNonTypeArg{aexpr})
 					}
-				// isType == true && tt == nil for unimplemented types
+					// isType == true && tt == nil for unimplemented types
 				} else if t != nil && tt != nil {
 					if tt.Kind() != reflect.Interface && !tt.Implements(t) {
 						errs = append(errs, ErrImpossibleTypeCase{aexpr, tag})
@@ -551,7 +551,7 @@ func findLabel(branch *BranchStmt, ctx checkCtx) (jump []Stmt) {
 				common := 0
 				for j, k := 0, 0; j < len(open)-1 && k < len(ctx.stack); j += 1 {
 					if open[j] == ctx.stack[k] {
-						common = j+1
+						common = j + 1
 						k += 1
 					}
 				}
@@ -571,4 +571,3 @@ func findLabel(branch *BranchStmt, ctx checkCtx) (jump []Stmt) {
 	}
 	return nil
 }
-

@@ -56,7 +56,7 @@ func fakeCheckExpr(expr ast.Expr, env Env) Expr {
 		}
 		// TODO[crc] go 1.2 introduces the [::] notation. Add after upgrade
 		//if s.Max != nil {
-			//s.Max = fakeCheckExpr(s.Max, env)
+		//s.Max = fakeCheckExpr(s.Max, env)
 		//}
 		return s
 	case *ast.TypeAssertExpr:

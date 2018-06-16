@@ -2,26 +2,26 @@ package main
 
 import (
 	"fmt"
+	"github.com/0xfaded/go-testgen"
+	"go/token"
 	"io"
 	"text/template"
-	"go/token"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Lhs.Name }} {{ .Op.Value }} {{ .Rhs.Name }}
+	`// Test {{ .Lhs.Name }} {{ .Op.Value }} {{ .Rhs.Name }}
 `))
 
 var body = template.Must(template.New("Body").Parse(
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 {{ if .Errors }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	)
 {{ else }}
-	expectConst(t, `+"`{{ .Expr }}`"+`, env, {{ .NewConstType }}({{ .Expr }}), {{ .ResultType }}){{ end }}
+	expectConst(t, ` + "`{{ .Expr }}`" + `, env, {{ .NewConstType }}({{ .Expr }}), {{ .ResultType }}){{ end }}
 `))
 
 func (*Test) Package() string {
@@ -56,7 +56,7 @@ func (*Test) Dimensions() []testgen.Dimension {
 		{"And", token.AND},
 		{"Or", token.OR},
 		{"Xor", token.XOR},
-		{"AndNot",  token.AND_NOT},
+		{"AndNot", token.AND_NOT},
 		{"Eql", token.EQL},
 		{"Neq", token.NEQ},
 		{"Leq", token.LEQ},
@@ -77,9 +77,9 @@ func (*Test) Globals(w io.Writer) error {
 }
 
 func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Lhs": elts[0],
-		"Op": elts[1],
+		"Op":  elts[1],
 		"Rhs": elts[2],
 	}
 
@@ -88,7 +88,7 @@ func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
 
 func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 	lhs := elts[0].Name
-	op  := elts[1].Value.(token.Token)
+	op := elts[1].Value.(token.Token)
 	rhs := elts[2].Name
 
 	expr := fmt.Sprintf("%v %v %v", elts[0].Value, op, elts[2].Value)
@@ -157,21 +157,20 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		resultType = "ConstBool"
 	case token.SHR, token.SHL:
 		newConstType = "NewConstInt64"
-		resultType= "ConstInt"
+		resultType = "ConstInt"
 		if lhs == rhs && lhs == "Complex" {
 			// double truncation error lost
 			compileErrs = append(compileErrs, compileErrs[0])
 		}
 	}
 
-	vars := map[string] interface{} {
-		"Expr": expr,
-		"Errors": compileErrs,
-		"Op": elts[1],
+	vars := map[string]interface{}{
+		"Expr":         expr,
+		"Errors":       compileErrs,
+		"Op":           elts[1],
 		"NewConstType": newConstType,
-		"ResultType": resultType,
+		"ResultType":   resultType,
 	}
 
 	return body.Execute(w, &vars)
 }
-

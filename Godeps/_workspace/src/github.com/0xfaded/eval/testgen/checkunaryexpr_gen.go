@@ -2,26 +2,26 @@ package main
 
 import (
 	"fmt"
+	"github.com/0xfaded/go-testgen"
+	"go/token"
 	"io"
 	"text/template"
-	"go/token"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Op.Value }} {{ .Rhs.Name }}
+	`// Test {{ .Op.Value }} {{ .Rhs.Name }}
 `))
 
 var body = template.Must(template.New("Body").Parse(
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 {{ if .Errors }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	)
 {{ else }}
-	expectConst(t, `+"`{{ .Expr }}`"+`, env, {{ .NewConstType }}({{ .Expr }}), {{ .ResultType }}){{ end }}
+	expectConst(t, ` + "`{{ .Expr }}`" + `, env, {{ .NewConstType }}({{ .Expr }}), {{ .ResultType }}){{ end }}
 `))
 
 func (*Test) Package() string {
@@ -64,8 +64,8 @@ func (*Test) Globals(w io.Writer) error {
 }
 
 func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
-	vars := map[string] interface{} {
-		"Op": elts[0],
+	vars := map[string]interface{}{
+		"Op":  elts[0],
 		"Rhs": elts[1],
 	}
 
@@ -73,7 +73,7 @@ func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
 }
 
 func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
-	op  := elts[0].Value.(token.Token)
+	op := elts[0].Value.(token.Token)
 	rhs := elts[1].Name
 
 	expr := fmt.Sprintf("%v %v", op, elts[1].Value)
@@ -102,14 +102,13 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		resultType = "ConstBool"
 	}
 
-	vars := map[string] interface{} {
-		"Expr": expr,
-		"Errors": compileErrs,
-		"Op": elts[1],
+	vars := map[string]interface{}{
+		"Expr":         expr,
+		"Errors":       compileErrs,
+		"Op":           elts[1],
 		"NewConstType": newConstType,
-		"ResultType": resultType,
+		"ResultType":   resultType,
 	}
 
 	return body.Execute(w, &vars)
 }
-

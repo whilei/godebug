@@ -5,7 +5,7 @@ import (
 )
 
 // EvalExpr is the main function to call to evaluate an ast-parsed
-// expression, expr. 
+// expression, expr.
 // Parameter env, contains an evaluation environment from
 // which to get reflect.Values from. Note however that env can be
 // subverted somewhat by supplying callback hooks routines which

@@ -8,28 +8,28 @@ import (
 func TestCheckBinaryExprIntAddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 + 4`, env, NewConstInt64(4 + 4), ConstInt)
+	expectConst(t, `4 + 4`, env, NewConstInt64(4+4), ConstInt)
 }
 
 // Test Int + Rune
 func TestCheckBinaryExprIntAddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 + '@'`, env, NewConstRune(4 + '@'), ConstRune)
+	expectConst(t, `4 + '@'`, env, NewConstRune(4+'@'), ConstRune)
 }
 
 // Test Int + Float
 func TestCheckBinaryExprIntAddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 + 2.0`, env, NewConstFloat64(4 + 2.0), ConstFloat)
+	expectConst(t, `4 + 2.0`, env, NewConstFloat64(4+2.0), ConstFloat)
 }
 
 // Test Int + Complex
 func TestCheckBinaryExprIntAddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 + 8.0i`, env, NewConstComplex128(4 + 8.0i), ConstComplex)
+	expectConst(t, `4 + 8.0i`, env, NewConstComplex128(4+8.0i), ConstComplex)
 }
 
 // Test Int + Bool
@@ -69,28 +69,28 @@ func TestCheckBinaryExprIntAddNil(t *testing.T) {
 func TestCheckBinaryExprIntSubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 - 4`, env, NewConstInt64(4 - 4), ConstInt)
+	expectConst(t, `4 - 4`, env, NewConstInt64(4-4), ConstInt)
 }
 
 // Test Int - Rune
 func TestCheckBinaryExprIntSubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 - '@'`, env, NewConstRune(4 - '@'), ConstRune)
+	expectConst(t, `4 - '@'`, env, NewConstRune(4-'@'), ConstRune)
 }
 
 // Test Int - Float
 func TestCheckBinaryExprIntSubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 - 2.0`, env, NewConstFloat64(4 - 2.0), ConstFloat)
+	expectConst(t, `4 - 2.0`, env, NewConstFloat64(4-2.0), ConstFloat)
 }
 
 // Test Int - Complex
 func TestCheckBinaryExprIntSubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 - 8.0i`, env, NewConstComplex128(4 - 8.0i), ConstComplex)
+	expectConst(t, `4 - 8.0i`, env, NewConstComplex128(4-8.0i), ConstComplex)
 }
 
 // Test Int - Bool
@@ -130,28 +130,28 @@ func TestCheckBinaryExprIntSubNil(t *testing.T) {
 func TestCheckBinaryExprIntMulInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 * 4`, env, NewConstInt64(4 * 4), ConstInt)
+	expectConst(t, `4 * 4`, env, NewConstInt64(4*4), ConstInt)
 }
 
 // Test Int * Rune
 func TestCheckBinaryExprIntMulRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 * '@'`, env, NewConstRune(4 * '@'), ConstRune)
+	expectConst(t, `4 * '@'`, env, NewConstRune(4*'@'), ConstRune)
 }
 
 // Test Int * Float
 func TestCheckBinaryExprIntMulFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 * 2.0`, env, NewConstFloat64(4 * 2.0), ConstFloat)
+	expectConst(t, `4 * 2.0`, env, NewConstFloat64(4*2.0), ConstFloat)
 }
 
 // Test Int * Complex
 func TestCheckBinaryExprIntMulComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 * 8.0i`, env, NewConstComplex128(4 * 8.0i), ConstComplex)
+	expectConst(t, `4 * 8.0i`, env, NewConstComplex128(4*8.0i), ConstComplex)
 }
 
 // Test Int * Bool
@@ -191,28 +191,28 @@ func TestCheckBinaryExprIntMulNil(t *testing.T) {
 func TestCheckBinaryExprIntQuoInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 / 4`, env, NewConstInt64(4 / 4), ConstInt)
+	expectConst(t, `4 / 4`, env, NewConstInt64(4/4), ConstInt)
 }
 
 // Test Int / Rune
 func TestCheckBinaryExprIntQuoRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 / '@'`, env, NewConstRune(4 / '@'), ConstRune)
+	expectConst(t, `4 / '@'`, env, NewConstRune(4/'@'), ConstRune)
 }
 
 // Test Int / Float
 func TestCheckBinaryExprIntQuoFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 / 2.0`, env, NewConstFloat64(4 / 2.0), ConstFloat)
+	expectConst(t, `4 / 2.0`, env, NewConstFloat64(4/2.0), ConstFloat)
 }
 
 // Test Int / Complex
 func TestCheckBinaryExprIntQuoComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 / 8.0i`, env, NewConstComplex128(4 / 8.0i), ConstComplex)
+	expectConst(t, `4 / 8.0i`, env, NewConstComplex128(4/8.0i), ConstComplex)
 }
 
 // Test Int / Bool
@@ -252,14 +252,14 @@ func TestCheckBinaryExprIntQuoNil(t *testing.T) {
 func TestCheckBinaryExprIntRemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 % 4`, env, NewConstInt64(4 % 4), ConstInt)
+	expectConst(t, `4 % 4`, env, NewConstInt64(4%4), ConstInt)
 }
 
 // Test Int % Rune
 func TestCheckBinaryExprIntRemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 % '@'`, env, NewConstRune(4 % '@'), ConstRune)
+	expectConst(t, `4 % '@'`, env, NewConstRune(4%'@'), ConstRune)
 }
 
 // Test Int % Float
@@ -319,14 +319,14 @@ func TestCheckBinaryExprIntRemNil(t *testing.T) {
 func TestCheckBinaryExprIntAndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 & 4`, env, NewConstInt64(4 & 4), ConstInt)
+	expectConst(t, `4 & 4`, env, NewConstInt64(4&4), ConstInt)
 }
 
 // Test Int & Rune
 func TestCheckBinaryExprIntAndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 & '@'`, env, NewConstRune(4 & '@'), ConstRune)
+	expectConst(t, `4 & '@'`, env, NewConstRune(4&'@'), ConstRune)
 }
 
 // Test Int & Float
@@ -386,14 +386,14 @@ func TestCheckBinaryExprIntAndNil(t *testing.T) {
 func TestCheckBinaryExprIntOrInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 | 4`, env, NewConstInt64(4 | 4), ConstInt)
+	expectConst(t, `4 | 4`, env, NewConstInt64(4|4), ConstInt)
 }
 
 // Test Int | Rune
 func TestCheckBinaryExprIntOrRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 | '@'`, env, NewConstRune(4 | '@'), ConstRune)
+	expectConst(t, `4 | '@'`, env, NewConstRune(4|'@'), ConstRune)
 }
 
 // Test Int | Float
@@ -453,14 +453,14 @@ func TestCheckBinaryExprIntOrNil(t *testing.T) {
 func TestCheckBinaryExprIntXorInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 ^ 4`, env, NewConstInt64(4 ^ 4), ConstInt)
+	expectConst(t, `4 ^ 4`, env, NewConstInt64(4^4), ConstInt)
 }
 
 // Test Int ^ Rune
 func TestCheckBinaryExprIntXorRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 ^ '@'`, env, NewConstRune(4 ^ '@'), ConstRune)
+	expectConst(t, `4 ^ '@'`, env, NewConstRune(4^'@'), ConstRune)
 }
 
 // Test Int ^ Float
@@ -520,14 +520,14 @@ func TestCheckBinaryExprIntXorNil(t *testing.T) {
 func TestCheckBinaryExprIntAndNotInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 &^ 4`, env, NewConstInt64(4 &^ 4), ConstInt)
+	expectConst(t, `4 &^ 4`, env, NewConstInt64(4&^4), ConstInt)
 }
 
 // Test Int &^ Rune
 func TestCheckBinaryExprIntAndNotRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 &^ '@'`, env, NewConstRune(4 &^ '@'), ConstRune)
+	expectConst(t, `4 &^ '@'`, env, NewConstRune(4&^'@'), ConstRune)
 }
 
 // Test Int &^ Float
@@ -965,21 +965,21 @@ func TestCheckBinaryExprIntGtrNil(t *testing.T) {
 func TestCheckBinaryExprIntRhlInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 >> 4`, env, NewConstInt64(4 >> 4), ConstInt)
+	expectConst(t, `4 >> 4`, env, NewConstInt64(4>>4), ConstInt)
 }
 
 // Test Int >> Rune
 func TestCheckBinaryExprIntRhlRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 >> '@'`, env, NewConstInt64(4 >> '@'), ConstInt)
+	expectConst(t, `4 >> '@'`, env, NewConstInt64(4>>'@'), ConstInt)
 }
 
 // Test Int >> Float
 func TestCheckBinaryExprIntRhlFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `4 >> 2.0`, env, NewConstInt64(4 >> 2.0), ConstInt)
+	expectConst(t, `4 >> 2.0`, env, NewConstInt64(4>>2.0), ConstInt)
 }
 
 // Test Int >> Complex
@@ -1027,28 +1027,28 @@ func TestCheckBinaryExprIntRhlNil(t *testing.T) {
 func TestCheckBinaryExprRuneAddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' + 4`, env, NewConstRune('@' + 4), ConstRune)
+	expectConst(t, `'@' + 4`, env, NewConstRune('@'+4), ConstRune)
 }
 
 // Test Rune + Rune
 func TestCheckBinaryExprRuneAddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' + '@'`, env, NewConstRune('@' + '@'), ConstRune)
+	expectConst(t, `'@' + '@'`, env, NewConstRune('@'+'@'), ConstRune)
 }
 
 // Test Rune + Float
 func TestCheckBinaryExprRuneAddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' + 2.0`, env, NewConstFloat64('@' + 2.0), ConstFloat)
+	expectConst(t, `'@' + 2.0`, env, NewConstFloat64('@'+2.0), ConstFloat)
 }
 
 // Test Rune + Complex
 func TestCheckBinaryExprRuneAddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' + 8.0i`, env, NewConstComplex128('@' + 8.0i), ConstComplex)
+	expectConst(t, `'@' + 8.0i`, env, NewConstComplex128('@'+8.0i), ConstComplex)
 }
 
 // Test Rune + Bool
@@ -1088,28 +1088,28 @@ func TestCheckBinaryExprRuneAddNil(t *testing.T) {
 func TestCheckBinaryExprRuneSubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' - 4`, env, NewConstRune('@' - 4), ConstRune)
+	expectConst(t, `'@' - 4`, env, NewConstRune('@'-4), ConstRune)
 }
 
 // Test Rune - Rune
 func TestCheckBinaryExprRuneSubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' - '@'`, env, NewConstRune('@' - '@'), ConstRune)
+	expectConst(t, `'@' - '@'`, env, NewConstRune('@'-'@'), ConstRune)
 }
 
 // Test Rune - Float
 func TestCheckBinaryExprRuneSubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' - 2.0`, env, NewConstFloat64('@' - 2.0), ConstFloat)
+	expectConst(t, `'@' - 2.0`, env, NewConstFloat64('@'-2.0), ConstFloat)
 }
 
 // Test Rune - Complex
 func TestCheckBinaryExprRuneSubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' - 8.0i`, env, NewConstComplex128('@' - 8.0i), ConstComplex)
+	expectConst(t, `'@' - 8.0i`, env, NewConstComplex128('@'-8.0i), ConstComplex)
 }
 
 // Test Rune - Bool
@@ -1149,28 +1149,28 @@ func TestCheckBinaryExprRuneSubNil(t *testing.T) {
 func TestCheckBinaryExprRuneMulInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' * 4`, env, NewConstRune('@' * 4), ConstRune)
+	expectConst(t, `'@' * 4`, env, NewConstRune('@'*4), ConstRune)
 }
 
 // Test Rune * Rune
 func TestCheckBinaryExprRuneMulRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' * '@'`, env, NewConstRune('@' * '@'), ConstRune)
+	expectConst(t, `'@' * '@'`, env, NewConstRune('@'*'@'), ConstRune)
 }
 
 // Test Rune * Float
 func TestCheckBinaryExprRuneMulFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' * 2.0`, env, NewConstFloat64('@' * 2.0), ConstFloat)
+	expectConst(t, `'@' * 2.0`, env, NewConstFloat64('@'*2.0), ConstFloat)
 }
 
 // Test Rune * Complex
 func TestCheckBinaryExprRuneMulComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' * 8.0i`, env, NewConstComplex128('@' * 8.0i), ConstComplex)
+	expectConst(t, `'@' * 8.0i`, env, NewConstComplex128('@'*8.0i), ConstComplex)
 }
 
 // Test Rune * Bool
@@ -1210,28 +1210,28 @@ func TestCheckBinaryExprRuneMulNil(t *testing.T) {
 func TestCheckBinaryExprRuneQuoInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' / 4`, env, NewConstRune('@' / 4), ConstRune)
+	expectConst(t, `'@' / 4`, env, NewConstRune('@'/4), ConstRune)
 }
 
 // Test Rune / Rune
 func TestCheckBinaryExprRuneQuoRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' / '@'`, env, NewConstRune('@' / '@'), ConstRune)
+	expectConst(t, `'@' / '@'`, env, NewConstRune('@'/'@'), ConstRune)
 }
 
 // Test Rune / Float
 func TestCheckBinaryExprRuneQuoFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' / 2.0`, env, NewConstFloat64('@' / 2.0), ConstFloat)
+	expectConst(t, `'@' / 2.0`, env, NewConstFloat64('@'/2.0), ConstFloat)
 }
 
 // Test Rune / Complex
 func TestCheckBinaryExprRuneQuoComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' / 8.0i`, env, NewConstComplex128('@' / 8.0i), ConstComplex)
+	expectConst(t, `'@' / 8.0i`, env, NewConstComplex128('@'/8.0i), ConstComplex)
 }
 
 // Test Rune / Bool
@@ -1271,14 +1271,14 @@ func TestCheckBinaryExprRuneQuoNil(t *testing.T) {
 func TestCheckBinaryExprRuneRemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' % 4`, env, NewConstRune('@' % 4), ConstRune)
+	expectConst(t, `'@' % 4`, env, NewConstRune('@'%4), ConstRune)
 }
 
 // Test Rune % Rune
 func TestCheckBinaryExprRuneRemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' % '@'`, env, NewConstRune('@' % '@'), ConstRune)
+	expectConst(t, `'@' % '@'`, env, NewConstRune('@'%'@'), ConstRune)
 }
 
 // Test Rune % Float
@@ -1338,14 +1338,14 @@ func TestCheckBinaryExprRuneRemNil(t *testing.T) {
 func TestCheckBinaryExprRuneAndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' & 4`, env, NewConstRune('@' & 4), ConstRune)
+	expectConst(t, `'@' & 4`, env, NewConstRune('@'&4), ConstRune)
 }
 
 // Test Rune & Rune
 func TestCheckBinaryExprRuneAndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' & '@'`, env, NewConstRune('@' & '@'), ConstRune)
+	expectConst(t, `'@' & '@'`, env, NewConstRune('@'&'@'), ConstRune)
 }
 
 // Test Rune & Float
@@ -1405,14 +1405,14 @@ func TestCheckBinaryExprRuneAndNil(t *testing.T) {
 func TestCheckBinaryExprRuneOrInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' | 4`, env, NewConstRune('@' | 4), ConstRune)
+	expectConst(t, `'@' | 4`, env, NewConstRune('@'|4), ConstRune)
 }
 
 // Test Rune | Rune
 func TestCheckBinaryExprRuneOrRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' | '@'`, env, NewConstRune('@' | '@'), ConstRune)
+	expectConst(t, `'@' | '@'`, env, NewConstRune('@'|'@'), ConstRune)
 }
 
 // Test Rune | Float
@@ -1472,14 +1472,14 @@ func TestCheckBinaryExprRuneOrNil(t *testing.T) {
 func TestCheckBinaryExprRuneXorInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' ^ 4`, env, NewConstRune('@' ^ 4), ConstRune)
+	expectConst(t, `'@' ^ 4`, env, NewConstRune('@'^4), ConstRune)
 }
 
 // Test Rune ^ Rune
 func TestCheckBinaryExprRuneXorRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' ^ '@'`, env, NewConstRune('@' ^ '@'), ConstRune)
+	expectConst(t, `'@' ^ '@'`, env, NewConstRune('@'^'@'), ConstRune)
 }
 
 // Test Rune ^ Float
@@ -1539,14 +1539,14 @@ func TestCheckBinaryExprRuneXorNil(t *testing.T) {
 func TestCheckBinaryExprRuneAndNotInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' &^ 4`, env, NewConstRune('@' &^ 4), ConstRune)
+	expectConst(t, `'@' &^ 4`, env, NewConstRune('@'&^4), ConstRune)
 }
 
 // Test Rune &^ Rune
 func TestCheckBinaryExprRuneAndNotRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' &^ '@'`, env, NewConstRune('@' &^ '@'), ConstRune)
+	expectConst(t, `'@' &^ '@'`, env, NewConstRune('@'&^'@'), ConstRune)
 }
 
 // Test Rune &^ Float
@@ -1984,21 +1984,21 @@ func TestCheckBinaryExprRuneGtrNil(t *testing.T) {
 func TestCheckBinaryExprRuneRhlInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' >> 4`, env, NewConstInt64('@' >> 4), ConstInt)
+	expectConst(t, `'@' >> 4`, env, NewConstInt64('@'>>4), ConstInt)
 }
 
 // Test Rune >> Rune
 func TestCheckBinaryExprRuneRhlRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' >> '@'`, env, NewConstInt64('@' >> '@'), ConstInt)
+	expectConst(t, `'@' >> '@'`, env, NewConstInt64('@'>>'@'), ConstInt)
 }
 
 // Test Rune >> Float
 func TestCheckBinaryExprRuneRhlFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `'@' >> 2.0`, env, NewConstInt64('@' >> 2.0), ConstInt)
+	expectConst(t, `'@' >> 2.0`, env, NewConstInt64('@'>>2.0), ConstInt)
 }
 
 // Test Rune >> Complex
@@ -2046,28 +2046,28 @@ func TestCheckBinaryExprRuneRhlNil(t *testing.T) {
 func TestCheckBinaryExprFloatAddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 + 4`, env, NewConstFloat64(2.0 + 4), ConstFloat)
+	expectConst(t, `2.0 + 4`, env, NewConstFloat64(2.0+4), ConstFloat)
 }
 
 // Test Float + Rune
 func TestCheckBinaryExprFloatAddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 + '@'`, env, NewConstFloat64(2.0 + '@'), ConstFloat)
+	expectConst(t, `2.0 + '@'`, env, NewConstFloat64(2.0+'@'), ConstFloat)
 }
 
 // Test Float + Float
 func TestCheckBinaryExprFloatAddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 + 2.0`, env, NewConstFloat64(2.0 + 2.0), ConstFloat)
+	expectConst(t, `2.0 + 2.0`, env, NewConstFloat64(2.0+2.0), ConstFloat)
 }
 
 // Test Float + Complex
 func TestCheckBinaryExprFloatAddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 + 8.0i`, env, NewConstComplex128(2.0 + 8.0i), ConstComplex)
+	expectConst(t, `2.0 + 8.0i`, env, NewConstComplex128(2.0+8.0i), ConstComplex)
 }
 
 // Test Float + Bool
@@ -2107,28 +2107,28 @@ func TestCheckBinaryExprFloatAddNil(t *testing.T) {
 func TestCheckBinaryExprFloatSubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 - 4`, env, NewConstFloat64(2.0 - 4), ConstFloat)
+	expectConst(t, `2.0 - 4`, env, NewConstFloat64(2.0-4), ConstFloat)
 }
 
 // Test Float - Rune
 func TestCheckBinaryExprFloatSubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 - '@'`, env, NewConstFloat64(2.0 - '@'), ConstFloat)
+	expectConst(t, `2.0 - '@'`, env, NewConstFloat64(2.0-'@'), ConstFloat)
 }
 
 // Test Float - Float
 func TestCheckBinaryExprFloatSubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 - 2.0`, env, NewConstFloat64(2.0 - 2.0), ConstFloat)
+	expectConst(t, `2.0 - 2.0`, env, NewConstFloat64(2.0-2.0), ConstFloat)
 }
 
 // Test Float - Complex
 func TestCheckBinaryExprFloatSubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 - 8.0i`, env, NewConstComplex128(2.0 - 8.0i), ConstComplex)
+	expectConst(t, `2.0 - 8.0i`, env, NewConstComplex128(2.0-8.0i), ConstComplex)
 }
 
 // Test Float - Bool
@@ -2168,28 +2168,28 @@ func TestCheckBinaryExprFloatSubNil(t *testing.T) {
 func TestCheckBinaryExprFloatMulInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 * 4`, env, NewConstFloat64(2.0 * 4), ConstFloat)
+	expectConst(t, `2.0 * 4`, env, NewConstFloat64(2.0*4), ConstFloat)
 }
 
 // Test Float * Rune
 func TestCheckBinaryExprFloatMulRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 * '@'`, env, NewConstFloat64(2.0 * '@'), ConstFloat)
+	expectConst(t, `2.0 * '@'`, env, NewConstFloat64(2.0*'@'), ConstFloat)
 }
 
 // Test Float * Float
 func TestCheckBinaryExprFloatMulFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 * 2.0`, env, NewConstFloat64(2.0 * 2.0), ConstFloat)
+	expectConst(t, `2.0 * 2.0`, env, NewConstFloat64(2.0*2.0), ConstFloat)
 }
 
 // Test Float * Complex
 func TestCheckBinaryExprFloatMulComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 * 8.0i`, env, NewConstComplex128(2.0 * 8.0i), ConstComplex)
+	expectConst(t, `2.0 * 8.0i`, env, NewConstComplex128(2.0*8.0i), ConstComplex)
 }
 
 // Test Float * Bool
@@ -2229,28 +2229,28 @@ func TestCheckBinaryExprFloatMulNil(t *testing.T) {
 func TestCheckBinaryExprFloatQuoInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 / 4`, env, NewConstFloat64(2.0 / 4), ConstFloat)
+	expectConst(t, `2.0 / 4`, env, NewConstFloat64(2.0/4), ConstFloat)
 }
 
 // Test Float / Rune
 func TestCheckBinaryExprFloatQuoRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 / '@'`, env, NewConstFloat64(2.0 / '@'), ConstFloat)
+	expectConst(t, `2.0 / '@'`, env, NewConstFloat64(2.0/'@'), ConstFloat)
 }
 
 // Test Float / Float
 func TestCheckBinaryExprFloatQuoFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 / 2.0`, env, NewConstFloat64(2.0 / 2.0), ConstFloat)
+	expectConst(t, `2.0 / 2.0`, env, NewConstFloat64(2.0/2.0), ConstFloat)
 }
 
 // Test Float / Complex
 func TestCheckBinaryExprFloatQuoComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 / 8.0i`, env, NewConstComplex128(2.0 / 8.0i), ConstComplex)
+	expectConst(t, `2.0 / 8.0i`, env, NewConstComplex128(2.0/8.0i), ConstComplex)
 }
 
 // Test Float / Bool
@@ -3033,21 +3033,21 @@ func TestCheckBinaryExprFloatGtrNil(t *testing.T) {
 func TestCheckBinaryExprFloatRhlInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 >> 4`, env, NewConstInt64(2.0 >> 4), ConstInt)
+	expectConst(t, `2.0 >> 4`, env, NewConstInt64(2.0>>4), ConstInt)
 }
 
 // Test Float >> Rune
 func TestCheckBinaryExprFloatRhlRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 >> '@'`, env, NewConstInt64(2.0 >> '@'), ConstInt)
+	expectConst(t, `2.0 >> '@'`, env, NewConstInt64(2.0>>'@'), ConstInt)
 }
 
 // Test Float >> Float
 func TestCheckBinaryExprFloatRhlFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `2.0 >> 2.0`, env, NewConstInt64(2.0 >> 2.0), ConstInt)
+	expectConst(t, `2.0 >> 2.0`, env, NewConstInt64(2.0>>2.0), ConstInt)
 }
 
 // Test Float >> Complex
@@ -3095,28 +3095,28 @@ func TestCheckBinaryExprFloatRhlNil(t *testing.T) {
 func TestCheckBinaryExprComplexAddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i + 4`, env, NewConstComplex128(8.0i + 4), ConstComplex)
+	expectConst(t, `8.0i + 4`, env, NewConstComplex128(8.0i+4), ConstComplex)
 }
 
 // Test Complex + Rune
 func TestCheckBinaryExprComplexAddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i + '@'`, env, NewConstComplex128(8.0i + '@'), ConstComplex)
+	expectConst(t, `8.0i + '@'`, env, NewConstComplex128(8.0i+'@'), ConstComplex)
 }
 
 // Test Complex + Float
 func TestCheckBinaryExprComplexAddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i + 2.0`, env, NewConstComplex128(8.0i + 2.0), ConstComplex)
+	expectConst(t, `8.0i + 2.0`, env, NewConstComplex128(8.0i+2.0), ConstComplex)
 }
 
 // Test Complex + Complex
 func TestCheckBinaryExprComplexAddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i + 8.0i`, env, NewConstComplex128(8.0i + 8.0i), ConstComplex)
+	expectConst(t, `8.0i + 8.0i`, env, NewConstComplex128(8.0i+8.0i), ConstComplex)
 }
 
 // Test Complex + Bool
@@ -3156,28 +3156,28 @@ func TestCheckBinaryExprComplexAddNil(t *testing.T) {
 func TestCheckBinaryExprComplexSubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i - 4`, env, NewConstComplex128(8.0i - 4), ConstComplex)
+	expectConst(t, `8.0i - 4`, env, NewConstComplex128(8.0i-4), ConstComplex)
 }
 
 // Test Complex - Rune
 func TestCheckBinaryExprComplexSubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i - '@'`, env, NewConstComplex128(8.0i - '@'), ConstComplex)
+	expectConst(t, `8.0i - '@'`, env, NewConstComplex128(8.0i-'@'), ConstComplex)
 }
 
 // Test Complex - Float
 func TestCheckBinaryExprComplexSubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i - 2.0`, env, NewConstComplex128(8.0i - 2.0), ConstComplex)
+	expectConst(t, `8.0i - 2.0`, env, NewConstComplex128(8.0i-2.0), ConstComplex)
 }
 
 // Test Complex - Complex
 func TestCheckBinaryExprComplexSubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i - 8.0i`, env, NewConstComplex128(8.0i - 8.0i), ConstComplex)
+	expectConst(t, `8.0i - 8.0i`, env, NewConstComplex128(8.0i-8.0i), ConstComplex)
 }
 
 // Test Complex - Bool
@@ -3217,28 +3217,28 @@ func TestCheckBinaryExprComplexSubNil(t *testing.T) {
 func TestCheckBinaryExprComplexMulInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i * 4`, env, NewConstComplex128(8.0i * 4), ConstComplex)
+	expectConst(t, `8.0i * 4`, env, NewConstComplex128(8.0i*4), ConstComplex)
 }
 
 // Test Complex * Rune
 func TestCheckBinaryExprComplexMulRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i * '@'`, env, NewConstComplex128(8.0i * '@'), ConstComplex)
+	expectConst(t, `8.0i * '@'`, env, NewConstComplex128(8.0i*'@'), ConstComplex)
 }
 
 // Test Complex * Float
 func TestCheckBinaryExprComplexMulFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i * 2.0`, env, NewConstComplex128(8.0i * 2.0), ConstComplex)
+	expectConst(t, `8.0i * 2.0`, env, NewConstComplex128(8.0i*2.0), ConstComplex)
 }
 
 // Test Complex * Complex
 func TestCheckBinaryExprComplexMulComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i * 8.0i`, env, NewConstComplex128(8.0i * 8.0i), ConstComplex)
+	expectConst(t, `8.0i * 8.0i`, env, NewConstComplex128(8.0i*8.0i), ConstComplex)
 }
 
 // Test Complex * Bool
@@ -3278,28 +3278,28 @@ func TestCheckBinaryExprComplexMulNil(t *testing.T) {
 func TestCheckBinaryExprComplexQuoInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i / 4`, env, NewConstComplex128(8.0i / 4), ConstComplex)
+	expectConst(t, `8.0i / 4`, env, NewConstComplex128(8.0i/4), ConstComplex)
 }
 
 // Test Complex / Rune
 func TestCheckBinaryExprComplexQuoRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i / '@'`, env, NewConstComplex128(8.0i / '@'), ConstComplex)
+	expectConst(t, `8.0i / '@'`, env, NewConstComplex128(8.0i/'@'), ConstComplex)
 }
 
 // Test Complex / Float
 func TestCheckBinaryExprComplexQuoFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i / 2.0`, env, NewConstComplex128(8.0i / 2.0), ConstComplex)
+	expectConst(t, `8.0i / 2.0`, env, NewConstComplex128(8.0i/2.0), ConstComplex)
 }
 
 // Test Complex / Complex
 func TestCheckBinaryExprComplexQuoComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `8.0i / 8.0i`, env, NewConstComplex128(8.0i / 8.0i), ConstComplex)
+	expectConst(t, `8.0i / 8.0i`, env, NewConstComplex128(8.0i/8.0i), ConstComplex)
 }
 
 // Test Complex / Bool

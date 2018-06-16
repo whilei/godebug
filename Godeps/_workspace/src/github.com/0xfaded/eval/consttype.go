@@ -14,70 +14,70 @@ type ConstType interface {
 	DefaultPromotion() reflect.Type
 }
 
-type ConstIntType struct { reflect.Type }
-type ConstShiftedIntType struct { reflect.Type }
-type ConstRuneType struct { reflect.Type }
-type ConstFloatType struct { reflect.Type }
-type ConstComplexType struct { reflect.Type }
-type ConstStringType struct { reflect.Type }
-type ConstNilType struct { reflect.Type }
-type ConstBoolType struct { reflect.Type }
+type ConstIntType struct{ reflect.Type }
+type ConstShiftedIntType struct{ reflect.Type }
+type ConstRuneType struct{ reflect.Type }
+type ConstFloatType struct{ reflect.Type }
+type ConstComplexType struct{ reflect.Type }
+type ConstStringType struct{ reflect.Type }
+type ConstNilType struct{ reflect.Type }
+type ConstBoolType struct{ reflect.Type }
 
 var (
-	ConstInt = ConstIntType { reflect.TypeOf(0) }
-	ConstShiftedInt = ConstShiftedIntType { reflect.TypeOf(0) }
-	ConstRune = ConstRuneType { RuneType }
-	ConstFloat = ConstFloatType { reflect.TypeOf(0.0) }
-	ConstComplex = ConstComplexType { reflect.TypeOf(0i) }
-	ConstString = ConstStringType { reflect.TypeOf("") }
-	ConstNil = ConstNilType { nil }
-	ConstBool = ConstBoolType { reflect.TypeOf(false) }
+	ConstInt        = ConstIntType{reflect.TypeOf(0)}
+	ConstShiftedInt = ConstShiftedIntType{reflect.TypeOf(0)}
+	ConstRune       = ConstRuneType{RuneType}
+	ConstFloat      = ConstFloatType{reflect.TypeOf(0.0)}
+	ConstComplex    = ConstComplexType{reflect.TypeOf(0i)}
+	ConstString     = ConstStringType{reflect.TypeOf("")}
+	ConstNil        = ConstNilType{nil}
+	ConstBool       = ConstBoolType{reflect.TypeOf(false)}
 )
 
-func (ConstIntType) String() string { return "untyped number" }
+func (ConstIntType) String() string        { return "untyped number" }
 func (ConstShiftedIntType) String() string { return "untyped number" }
-func (ConstRuneType) String() string { return "untyped number" }
-func (ConstFloatType) String() string { return "untyped number" }
-func (ConstComplexType) String() string { return "untyped number" }
-func (ConstStringType) String() string { return "untyped string" }
-func (ConstNilType) String() string { return "nil" }
-func (ConstBoolType) String() string { return "untyped bool" }
+func (ConstRuneType) String() string       { return "untyped number" }
+func (ConstFloatType) String() string      { return "untyped number" }
+func (ConstComplexType) String() string    { return "untyped number" }
+func (ConstStringType) String() string     { return "untyped string" }
+func (ConstNilType) String() string        { return "nil" }
+func (ConstBoolType) String() string       { return "untyped bool" }
 
-func (c ConstIntType) DefaultPromotion() reflect.Type { return c.Type }
+func (c ConstIntType) DefaultPromotion() reflect.Type        { return c.Type }
 func (c ConstShiftedIntType) DefaultPromotion() reflect.Type { return c.Type }
-func (c ConstRuneType) DefaultPromotion() reflect.Type { return c.Type }
-func (c ConstFloatType) DefaultPromotion() reflect.Type { return c.Type }
-func (c ConstComplexType) DefaultPromotion() reflect.Type { return c.Type }
-func (c ConstStringType) DefaultPromotion() reflect.Type { return c.Type }
-func (c ConstNilType) DefaultPromotion() reflect.Type { return c }
-func (c ConstBoolType) DefaultPromotion() reflect.Type { return c.Type }
+func (c ConstRuneType) DefaultPromotion() reflect.Type       { return c.Type }
+func (c ConstFloatType) DefaultPromotion() reflect.Type      { return c.Type }
+func (c ConstComplexType) DefaultPromotion() reflect.Type    { return c.Type }
+func (c ConstStringType) DefaultPromotion() reflect.Type     { return c.Type }
+func (c ConstNilType) DefaultPromotion() reflect.Type        { return c }
+func (c ConstBoolType) DefaultPromotion() reflect.Type       { return c.Type }
 
-func (ConstIntType) IsIntegral() bool { return true }
+func (ConstIntType) IsIntegral() bool        { return true }
 func (ConstShiftedIntType) IsIntegral() bool { return true }
-func (ConstRuneType) IsIntegral() bool { return true }
-func (ConstFloatType) IsIntegral() bool { return false }
-func (ConstComplexType) IsIntegral() bool { return false }
-func (ConstStringType) IsIntegral() bool { return false }
-func (ConstNilType) IsIntegral() bool { return false }
-func (ConstBoolType) IsIntegral() bool { return false }
+func (ConstRuneType) IsIntegral() bool       { return true }
+func (ConstFloatType) IsIntegral() bool      { return false }
+func (ConstComplexType) IsIntegral() bool    { return false }
+func (ConstStringType) IsIntegral() bool     { return false }
+func (ConstNilType) IsIntegral() bool        { return false }
+func (ConstBoolType) IsIntegral() bool       { return false }
 
-func (ConstIntType) IsReal() bool { return true }
+func (ConstIntType) IsReal() bool        { return true }
 func (ConstShiftedIntType) IsReal() bool { return true }
-func (ConstRuneType) IsReal() bool { return true }
-func (ConstFloatType) IsReal() bool { return true }
-func (ConstComplexType) IsReal() bool { return false }
-func (ConstStringType) IsReal() bool { return false }
-func (ConstNilType) IsReal() bool { return false }
-func (ConstBoolType) IsReal() bool { return false }
+func (ConstRuneType) IsReal() bool       { return true }
+func (ConstFloatType) IsReal() bool      { return true }
+func (ConstComplexType) IsReal() bool    { return false }
+func (ConstStringType) IsReal() bool     { return false }
+func (ConstNilType) IsReal() bool        { return false }
+func (ConstBoolType) IsReal() bool       { return false }
 
-func (ConstIntType) IsNumeric() bool { return true }
+func (ConstIntType) IsNumeric() bool        { return true }
 func (ConstShiftedIntType) IsNumeric() bool { return true }
-func (ConstRuneType) IsNumeric() bool { return true }
-func (ConstFloatType) IsNumeric() bool { return true }
-func (ConstComplexType) IsNumeric() bool { return true }
-func (ConstStringType) IsNumeric() bool { return false }
-func (ConstNilType) IsNumeric() bool { return false }
-func (ConstBoolType) IsNumeric() bool { return false }
+func (ConstRuneType) IsNumeric() bool       { return true }
+func (ConstFloatType) IsNumeric() bool      { return true }
+func (ConstComplexType) IsNumeric() bool    { return true }
+func (ConstStringType) IsNumeric() bool     { return false }
+func (ConstNilType) IsNumeric() bool        { return false }
+func (ConstBoolType) IsNumeric() bool       { return false }
 
 func defaultPromotion(t reflect.Type) reflect.Type {
 	if ct, ok := t.(ConstType); ok {
@@ -184,14 +184,14 @@ func promoteConstNumbers(x, y ConstType) ConstType {
 // legal to do using a type cast.
 func castConstToTyped(from ConstType, c constValue, to reflect.Type, expr Expr) (
 	constValue, []error) {
-        return convertConstToTyped(from, c, to, true, expr)
+	return convertConstToTyped(from, c, to, true, expr)
 }
 
 // Convert an untyped constant to a typed constant, where it would be
 // legal to do so automatically in a binary expression.
 func promoteConstToTyped(from ConstType, c constValue, to reflect.Type, expr Expr) (
 	constValue, []error) {
-        return convertConstToTyped(from, c, to, false, expr)
+	return convertConstToTyped(from, c, to, false, expr)
 }
 
 // Convert an untyped constant to a typed constant. If the types from and to are
@@ -210,8 +210,8 @@ func convertConstToTyped(from ConstType, c constValue, to reflect.Type, isTypeCa
 	switch from.(type) {
 	case ConstShiftedIntType:
 		switch to.Kind() {
-			case reflect.Float32, reflect.Float64, reflect.Complex64, reflect.Complex128:
-				return constValue{}, []error{ErrBadConstConversion{expr, from, to}}
+		case reflect.Float32, reflect.Float64, reflect.Complex64, reflect.Complex128:
+			return constValue{}, []error{ErrBadConstConversion{expr, from, to}}
 		}
 		return convertConstToTyped(ConstInt, c, to, isTypeCast, expr)
 	case ConstIntType, ConstRuneType, ConstFloatType, ConstComplexType:
@@ -266,7 +266,7 @@ func convertConstToTyped(from ConstType, c constValue, to reflect.Type, isTypeCa
 			return constValue(v), nil
 
 		// string(97) is legal, equivalent of string('a'), but this
-                // conversion is not automatic. "abc" + 10 is illegal.
+		// conversion is not automatic. "abc" + 10 is illegal.
 		case reflect.String:
 			if isTypeCast && from.IsIntegral() {
 				i, _, overflow := underlying.Value.Int(32)
@@ -341,11 +341,10 @@ func convertTypedToConstNumber(v reflect.Value) (_ *ConstNumber, ok bool) {
 		return NewConstComplex128(v.Complex()), true
 
 	default:
-                if n, ok := v.Interface().(*ConstNumber); ok {
-                        return n, true
-                } else {
-		        return nil, false
-                }
+		if n, ok := v.Interface().(*ConstNumber); ok {
+			return n, true
+		} else {
+			return nil, false
+		}
 	}
 }
-

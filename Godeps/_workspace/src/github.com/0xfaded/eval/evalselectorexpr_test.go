@@ -17,7 +17,7 @@ type SelNested struct {
 }
 type SelStruct struct {
 	A int
-	B struct { C int }
+	B struct{ C int }
 	SelNested
 }
 
@@ -161,4 +161,3 @@ func TestSelectPackageFunc(t *testing.T) {
 
 	expectResult(t, `fmt.Sprintf("abc")`, env, fmt.Sprintf("abc"))
 }
-

@@ -2,33 +2,32 @@ package main
 
 import (
 	"fmt"
+	"github.com/0xfaded/go-testgen"
 	"io"
 	"text/template"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Star.Value }}
+	`// Test {{ .Star.Value }}
 `))
 
-var defs =
-`
+var defs = `
 	a := 1
 	b := &a
 	_ = b
 `
 var body = template.Must(template.New("Body").Parse(defs +
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 	env.Vars["a"] = reflect.ValueOf(&a)
 	env.Vars["b"] = reflect.ValueOf(&b)
 {{ if .Errors }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	)
 {{ else }}
-	expectType(t, `+"`{{ .Expr }}`"+`, env, reflect.TypeOf({{ .Expr }})){{ end }}
+	expectType(t, ` + "`{{ .Expr }}`" + `, env, reflect.TypeOf({{ .Expr }})){{ end }}
 `))
 
 func (*Test) Package() string {
@@ -40,7 +39,7 @@ func (*Test) Prefix() string {
 }
 
 func (*Test) Imports() map[string]string {
-	return map[string]string { "reflect": "" }
+	return map[string]string{"reflect": ""}
 }
 
 func (*Test) Dimensions() []testgen.Dimension {
@@ -67,7 +66,7 @@ func (*Test) Globals(w io.Writer) error {
 }
 
 func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Star": elts[0],
 	}
 
@@ -82,11 +81,10 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		return err
 	}
 
-	vars := map[string] interface{} {
-		"Expr": expr,
+	vars := map[string]interface{}{
+		"Expr":   expr,
 		"Errors": compileErrs,
 	}
 
 	return body.Execute(w, &vars)
 }
-

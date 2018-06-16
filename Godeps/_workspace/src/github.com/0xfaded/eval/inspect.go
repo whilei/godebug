@@ -26,7 +26,7 @@ func Inspect(val reflect.Value) string {
 		}
 		sep := "{"
 		str := ""
-		for i:=0; i < val.Len(); i++ {
+		for i := 0; i < val.Len(); i++ {
 			str += sep
 			sep = ", "
 			str += InspectShort(val.Index(i))
@@ -38,7 +38,7 @@ func Inspect(val reflect.Value) string {
 		if val.Type() == untypedNilType {
 			return "nil"
 		}
-		n  := val.NumField()
+		n := val.NumField()
 		str := val.Type().String()
 		if n == 0 {
 			return str + "{}"
@@ -46,7 +46,7 @@ func Inspect(val reflect.Value) string {
 		sep := "{\n\t"
 		unexported := false
 		for i := 0; i < n; i++ {
-			name  := val.Type().Field(i).Name
+			name := val.Type().Field(i).Name
 			if unicode.IsLower([]rune(name)[0]) {
 				unexported = true
 				continue
@@ -114,7 +114,8 @@ func InspectShort(val reflect.Value) string {
 }
 
 type mapKeys []reflect.Value
-func sortMapKeys(keys []reflect.Value) []reflect.Value{
+
+func sortMapKeys(keys []reflect.Value) []reflect.Value {
 	ks := mapKeys(keys)
 	sort.Sort(ks)
 	return ks

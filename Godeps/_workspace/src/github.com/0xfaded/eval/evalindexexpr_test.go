@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestIndexArray(t *testing.T) {
@@ -52,4 +52,3 @@ func TestIndexString(t *testing.T) {
 
 	expectResult(t, expr, env, expected)
 }
-

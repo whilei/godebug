@@ -6,10 +6,10 @@ import (
 )
 
 type PanicUser reflect.Value
-type PanicDivideByZero struct {}
-type PanicInvalidDereference struct {}
-type PanicIndexOutOfBounds struct {}
-type PanicSliceOutOfBounds struct {}
+type PanicDivideByZero struct{}
+type PanicInvalidDereference struct{}
+type PanicIndexOutOfBounds struct{}
+type PanicSliceOutOfBounds struct{}
 type PanicInterfaceConversion struct {
 	// type of type assert operand
 	xT reflect.Type
@@ -32,7 +32,7 @@ func (p PanicUser) Error() string {
 }
 
 func (err PanicDivideByZero) Error() string {
-        return "runtime error: integer divide by zero"
+	return "runtime error: integer divide by zero"
 }
 
 func (err PanicInvalidDereference) Error() string {
@@ -40,11 +40,11 @@ func (err PanicInvalidDereference) Error() string {
 }
 
 func (err PanicIndexOutOfBounds) Error() string {
-        return "runtime error: index out of range"
+	return "runtime error: index out of range"
 }
 
 func (err PanicSliceOutOfBounds) Error() string {
-        return "runtime error: slice bounds out of range"
+	return "runtime error: slice bounds out of range"
 }
 
 func (err PanicInterfaceConversion) Error() string {
@@ -69,9 +69,9 @@ func (err PanicInterfaceConversion) Error() string {
 }
 
 func (err PanicUncomparableType) Error() string {
-        return fmt.Sprintf("runtime error: comparing uncomparable type %v", err.dynamicT)
+	return fmt.Sprintf("runtime error: comparing uncomparable type %v", err.dynamicT)
 }
 
 func (err PanicUnhashableType) Error() string {
-        return fmt.Sprintf("runtime error: hash of unhashable type %v", err.dynamicT)
+	return fmt.Sprintf("runtime error: hash of unhashable type %v", err.dynamicT)
 }

@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 // Test TooMany

@@ -332,7 +332,7 @@ func checkBuiltinMake(call *CallExpr, env Env) (*CallExpr, []error) {
 	if len(call.CallExpr.Args) > narg {
 		fakeCheckRemainingArgs(call, narg, env)
 		errs = append(errs, ErrBuiltinWrongNumberOfArgs{call})
-	} else if !skipOrdering{
+	} else if !skipOrdering {
 		if args[1] > args[2] {
 			errs = append(errs, ErrMakeLenGtrThanCap{call, args[1], args[2]})
 		}
@@ -341,6 +341,7 @@ func checkBuiltinMake(call *CallExpr, env Env) (*CallExpr, []error) {
 }
 
 type callRecvWalker bool
+
 func (found *callRecvWalker) visit(expr Expr) bool {
 	if *found {
 		return false

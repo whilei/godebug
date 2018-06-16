@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestSliceArray(t *testing.T) {
@@ -57,4 +57,3 @@ func TestSliceString(t *testing.T) {
 	expectResult(t, expr, env, expected)
 
 }
-

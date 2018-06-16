@@ -34,7 +34,7 @@ func checkUnaryExpr(unary *ast.UnaryExpr, env Env) (*UnaryExpr, []error) {
 			}
 			aexpr.X = x
 		} else if unary.Op == token.ARROW { // <-
-			if (t.Kind() != reflect.Chan) || (t.ChanDir() | reflect.RecvDir == 0) {
+			if (t.Kind() != reflect.Chan) || (t.ChanDir()|reflect.RecvDir == 0) {
 				errs = append(errs, ErrInvalidRecvFrom{x})
 			}
 		} else {
@@ -62,7 +62,7 @@ func checkUnaryExpr(unary *ast.UnaryExpr, env Env) (*UnaryExpr, []error) {
 				}
 			}
 		}
-        }
+	}
 	aexpr.X = x
 	return aexpr, errs
 }

@@ -2,28 +2,28 @@ package main
 
 import (
 	"fmt"
-	"io"
-        "strings"
-	"text/template"
-	"go/token"
 	"github.com/0xfaded/go-testgen"
+	"go/token"
+	"io"
+	"strings"
+	"text/template"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Lhs.Name }} {{ .Op.Value }} {{ .Rhs.Name }}
+	`// Test {{ .Lhs.Name }} {{ .Op.Value }} {{ .Rhs.Name }}
 `))
 
 var body = template.Must(template.New("Body").Parse(
-`	env := makeCheckBinaryNonConstExprEnv()
+	`	env := makeCheckBinaryNonConstExprEnv()
 	{{ .DefA }}; env.Vars["a"] = reflect.ValueOf(&a)
 	{{ if .DefB }}{{ .DefB }}; env.Vars["b"] = reflect.ValueOf(&b){{ end }}{{ if .Errors }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	)
 {{ else }}
-	expectType(t, `+"`{{ .Expr }}`"+`, env, reflect.TypeOf({{ .Expr }})){{ end }}
+	expectType(t, ` + "`{{ .Expr }}`" + `, env, reflect.TypeOf({{ .Expr }})){{ end }}
 `))
 
 var typeDefs = `
@@ -69,7 +69,7 @@ func (*Test) Prefix() string {
 }
 
 func (*Test) Imports() map[string]string {
-	return map[string]string { "reflect": "" }
+	return map[string]string{"reflect": ""}
 }
 
 func (*Test) Globals(w io.Writer) error {
@@ -122,9 +122,9 @@ func (*Test) Dimensions() []testgen.Dimension {
 }
 
 func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Lhs": elts[0],
-		"Op": elts[1],
+		"Op":  elts[1],
 		"Rhs": elts[2],
 	}
 
@@ -161,14 +161,13 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		return err
 	}
 
-	vars := map[string] interface{} {
-		"DefA": adef,
-		"DefB": bdef,
-		"Expr": expr,
+	vars := map[string]interface{}{
+		"DefA":   adef,
+		"DefB":   bdef,
+		"Expr":   expr,
 		"Errors": compileErrs,
-		"Op": elts[1],
+		"Op":     elts[1],
 	}
 
 	return body.Execute(w, &vars)
 }
-

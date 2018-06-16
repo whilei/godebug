@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 // Test NoArg()
@@ -15,10 +15,9 @@ func TestCheckCallExprNoArgXX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -32,7 +31,6 @@ func TestCheckCallExprNoArgXX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `s()`, env, reflect.TypeOf(s()))
 }
@@ -47,10 +45,9 @@ func TestCheckCallExprNoArgXInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -64,7 +61,6 @@ func TestCheckCallExprNoArgXInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1)`, env,
 		`too many arguments in call to s`,
@@ -82,10 +78,9 @@ func TestCheckCallExprNoArgXFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -99,7 +94,6 @@ func TestCheckCallExprNoArgXFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5)`, env,
 		`too many arguments in call to s`,
@@ -117,10 +111,9 @@ func TestCheckCallExprNoArgXBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -134,7 +127,6 @@ func TestCheckCallExprNoArgXBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true)`, env,
 		`too many arguments in call to s`,
@@ -152,10 +144,9 @@ func TestCheckCallExprNoArgXIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -169,7 +160,6 @@ func TestCheckCallExprNoArgXIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1))`, env,
 		`too many arguments in call to s`,
@@ -187,10 +177,9 @@ func TestCheckCallExprNoArgXInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -204,7 +193,6 @@ func TestCheckCallExprNoArgXInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(is...)`, env,
 		`too many arguments in call to s`,
@@ -222,10 +210,9 @@ func TestCheckCallExprNoArgXEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -239,7 +226,6 @@ func TestCheckCallExprNoArgXEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e())`, env,
 		`e() used as value`,
@@ -258,10 +244,9 @@ func TestCheckCallExprNoArgXSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -275,7 +260,6 @@ func TestCheckCallExprNoArgXSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s())`, env,
 		`too many arguments in call to s`,
@@ -293,10 +277,9 @@ func TestCheckCallExprNoArgXMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -310,7 +293,6 @@ func TestCheckCallExprNoArgXMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m())`, env,
 		`too many arguments in call to s`,
@@ -328,10 +310,9 @@ func TestCheckCallExprNoArgXMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -345,7 +326,6 @@ func TestCheckCallExprNoArgXMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt())`, env,
 		`too many arguments in call to s`,
@@ -363,10 +343,9 @@ func TestCheckCallExprNoArgIntX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -380,7 +359,6 @@ func TestCheckCallExprNoArgIntX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1)`, env,
 		`too many arguments in call to s`,
@@ -398,10 +376,9 @@ func TestCheckCallExprNoArgIntInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -415,7 +392,6 @@ func TestCheckCallExprNoArgIntInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, 1)`, env,
 		`too many arguments in call to s`,
@@ -433,10 +409,9 @@ func TestCheckCallExprNoArgIntFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -450,7 +425,6 @@ func TestCheckCallExprNoArgIntFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, 1.5)`, env,
 		`too many arguments in call to s`,
@@ -468,10 +442,9 @@ func TestCheckCallExprNoArgIntBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -485,7 +458,6 @@ func TestCheckCallExprNoArgIntBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, true)`, env,
 		`too many arguments in call to s`,
@@ -503,10 +475,9 @@ func TestCheckCallExprNoArgIntIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -520,7 +491,6 @@ func TestCheckCallExprNoArgIntIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, I(1))`, env,
 		`too many arguments in call to s`,
@@ -538,10 +508,9 @@ func TestCheckCallExprNoArgIntInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -555,7 +524,6 @@ func TestCheckCallExprNoArgIntInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, is...)`, env,
 		`too many arguments in call to s`,
@@ -573,10 +541,9 @@ func TestCheckCallExprNoArgIntEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -590,7 +557,6 @@ func TestCheckCallExprNoArgIntEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, e())`, env,
 		`e() used as value`,
@@ -609,10 +575,9 @@ func TestCheckCallExprNoArgIntSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -626,7 +591,6 @@ func TestCheckCallExprNoArgIntSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, s())`, env,
 		`too many arguments in call to s`,
@@ -644,10 +608,9 @@ func TestCheckCallExprNoArgIntMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -661,7 +624,6 @@ func TestCheckCallExprNoArgIntMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -680,10 +642,9 @@ func TestCheckCallExprNoArgIntMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -697,7 +658,6 @@ func TestCheckCallExprNoArgIntMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -716,10 +676,9 @@ func TestCheckCallExprNoArgFloatX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -733,7 +692,6 @@ func TestCheckCallExprNoArgFloatX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5)`, env,
 		`too many arguments in call to s`,
@@ -751,10 +709,9 @@ func TestCheckCallExprNoArgFloatInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -768,7 +725,6 @@ func TestCheckCallExprNoArgFloatInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, 1)`, env,
 		`too many arguments in call to s`,
@@ -786,10 +742,9 @@ func TestCheckCallExprNoArgFloatFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -803,7 +758,6 @@ func TestCheckCallExprNoArgFloatFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, 1.5)`, env,
 		`too many arguments in call to s`,
@@ -821,10 +775,9 @@ func TestCheckCallExprNoArgFloatBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -838,7 +791,6 @@ func TestCheckCallExprNoArgFloatBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, true)`, env,
 		`too many arguments in call to s`,
@@ -856,10 +808,9 @@ func TestCheckCallExprNoArgFloatIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -873,7 +824,6 @@ func TestCheckCallExprNoArgFloatIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, I(1))`, env,
 		`too many arguments in call to s`,
@@ -891,10 +841,9 @@ func TestCheckCallExprNoArgFloatInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -908,7 +857,6 @@ func TestCheckCallExprNoArgFloatInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, is...)`, env,
 		`too many arguments in call to s`,
@@ -926,10 +874,9 @@ func TestCheckCallExprNoArgFloatEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -943,7 +890,6 @@ func TestCheckCallExprNoArgFloatEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, e())`, env,
 		`e() used as value`,
@@ -962,10 +908,9 @@ func TestCheckCallExprNoArgFloatSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -979,7 +924,6 @@ func TestCheckCallExprNoArgFloatSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, s())`, env,
 		`too many arguments in call to s`,
@@ -997,10 +941,9 @@ func TestCheckCallExprNoArgFloatMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1014,7 +957,6 @@ func TestCheckCallExprNoArgFloatMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -1033,10 +975,9 @@ func TestCheckCallExprNoArgFloatMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1050,7 +991,6 @@ func TestCheckCallExprNoArgFloatMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(1.5, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -1069,10 +1009,9 @@ func TestCheckCallExprNoArgBoolX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1086,7 +1025,6 @@ func TestCheckCallExprNoArgBoolX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true)`, env,
 		`too many arguments in call to s`,
@@ -1104,10 +1042,9 @@ func TestCheckCallExprNoArgBoolInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1121,7 +1058,6 @@ func TestCheckCallExprNoArgBoolInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, 1)`, env,
 		`too many arguments in call to s`,
@@ -1139,10 +1075,9 @@ func TestCheckCallExprNoArgBoolFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1156,7 +1091,6 @@ func TestCheckCallExprNoArgBoolFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, 1.5)`, env,
 		`too many arguments in call to s`,
@@ -1174,10 +1108,9 @@ func TestCheckCallExprNoArgBoolBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1191,7 +1124,6 @@ func TestCheckCallExprNoArgBoolBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, true)`, env,
 		`too many arguments in call to s`,
@@ -1209,10 +1141,9 @@ func TestCheckCallExprNoArgBoolIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1226,7 +1157,6 @@ func TestCheckCallExprNoArgBoolIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, I(1))`, env,
 		`too many arguments in call to s`,
@@ -1244,10 +1174,9 @@ func TestCheckCallExprNoArgBoolInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1261,7 +1190,6 @@ func TestCheckCallExprNoArgBoolInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, is...)`, env,
 		`too many arguments in call to s`,
@@ -1279,10 +1207,9 @@ func TestCheckCallExprNoArgBoolEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1296,7 +1223,6 @@ func TestCheckCallExprNoArgBoolEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, e())`, env,
 		`e() used as value`,
@@ -1315,10 +1241,9 @@ func TestCheckCallExprNoArgBoolSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1332,7 +1257,6 @@ func TestCheckCallExprNoArgBoolSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, s())`, env,
 		`too many arguments in call to s`,
@@ -1350,10 +1274,9 @@ func TestCheckCallExprNoArgBoolMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1367,7 +1290,6 @@ func TestCheckCallExprNoArgBoolMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -1386,10 +1308,9 @@ func TestCheckCallExprNoArgBoolMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1403,7 +1324,6 @@ func TestCheckCallExprNoArgBoolMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(true, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -1422,10 +1342,9 @@ func TestCheckCallExprNoArgIntTypedX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1439,7 +1358,6 @@ func TestCheckCallExprNoArgIntTypedX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1))`, env,
 		`too many arguments in call to s`,
@@ -1457,10 +1375,9 @@ func TestCheckCallExprNoArgIntTypedInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1474,7 +1391,6 @@ func TestCheckCallExprNoArgIntTypedInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), 1)`, env,
 		`too many arguments in call to s`,
@@ -1492,10 +1408,9 @@ func TestCheckCallExprNoArgIntTypedFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1509,7 +1424,6 @@ func TestCheckCallExprNoArgIntTypedFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), 1.5)`, env,
 		`too many arguments in call to s`,
@@ -1527,10 +1441,9 @@ func TestCheckCallExprNoArgIntTypedBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1544,7 +1457,6 @@ func TestCheckCallExprNoArgIntTypedBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), true)`, env,
 		`too many arguments in call to s`,
@@ -1562,10 +1474,9 @@ func TestCheckCallExprNoArgIntTypedIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1579,7 +1490,6 @@ func TestCheckCallExprNoArgIntTypedIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), I(1))`, env,
 		`too many arguments in call to s`,
@@ -1597,10 +1507,9 @@ func TestCheckCallExprNoArgIntTypedInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1614,7 +1523,6 @@ func TestCheckCallExprNoArgIntTypedInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), is...)`, env,
 		`too many arguments in call to s`,
@@ -1632,10 +1540,9 @@ func TestCheckCallExprNoArgIntTypedEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1649,7 +1556,6 @@ func TestCheckCallExprNoArgIntTypedEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), e())`, env,
 		`e() used as value`,
@@ -1668,10 +1574,9 @@ func TestCheckCallExprNoArgIntTypedSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1685,7 +1590,6 @@ func TestCheckCallExprNoArgIntTypedSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), s())`, env,
 		`too many arguments in call to s`,
@@ -1703,10 +1607,9 @@ func TestCheckCallExprNoArgIntTypedMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1720,7 +1623,6 @@ func TestCheckCallExprNoArgIntTypedMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -1739,10 +1641,9 @@ func TestCheckCallExprNoArgIntTypedMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1756,7 +1657,6 @@ func TestCheckCallExprNoArgIntTypedMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(I(1), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -1775,10 +1675,9 @@ func TestCheckCallExprNoArgIntsX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1792,7 +1691,6 @@ func TestCheckCallExprNoArgIntsX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(is...)`, env,
 		`too many arguments in call to s`,
@@ -1810,10 +1708,9 @@ func TestCheckCallExprNoArgIntsInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1842,10 +1739,9 @@ func TestCheckCallExprNoArgIntsFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1874,10 +1770,9 @@ func TestCheckCallExprNoArgIntsBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1906,10 +1801,9 @@ func TestCheckCallExprNoArgIntsIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1938,10 +1832,9 @@ func TestCheckCallExprNoArgIntsInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -1970,10 +1863,9 @@ func TestCheckCallExprNoArgIntsEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2002,10 +1894,9 @@ func TestCheckCallExprNoArgIntsSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2034,10 +1925,9 @@ func TestCheckCallExprNoArgIntsMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2066,10 +1956,9 @@ func TestCheckCallExprNoArgIntsMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2098,10 +1987,9 @@ func TestCheckCallExprNoArgEmptyFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2115,7 +2003,6 @@ func TestCheckCallExprNoArgEmptyFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e())`, env,
 		`e() used as value`,
@@ -2134,10 +2021,9 @@ func TestCheckCallExprNoArgEmptyFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2151,7 +2037,6 @@ func TestCheckCallExprNoArgEmptyFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), 1)`, env,
 		`e() used as value`,
@@ -2170,10 +2055,9 @@ func TestCheckCallExprNoArgEmptyFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2187,7 +2071,6 @@ func TestCheckCallExprNoArgEmptyFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), 1.5)`, env,
 		`e() used as value`,
@@ -2206,10 +2089,9 @@ func TestCheckCallExprNoArgEmptyFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2223,7 +2105,6 @@ func TestCheckCallExprNoArgEmptyFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), true)`, env,
 		`e() used as value`,
@@ -2242,10 +2123,9 @@ func TestCheckCallExprNoArgEmptyFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2259,7 +2139,6 @@ func TestCheckCallExprNoArgEmptyFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), I(1))`, env,
 		`e() used as value`,
@@ -2278,10 +2157,9 @@ func TestCheckCallExprNoArgEmptyFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2295,7 +2173,6 @@ func TestCheckCallExprNoArgEmptyFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), is...)`, env,
 		`e() used as value`,
@@ -2314,10 +2191,9 @@ func TestCheckCallExprNoArgEmptyFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2331,7 +2207,6 @@ func TestCheckCallExprNoArgEmptyFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), e())`, env,
 		`e() used as value`,
@@ -2351,10 +2226,9 @@ func TestCheckCallExprNoArgEmptyFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2368,7 +2242,6 @@ func TestCheckCallExprNoArgEmptyFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), s())`, env,
 		`e() used as value`,
@@ -2387,10 +2260,9 @@ func TestCheckCallExprNoArgEmptyFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2404,7 +2276,6 @@ func TestCheckCallExprNoArgEmptyFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), m())`, env,
 		`e() used as value`,
@@ -2424,10 +2295,9 @@ func TestCheckCallExprNoArgEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2441,7 +2311,6 @@ func TestCheckCallExprNoArgEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(e(), mt())`, env,
 		`e() used as value`,
@@ -2461,10 +2330,9 @@ func TestCheckCallExprNoArgSingleFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2478,7 +2346,6 @@ func TestCheckCallExprNoArgSingleFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s())`, env,
 		`too many arguments in call to s`,
@@ -2496,10 +2363,9 @@ func TestCheckCallExprNoArgSingleFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2513,7 +2379,6 @@ func TestCheckCallExprNoArgSingleFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), 1)`, env,
 		`too many arguments in call to s`,
@@ -2531,10 +2396,9 @@ func TestCheckCallExprNoArgSingleFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2548,7 +2412,6 @@ func TestCheckCallExprNoArgSingleFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), 1.5)`, env,
 		`too many arguments in call to s`,
@@ -2566,10 +2429,9 @@ func TestCheckCallExprNoArgSingleFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2583,7 +2445,6 @@ func TestCheckCallExprNoArgSingleFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), true)`, env,
 		`too many arguments in call to s`,
@@ -2601,10 +2462,9 @@ func TestCheckCallExprNoArgSingleFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2618,7 +2478,6 @@ func TestCheckCallExprNoArgSingleFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), I(1))`, env,
 		`too many arguments in call to s`,
@@ -2636,10 +2495,9 @@ func TestCheckCallExprNoArgSingleFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2653,7 +2511,6 @@ func TestCheckCallExprNoArgSingleFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), is...)`, env,
 		`too many arguments in call to s`,
@@ -2671,10 +2528,9 @@ func TestCheckCallExprNoArgSingleFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2688,7 +2544,6 @@ func TestCheckCallExprNoArgSingleFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), e())`, env,
 		`e() used as value`,
@@ -2707,10 +2562,9 @@ func TestCheckCallExprNoArgSingleFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2724,7 +2578,6 @@ func TestCheckCallExprNoArgSingleFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), s())`, env,
 		`too many arguments in call to s`,
@@ -2742,10 +2595,9 @@ func TestCheckCallExprNoArgSingleFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2759,7 +2611,6 @@ func TestCheckCallExprNoArgSingleFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -2778,10 +2629,9 @@ func TestCheckCallExprNoArgSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2795,7 +2645,6 @@ func TestCheckCallExprNoArgSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(s(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -2814,10 +2663,9 @@ func TestCheckCallExprNoArgMultiFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2831,7 +2679,6 @@ func TestCheckCallExprNoArgMultiFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m())`, env,
 		`too many arguments in call to s`,
@@ -2849,10 +2696,9 @@ func TestCheckCallExprNoArgMultiFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2866,7 +2712,6 @@ func TestCheckCallExprNoArgMultiFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), 1)`, env,
 		`multiple-value m() in single-value context`,
@@ -2885,10 +2730,9 @@ func TestCheckCallExprNoArgMultiFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2902,7 +2746,6 @@ func TestCheckCallExprNoArgMultiFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), 1.5)`, env,
 		`multiple-value m() in single-value context`,
@@ -2921,10 +2764,9 @@ func TestCheckCallExprNoArgMultiFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2938,7 +2780,6 @@ func TestCheckCallExprNoArgMultiFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), true)`, env,
 		`multiple-value m() in single-value context`,
@@ -2957,10 +2798,9 @@ func TestCheckCallExprNoArgMultiFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -2974,7 +2814,6 @@ func TestCheckCallExprNoArgMultiFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), I(1))`, env,
 		`multiple-value m() in single-value context`,
@@ -2993,10 +2832,9 @@ func TestCheckCallExprNoArgMultiFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3010,7 +2848,6 @@ func TestCheckCallExprNoArgMultiFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), is...)`, env,
 		`multiple-value m() in single-value context`,
@@ -3029,10 +2866,9 @@ func TestCheckCallExprNoArgMultiFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3046,7 +2882,6 @@ func TestCheckCallExprNoArgMultiFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), e())`, env,
 		`multiple-value m() in single-value context`,
@@ -3066,10 +2901,9 @@ func TestCheckCallExprNoArgMultiFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3083,7 +2917,6 @@ func TestCheckCallExprNoArgMultiFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), s())`, env,
 		`multiple-value m() in single-value context`,
@@ -3102,10 +2935,9 @@ func TestCheckCallExprNoArgMultiFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3119,7 +2951,6 @@ func TestCheckCallExprNoArgMultiFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -3139,10 +2970,9 @@ func TestCheckCallExprNoArgMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3156,7 +2986,6 @@ func TestCheckCallExprNoArgMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(m(), mt())`, env,
 		`multiple-value m() in single-value context`,
@@ -3176,10 +3005,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3193,7 +3021,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt())`, env,
 		`too many arguments in call to s`,
@@ -3211,10 +3038,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3228,7 +3054,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), 1)`, env,
 		`multiple-value mt() in single-value context`,
@@ -3247,10 +3072,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3264,7 +3088,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), 1.5)`, env,
 		`multiple-value mt() in single-value context`,
@@ -3283,10 +3106,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3300,7 +3122,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), true)`, env,
 		`multiple-value mt() in single-value context`,
@@ -3319,10 +3140,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3336,7 +3156,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), I(1))`, env,
 		`multiple-value mt() in single-value context`,
@@ -3355,10 +3174,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3372,7 +3190,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), is...)`, env,
 		`multiple-value mt() in single-value context`,
@@ -3391,10 +3208,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3408,7 +3224,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), e())`, env,
 		`multiple-value mt() in single-value context`,
@@ -3428,10 +3243,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3445,7 +3259,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), s())`, env,
 		`multiple-value mt() in single-value context`,
@@ -3464,10 +3277,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3481,7 +3293,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), m())`, env,
 		`multiple-value mt() in single-value context`,
@@ -3501,10 +3312,9 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesMultiFuncMixedTypes(t *testing.T) 
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3518,7 +3328,6 @@ func TestCheckCallExprNoArgMultiFuncMixedTypesMultiFuncMixedTypes(t *testing.T) 
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `s(mt(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -3538,10 +3347,9 @@ func TestCheckCallExprFixedXX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3555,7 +3363,6 @@ func TestCheckCallExprFixedXX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f()`, env,
 		`not enough arguments in call to f`,
@@ -3573,10 +3380,9 @@ func TestCheckCallExprFixedXInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3590,7 +3396,6 @@ func TestCheckCallExprFixedXInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1)`, env,
 		`not enough arguments in call to f`,
@@ -3608,10 +3413,9 @@ func TestCheckCallExprFixedXFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3625,7 +3429,6 @@ func TestCheckCallExprFixedXFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -3644,10 +3447,9 @@ func TestCheckCallExprFixedXBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3661,7 +3463,6 @@ func TestCheckCallExprFixedXBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -3680,10 +3481,9 @@ func TestCheckCallExprFixedXIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3697,7 +3497,6 @@ func TestCheckCallExprFixedXIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -3716,10 +3515,9 @@ func TestCheckCallExprFixedXInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3733,7 +3531,6 @@ func TestCheckCallExprFixedXInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(is...)`, env,
 		`cannot use is (type []int) as type int in function argument`,
@@ -3752,10 +3549,9 @@ func TestCheckCallExprFixedXEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3769,7 +3565,6 @@ func TestCheckCallExprFixedXEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e())`, env,
 		`e() used as value`,
@@ -3788,10 +3583,9 @@ func TestCheckCallExprFixedXSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3805,7 +3599,6 @@ func TestCheckCallExprFixedXSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s())`, env,
 		`not enough arguments in call to f`,
@@ -3823,10 +3616,9 @@ func TestCheckCallExprFixedXMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3840,7 +3632,6 @@ func TestCheckCallExprFixedXMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m())`, env,
 		`cannot use int as type bool in argument to f`,
@@ -3858,10 +3649,9 @@ func TestCheckCallExprFixedXMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3875,7 +3665,6 @@ func TestCheckCallExprFixedXMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt())`, env,
 		`cannot use eval.I as type bool in argument to f`,
@@ -3893,10 +3682,9 @@ func TestCheckCallExprFixedIntX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3910,7 +3698,6 @@ func TestCheckCallExprFixedIntX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1)`, env,
 		`not enough arguments in call to f`,
@@ -3928,10 +3715,9 @@ func TestCheckCallExprFixedIntInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3945,7 +3731,6 @@ func TestCheckCallExprFixedIntInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, 1)`, env,
 		`cannot use 1 (type int) as type bool in function argument`,
@@ -3963,10 +3748,9 @@ func TestCheckCallExprFixedIntFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -3980,7 +3764,6 @@ func TestCheckCallExprFixedIntFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, 1.5)`, env,
 		`cannot use 1.5 (type float64) as type bool in function argument`,
@@ -3998,10 +3781,9 @@ func TestCheckCallExprFixedIntBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4015,7 +3797,6 @@ func TestCheckCallExprFixedIntBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `f(1, true)`, env, reflect.TypeOf(f(1, true)))
 }
@@ -4030,10 +3811,9 @@ func TestCheckCallExprFixedIntIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4047,7 +3827,6 @@ func TestCheckCallExprFixedIntIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type bool in function argument`,
@@ -4065,10 +3844,9 @@ func TestCheckCallExprFixedIntInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4082,7 +3860,6 @@ func TestCheckCallExprFixedIntInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, is...)`, env,
 		`cannot use is (type []int) as type bool in function argument`,
@@ -4101,10 +3878,9 @@ func TestCheckCallExprFixedIntEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4118,7 +3894,6 @@ func TestCheckCallExprFixedIntEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, e())`, env,
 		`e() used as value`,
@@ -4136,10 +3911,9 @@ func TestCheckCallExprFixedIntSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4153,7 +3927,6 @@ func TestCheckCallExprFixedIntSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, s())`, env,
 		`cannot use s() (type int) as type bool in function argument`,
@@ -4171,10 +3944,9 @@ func TestCheckCallExprFixedIntMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4188,7 +3960,6 @@ func TestCheckCallExprFixedIntMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -4206,10 +3977,9 @@ func TestCheckCallExprFixedIntMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4223,7 +3993,6 @@ func TestCheckCallExprFixedIntMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -4241,10 +4010,9 @@ func TestCheckCallExprFixedFloatX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4258,7 +4026,6 @@ func TestCheckCallExprFixedFloatX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -4277,10 +4044,9 @@ func TestCheckCallExprFixedFloatInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4294,7 +4060,6 @@ func TestCheckCallExprFixedFloatInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, 1)`, env,
 		`constant 1.5 truncated to integer`,
@@ -4313,10 +4078,9 @@ func TestCheckCallExprFixedFloatFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4330,7 +4094,6 @@ func TestCheckCallExprFixedFloatFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -4349,10 +4112,9 @@ func TestCheckCallExprFixedFloatBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4366,7 +4128,6 @@ func TestCheckCallExprFixedFloatBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, true)`, env,
 		`constant 1.5 truncated to integer`,
@@ -4384,10 +4145,9 @@ func TestCheckCallExprFixedFloatIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4401,7 +4161,6 @@ func TestCheckCallExprFixedFloatIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, I(1))`, env,
 		`constant 1.5 truncated to integer`,
@@ -4420,10 +4179,9 @@ func TestCheckCallExprFixedFloatInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4437,7 +4195,6 @@ func TestCheckCallExprFixedFloatInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, is...)`, env,
 		`constant 1.5 truncated to integer`,
@@ -4457,10 +4214,9 @@ func TestCheckCallExprFixedFloatEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4474,7 +4230,6 @@ func TestCheckCallExprFixedFloatEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, e())`, env,
 		`e() used as value`,
@@ -4493,10 +4248,9 @@ func TestCheckCallExprFixedFloatSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4510,7 +4264,6 @@ func TestCheckCallExprFixedFloatSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, s())`, env,
 		`constant 1.5 truncated to integer`,
@@ -4529,10 +4282,9 @@ func TestCheckCallExprFixedFloatMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4546,7 +4298,6 @@ func TestCheckCallExprFixedFloatMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -4565,10 +4316,9 @@ func TestCheckCallExprFixedFloatMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4582,7 +4332,6 @@ func TestCheckCallExprFixedFloatMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(1.5, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -4601,10 +4350,9 @@ func TestCheckCallExprFixedBoolX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4618,7 +4366,6 @@ func TestCheckCallExprFixedBoolX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4637,10 +4384,9 @@ func TestCheckCallExprFixedBoolInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4654,7 +4400,6 @@ func TestCheckCallExprFixedBoolInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, 1)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4673,10 +4418,9 @@ func TestCheckCallExprFixedBoolFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4690,7 +4434,6 @@ func TestCheckCallExprFixedBoolFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, 1.5)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4709,10 +4452,9 @@ func TestCheckCallExprFixedBoolBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4726,7 +4468,6 @@ func TestCheckCallExprFixedBoolBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4744,10 +4485,9 @@ func TestCheckCallExprFixedBoolIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4761,7 +4501,6 @@ func TestCheckCallExprFixedBoolIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, I(1))`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4780,10 +4519,9 @@ func TestCheckCallExprFixedBoolInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4797,7 +4535,6 @@ func TestCheckCallExprFixedBoolInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, is...)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4817,10 +4554,9 @@ func TestCheckCallExprFixedBoolEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4834,7 +4570,6 @@ func TestCheckCallExprFixedBoolEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, e())`, env,
 		`e() used as value`,
@@ -4853,10 +4588,9 @@ func TestCheckCallExprFixedBoolSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4870,7 +4604,6 @@ func TestCheckCallExprFixedBoolSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, s())`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -4889,10 +4622,9 @@ func TestCheckCallExprFixedBoolMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4906,7 +4638,6 @@ func TestCheckCallExprFixedBoolMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -4925,10 +4656,9 @@ func TestCheckCallExprFixedBoolMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4942,7 +4672,6 @@ func TestCheckCallExprFixedBoolMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(true, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -4961,10 +4690,9 @@ func TestCheckCallExprFixedIntTypedX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -4978,7 +4706,6 @@ func TestCheckCallExprFixedIntTypedX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -4997,10 +4724,9 @@ func TestCheckCallExprFixedIntTypedInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5014,7 +4740,6 @@ func TestCheckCallExprFixedIntTypedInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), 1)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -5033,10 +4758,9 @@ func TestCheckCallExprFixedIntTypedFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5050,7 +4774,6 @@ func TestCheckCallExprFixedIntTypedFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), 1.5)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -5069,10 +4792,9 @@ func TestCheckCallExprFixedIntTypedBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5086,7 +4808,6 @@ func TestCheckCallExprFixedIntTypedBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), true)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -5104,10 +4825,9 @@ func TestCheckCallExprFixedIntTypedIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5121,7 +4841,6 @@ func TestCheckCallExprFixedIntTypedIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -5140,10 +4859,9 @@ func TestCheckCallExprFixedIntTypedInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5157,7 +4875,6 @@ func TestCheckCallExprFixedIntTypedInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), is...)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -5177,10 +4894,9 @@ func TestCheckCallExprFixedIntTypedEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5194,7 +4910,6 @@ func TestCheckCallExprFixedIntTypedEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), e())`, env,
 		`e() used as value`,
@@ -5213,10 +4928,9 @@ func TestCheckCallExprFixedIntTypedSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5230,7 +4944,6 @@ func TestCheckCallExprFixedIntTypedSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), s())`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -5249,10 +4962,9 @@ func TestCheckCallExprFixedIntTypedMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5266,7 +4978,6 @@ func TestCheckCallExprFixedIntTypedMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -5285,10 +4996,9 @@ func TestCheckCallExprFixedIntTypedMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5302,7 +5012,6 @@ func TestCheckCallExprFixedIntTypedMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(I(1), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -5321,10 +5030,9 @@ func TestCheckCallExprFixedIntsX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5338,7 +5046,6 @@ func TestCheckCallExprFixedIntsX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(is...)`, env,
 		`cannot use is (type []int) as type int in function argument`,
@@ -5357,10 +5064,9 @@ func TestCheckCallExprFixedIntsInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5389,10 +5095,9 @@ func TestCheckCallExprFixedIntsFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5421,10 +5126,9 @@ func TestCheckCallExprFixedIntsBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5453,10 +5157,9 @@ func TestCheckCallExprFixedIntsIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5485,10 +5188,9 @@ func TestCheckCallExprFixedIntsInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5517,10 +5219,9 @@ func TestCheckCallExprFixedIntsEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5549,10 +5250,9 @@ func TestCheckCallExprFixedIntsSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5581,10 +5281,9 @@ func TestCheckCallExprFixedIntsMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5613,10 +5312,9 @@ func TestCheckCallExprFixedIntsMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5645,10 +5343,9 @@ func TestCheckCallExprFixedEmptyFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5662,7 +5359,6 @@ func TestCheckCallExprFixedEmptyFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e())`, env,
 		`e() used as value`,
@@ -5681,10 +5377,9 @@ func TestCheckCallExprFixedEmptyFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5698,7 +5393,6 @@ func TestCheckCallExprFixedEmptyFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), 1)`, env,
 		`e() used as value`,
@@ -5717,10 +5411,9 @@ func TestCheckCallExprFixedEmptyFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5734,7 +5427,6 @@ func TestCheckCallExprFixedEmptyFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), 1.5)`, env,
 		`e() used as value`,
@@ -5753,10 +5445,9 @@ func TestCheckCallExprFixedEmptyFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5770,7 +5461,6 @@ func TestCheckCallExprFixedEmptyFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), true)`, env,
 		`e() used as value`,
@@ -5788,10 +5478,9 @@ func TestCheckCallExprFixedEmptyFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5805,7 +5494,6 @@ func TestCheckCallExprFixedEmptyFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), I(1))`, env,
 		`e() used as value`,
@@ -5824,10 +5512,9 @@ func TestCheckCallExprFixedEmptyFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5841,7 +5528,6 @@ func TestCheckCallExprFixedEmptyFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), is...)`, env,
 		`e() used as value`,
@@ -5861,10 +5547,9 @@ func TestCheckCallExprFixedEmptyFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5878,7 +5563,6 @@ func TestCheckCallExprFixedEmptyFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), e())`, env,
 		`e() used as value`,
@@ -5897,10 +5581,9 @@ func TestCheckCallExprFixedEmptyFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5914,7 +5597,6 @@ func TestCheckCallExprFixedEmptyFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), s())`, env,
 		`e() used as value`,
@@ -5933,10 +5615,9 @@ func TestCheckCallExprFixedEmptyFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5950,7 +5631,6 @@ func TestCheckCallExprFixedEmptyFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), m())`, env,
 		`e() used as value`,
@@ -5969,10 +5649,9 @@ func TestCheckCallExprFixedEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -5986,7 +5665,6 @@ func TestCheckCallExprFixedEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(e(), mt())`, env,
 		`e() used as value`,
@@ -6005,10 +5683,9 @@ func TestCheckCallExprFixedSingleFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6022,7 +5699,6 @@ func TestCheckCallExprFixedSingleFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s())`, env,
 		`not enough arguments in call to f`,
@@ -6040,10 +5716,9 @@ func TestCheckCallExprFixedSingleFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6057,7 +5732,6 @@ func TestCheckCallExprFixedSingleFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), 1)`, env,
 		`cannot use 1 (type int) as type bool in function argument`,
@@ -6075,10 +5749,9 @@ func TestCheckCallExprFixedSingleFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6092,7 +5765,6 @@ func TestCheckCallExprFixedSingleFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), 1.5)`, env,
 		`cannot use 1.5 (type float64) as type bool in function argument`,
@@ -6110,10 +5782,9 @@ func TestCheckCallExprFixedSingleFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6127,7 +5798,6 @@ func TestCheckCallExprFixedSingleFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `f(s(), true)`, env, reflect.TypeOf(f(s(), true)))
 }
@@ -6142,10 +5812,9 @@ func TestCheckCallExprFixedSingleFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6159,7 +5828,6 @@ func TestCheckCallExprFixedSingleFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type bool in function argument`,
@@ -6177,10 +5845,9 @@ func TestCheckCallExprFixedSingleFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6194,7 +5861,6 @@ func TestCheckCallExprFixedSingleFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), is...)`, env,
 		`cannot use is (type []int) as type bool in function argument`,
@@ -6213,10 +5879,9 @@ func TestCheckCallExprFixedSingleFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6230,7 +5895,6 @@ func TestCheckCallExprFixedSingleFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), e())`, env,
 		`e() used as value`,
@@ -6248,10 +5912,9 @@ func TestCheckCallExprFixedSingleFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6265,7 +5928,6 @@ func TestCheckCallExprFixedSingleFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), s())`, env,
 		`cannot use s() (type int) as type bool in function argument`,
@@ -6283,10 +5945,9 @@ func TestCheckCallExprFixedSingleFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6300,7 +5961,6 @@ func TestCheckCallExprFixedSingleFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -6318,10 +5978,9 @@ func TestCheckCallExprFixedSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6335,7 +5994,6 @@ func TestCheckCallExprFixedSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(s(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -6353,10 +6011,9 @@ func TestCheckCallExprFixedMultiFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6370,7 +6027,6 @@ func TestCheckCallExprFixedMultiFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m())`, env,
 		`cannot use int as type bool in argument to f`,
@@ -6388,10 +6044,9 @@ func TestCheckCallExprFixedMultiFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6405,7 +6060,6 @@ func TestCheckCallExprFixedMultiFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), 1)`, env,
 		`multiple-value m() in single-value context`,
@@ -6424,10 +6078,9 @@ func TestCheckCallExprFixedMultiFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6441,7 +6094,6 @@ func TestCheckCallExprFixedMultiFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), 1.5)`, env,
 		`multiple-value m() in single-value context`,
@@ -6460,10 +6112,9 @@ func TestCheckCallExprFixedMultiFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6477,7 +6128,6 @@ func TestCheckCallExprFixedMultiFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), true)`, env,
 		`multiple-value m() in single-value context`,
@@ -6495,10 +6145,9 @@ func TestCheckCallExprFixedMultiFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6512,7 +6161,6 @@ func TestCheckCallExprFixedMultiFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), I(1))`, env,
 		`multiple-value m() in single-value context`,
@@ -6531,10 +6179,9 @@ func TestCheckCallExprFixedMultiFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6548,7 +6195,6 @@ func TestCheckCallExprFixedMultiFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), is...)`, env,
 		`multiple-value m() in single-value context`,
@@ -6568,10 +6214,9 @@ func TestCheckCallExprFixedMultiFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6585,7 +6230,6 @@ func TestCheckCallExprFixedMultiFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), e())`, env,
 		`multiple-value m() in single-value context`,
@@ -6604,10 +6248,9 @@ func TestCheckCallExprFixedMultiFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6621,7 +6264,6 @@ func TestCheckCallExprFixedMultiFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), s())`, env,
 		`multiple-value m() in single-value context`,
@@ -6640,10 +6282,9 @@ func TestCheckCallExprFixedMultiFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6657,7 +6298,6 @@ func TestCheckCallExprFixedMultiFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -6676,10 +6316,9 @@ func TestCheckCallExprFixedMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6693,7 +6332,6 @@ func TestCheckCallExprFixedMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(m(), mt())`, env,
 		`multiple-value m() in single-value context`,
@@ -6712,10 +6350,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6729,7 +6366,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt())`, env,
 		`cannot use eval.I as type bool in argument to f`,
@@ -6747,10 +6383,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6764,7 +6399,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), 1)`, env,
 		`multiple-value mt() in single-value context`,
@@ -6783,10 +6417,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6800,7 +6433,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), 1.5)`, env,
 		`multiple-value mt() in single-value context`,
@@ -6819,10 +6451,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6836,7 +6467,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), true)`, env,
 		`multiple-value mt() in single-value context`,
@@ -6854,10 +6484,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6871,7 +6500,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), I(1))`, env,
 		`multiple-value mt() in single-value context`,
@@ -6890,10 +6518,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6907,7 +6534,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), is...)`, env,
 		`multiple-value mt() in single-value context`,
@@ -6927,10 +6553,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6944,7 +6569,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), e())`, env,
 		`multiple-value mt() in single-value context`,
@@ -6963,10 +6587,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -6980,7 +6603,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), s())`, env,
 		`multiple-value mt() in single-value context`,
@@ -6999,10 +6621,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7016,7 +6637,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), m())`, env,
 		`multiple-value mt() in single-value context`,
@@ -7035,10 +6655,9 @@ func TestCheckCallExprFixedMultiFuncMixedTypesMultiFuncMixedTypes(t *testing.T) 
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7052,7 +6671,6 @@ func TestCheckCallExprFixedMultiFuncMixedTypesMultiFuncMixedTypes(t *testing.T) 
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `f(mt(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -7071,10 +6689,9 @@ func TestCheckCallExprFixedTypedXX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7088,7 +6705,6 @@ func TestCheckCallExprFixedTypedXX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft()`, env,
 		`not enough arguments in call to ft`,
@@ -7106,10 +6722,9 @@ func TestCheckCallExprFixedTypedXInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7123,7 +6738,6 @@ func TestCheckCallExprFixedTypedXInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1)`, env,
 		`not enough arguments in call to ft`,
@@ -7141,10 +6755,9 @@ func TestCheckCallExprFixedTypedXFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7158,7 +6771,6 @@ func TestCheckCallExprFixedTypedXFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -7177,10 +6789,9 @@ func TestCheckCallExprFixedTypedXBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7194,7 +6805,6 @@ func TestCheckCallExprFixedTypedXBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -7213,10 +6823,9 @@ func TestCheckCallExprFixedTypedXIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7230,7 +6839,6 @@ func TestCheckCallExprFixedTypedXIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1))`, env,
 		`not enough arguments in call to ft`,
@@ -7248,10 +6856,9 @@ func TestCheckCallExprFixedTypedXInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7265,7 +6872,6 @@ func TestCheckCallExprFixedTypedXInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(is...)`, env,
 		`cannot use is (type []int) as type eval.I in function argument`,
@@ -7284,10 +6890,9 @@ func TestCheckCallExprFixedTypedXEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7301,7 +6906,6 @@ func TestCheckCallExprFixedTypedXEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e())`, env,
 		`e() used as value`,
@@ -7320,10 +6924,9 @@ func TestCheckCallExprFixedTypedXSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7337,7 +6940,6 @@ func TestCheckCallExprFixedTypedXSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -7356,10 +6958,9 @@ func TestCheckCallExprFixedTypedXMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7373,7 +6974,6 @@ func TestCheckCallExprFixedTypedXMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m())`, env,
 		`cannot use int as type eval.I in argument to ft`,
@@ -7392,10 +6992,9 @@ func TestCheckCallExprFixedTypedXMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7409,7 +7008,6 @@ func TestCheckCallExprFixedTypedXMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt())`, env,
 		`cannot use int as type eval.I in argument to ft`,
@@ -7428,10 +7026,9 @@ func TestCheckCallExprFixedTypedIntX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7445,7 +7042,6 @@ func TestCheckCallExprFixedTypedIntX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1)`, env,
 		`not enough arguments in call to ft`,
@@ -7463,10 +7059,9 @@ func TestCheckCallExprFixedTypedIntInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7480,7 +7075,6 @@ func TestCheckCallExprFixedTypedIntInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, 1)`, env,
 		`cannot use 1 (type int) as type bool in function argument`,
@@ -7498,10 +7092,9 @@ func TestCheckCallExprFixedTypedIntFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7515,7 +7108,6 @@ func TestCheckCallExprFixedTypedIntFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, 1.5)`, env,
 		`cannot use 1.5 (type float64) as type bool in function argument`,
@@ -7533,10 +7125,9 @@ func TestCheckCallExprFixedTypedIntBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7550,7 +7141,6 @@ func TestCheckCallExprFixedTypedIntBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `ft(1, true)`, env, reflect.TypeOf(ft(1, true)))
 }
@@ -7565,10 +7155,9 @@ func TestCheckCallExprFixedTypedIntIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7582,7 +7171,6 @@ func TestCheckCallExprFixedTypedIntIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type bool in function argument`,
@@ -7600,10 +7188,9 @@ func TestCheckCallExprFixedTypedIntInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7617,7 +7204,6 @@ func TestCheckCallExprFixedTypedIntInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, is...)`, env,
 		`cannot use is (type []int) as type bool in function argument`,
@@ -7636,10 +7222,9 @@ func TestCheckCallExprFixedTypedIntEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7653,7 +7238,6 @@ func TestCheckCallExprFixedTypedIntEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, e())`, env,
 		`e() used as value`,
@@ -7671,10 +7255,9 @@ func TestCheckCallExprFixedTypedIntSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7688,7 +7271,6 @@ func TestCheckCallExprFixedTypedIntSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, s())`, env,
 		`cannot use s() (type int) as type bool in function argument`,
@@ -7706,10 +7288,9 @@ func TestCheckCallExprFixedTypedIntMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7723,7 +7304,6 @@ func TestCheckCallExprFixedTypedIntMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -7741,10 +7321,9 @@ func TestCheckCallExprFixedTypedIntMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7758,7 +7337,6 @@ func TestCheckCallExprFixedTypedIntMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -7776,10 +7354,9 @@ func TestCheckCallExprFixedTypedFloatX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7793,7 +7370,6 @@ func TestCheckCallExprFixedTypedFloatX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -7812,10 +7388,9 @@ func TestCheckCallExprFixedTypedFloatInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7829,7 +7404,6 @@ func TestCheckCallExprFixedTypedFloatInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, 1)`, env,
 		`constant 1.5 truncated to integer`,
@@ -7848,10 +7422,9 @@ func TestCheckCallExprFixedTypedFloatFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7865,7 +7438,6 @@ func TestCheckCallExprFixedTypedFloatFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -7884,10 +7456,9 @@ func TestCheckCallExprFixedTypedFloatBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7901,7 +7472,6 @@ func TestCheckCallExprFixedTypedFloatBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, true)`, env,
 		`constant 1.5 truncated to integer`,
@@ -7919,10 +7489,9 @@ func TestCheckCallExprFixedTypedFloatIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7936,7 +7505,6 @@ func TestCheckCallExprFixedTypedFloatIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, I(1))`, env,
 		`constant 1.5 truncated to integer`,
@@ -7955,10 +7523,9 @@ func TestCheckCallExprFixedTypedFloatInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -7972,7 +7539,6 @@ func TestCheckCallExprFixedTypedFloatInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, is...)`, env,
 		`constant 1.5 truncated to integer`,
@@ -7992,10 +7558,9 @@ func TestCheckCallExprFixedTypedFloatEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8009,7 +7574,6 @@ func TestCheckCallExprFixedTypedFloatEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, e())`, env,
 		`e() used as value`,
@@ -8028,10 +7592,9 @@ func TestCheckCallExprFixedTypedFloatSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8045,7 +7608,6 @@ func TestCheckCallExprFixedTypedFloatSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, s())`, env,
 		`constant 1.5 truncated to integer`,
@@ -8064,10 +7626,9 @@ func TestCheckCallExprFixedTypedFloatMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8081,7 +7642,6 @@ func TestCheckCallExprFixedTypedFloatMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -8100,10 +7660,9 @@ func TestCheckCallExprFixedTypedFloatMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8117,7 +7676,6 @@ func TestCheckCallExprFixedTypedFloatMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(1.5, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -8136,10 +7694,9 @@ func TestCheckCallExprFixedTypedBoolX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8153,7 +7710,6 @@ func TestCheckCallExprFixedTypedBoolX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8172,10 +7728,9 @@ func TestCheckCallExprFixedTypedBoolInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8189,7 +7744,6 @@ func TestCheckCallExprFixedTypedBoolInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, 1)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8208,10 +7762,9 @@ func TestCheckCallExprFixedTypedBoolFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8225,7 +7778,6 @@ func TestCheckCallExprFixedTypedBoolFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, 1.5)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8244,10 +7796,9 @@ func TestCheckCallExprFixedTypedBoolBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8261,7 +7812,6 @@ func TestCheckCallExprFixedTypedBoolBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8279,10 +7829,9 @@ func TestCheckCallExprFixedTypedBoolIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8296,7 +7845,6 @@ func TestCheckCallExprFixedTypedBoolIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, I(1))`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8315,10 +7863,9 @@ func TestCheckCallExprFixedTypedBoolInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8332,7 +7879,6 @@ func TestCheckCallExprFixedTypedBoolInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, is...)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8352,10 +7898,9 @@ func TestCheckCallExprFixedTypedBoolEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8369,7 +7914,6 @@ func TestCheckCallExprFixedTypedBoolEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, e())`, env,
 		`e() used as value`,
@@ -8388,10 +7932,9 @@ func TestCheckCallExprFixedTypedBoolSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8405,7 +7948,6 @@ func TestCheckCallExprFixedTypedBoolSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, s())`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -8424,10 +7966,9 @@ func TestCheckCallExprFixedTypedBoolMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8441,7 +7982,6 @@ func TestCheckCallExprFixedTypedBoolMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -8460,10 +8000,9 @@ func TestCheckCallExprFixedTypedBoolMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8477,7 +8016,6 @@ func TestCheckCallExprFixedTypedBoolMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(true, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -8496,10 +8034,9 @@ func TestCheckCallExprFixedTypedIntTypedX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8513,7 +8050,6 @@ func TestCheckCallExprFixedTypedIntTypedX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1))`, env,
 		`not enough arguments in call to ft`,
@@ -8531,10 +8067,9 @@ func TestCheckCallExprFixedTypedIntTypedInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8548,7 +8083,6 @@ func TestCheckCallExprFixedTypedIntTypedInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), 1)`, env,
 		`cannot use 1 (type int) as type bool in function argument`,
@@ -8566,10 +8100,9 @@ func TestCheckCallExprFixedTypedIntTypedFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8583,7 +8116,6 @@ func TestCheckCallExprFixedTypedIntTypedFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), 1.5)`, env,
 		`cannot use 1.5 (type float64) as type bool in function argument`,
@@ -8601,10 +8133,9 @@ func TestCheckCallExprFixedTypedIntTypedBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8618,7 +8149,6 @@ func TestCheckCallExprFixedTypedIntTypedBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `ft(I(1), true)`, env, reflect.TypeOf(ft(I(1), true)))
 }
@@ -8633,10 +8163,9 @@ func TestCheckCallExprFixedTypedIntTypedIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8650,7 +8179,6 @@ func TestCheckCallExprFixedTypedIntTypedIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type bool in function argument`,
@@ -8668,10 +8196,9 @@ func TestCheckCallExprFixedTypedIntTypedInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8685,7 +8212,6 @@ func TestCheckCallExprFixedTypedIntTypedInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), is...)`, env,
 		`cannot use is (type []int) as type bool in function argument`,
@@ -8704,10 +8230,9 @@ func TestCheckCallExprFixedTypedIntTypedEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8721,7 +8246,6 @@ func TestCheckCallExprFixedTypedIntTypedEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), e())`, env,
 		`e() used as value`,
@@ -8739,10 +8263,9 @@ func TestCheckCallExprFixedTypedIntTypedSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8756,7 +8279,6 @@ func TestCheckCallExprFixedTypedIntTypedSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), s())`, env,
 		`cannot use s() (type int) as type bool in function argument`,
@@ -8774,10 +8296,9 @@ func TestCheckCallExprFixedTypedIntTypedMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8791,7 +8312,6 @@ func TestCheckCallExprFixedTypedIntTypedMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -8809,10 +8329,9 @@ func TestCheckCallExprFixedTypedIntTypedMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8826,7 +8345,6 @@ func TestCheckCallExprFixedTypedIntTypedMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(I(1), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -8844,10 +8362,9 @@ func TestCheckCallExprFixedTypedIntsX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8861,7 +8378,6 @@ func TestCheckCallExprFixedTypedIntsX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(is...)`, env,
 		`cannot use is (type []int) as type eval.I in function argument`,
@@ -8880,10 +8396,9 @@ func TestCheckCallExprFixedTypedIntsInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8912,10 +8427,9 @@ func TestCheckCallExprFixedTypedIntsFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8944,10 +8458,9 @@ func TestCheckCallExprFixedTypedIntsBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -8976,10 +8489,9 @@ func TestCheckCallExprFixedTypedIntsIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9008,10 +8520,9 @@ func TestCheckCallExprFixedTypedIntsInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9040,10 +8551,9 @@ func TestCheckCallExprFixedTypedIntsEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9072,10 +8582,9 @@ func TestCheckCallExprFixedTypedIntsSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9104,10 +8613,9 @@ func TestCheckCallExprFixedTypedIntsMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9136,10 +8644,9 @@ func TestCheckCallExprFixedTypedIntsMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9168,10 +8675,9 @@ func TestCheckCallExprFixedTypedEmptyFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9185,7 +8691,6 @@ func TestCheckCallExprFixedTypedEmptyFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e())`, env,
 		`e() used as value`,
@@ -9204,10 +8709,9 @@ func TestCheckCallExprFixedTypedEmptyFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9221,7 +8725,6 @@ func TestCheckCallExprFixedTypedEmptyFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), 1)`, env,
 		`e() used as value`,
@@ -9240,10 +8743,9 @@ func TestCheckCallExprFixedTypedEmptyFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9257,7 +8759,6 @@ func TestCheckCallExprFixedTypedEmptyFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), 1.5)`, env,
 		`e() used as value`,
@@ -9276,10 +8777,9 @@ func TestCheckCallExprFixedTypedEmptyFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9293,7 +8793,6 @@ func TestCheckCallExprFixedTypedEmptyFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), true)`, env,
 		`e() used as value`,
@@ -9311,10 +8810,9 @@ func TestCheckCallExprFixedTypedEmptyFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9328,7 +8826,6 @@ func TestCheckCallExprFixedTypedEmptyFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), I(1))`, env,
 		`e() used as value`,
@@ -9347,10 +8844,9 @@ func TestCheckCallExprFixedTypedEmptyFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9364,7 +8860,6 @@ func TestCheckCallExprFixedTypedEmptyFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), is...)`, env,
 		`e() used as value`,
@@ -9384,10 +8879,9 @@ func TestCheckCallExprFixedTypedEmptyFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9401,7 +8895,6 @@ func TestCheckCallExprFixedTypedEmptyFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), e())`, env,
 		`e() used as value`,
@@ -9420,10 +8913,9 @@ func TestCheckCallExprFixedTypedEmptyFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9437,7 +8929,6 @@ func TestCheckCallExprFixedTypedEmptyFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), s())`, env,
 		`e() used as value`,
@@ -9456,10 +8947,9 @@ func TestCheckCallExprFixedTypedEmptyFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9473,7 +8963,6 @@ func TestCheckCallExprFixedTypedEmptyFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), m())`, env,
 		`e() used as value`,
@@ -9492,10 +8981,9 @@ func TestCheckCallExprFixedTypedEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9509,7 +8997,6 @@ func TestCheckCallExprFixedTypedEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(e(), mt())`, env,
 		`e() used as value`,
@@ -9528,10 +9015,9 @@ func TestCheckCallExprFixedTypedSingleFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9545,7 +9031,6 @@ func TestCheckCallExprFixedTypedSingleFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9564,10 +9049,9 @@ func TestCheckCallExprFixedTypedSingleFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9581,7 +9065,6 @@ func TestCheckCallExprFixedTypedSingleFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), 1)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9600,10 +9083,9 @@ func TestCheckCallExprFixedTypedSingleFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9617,7 +9099,6 @@ func TestCheckCallExprFixedTypedSingleFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), 1.5)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9636,10 +9117,9 @@ func TestCheckCallExprFixedTypedSingleFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9653,7 +9133,6 @@ func TestCheckCallExprFixedTypedSingleFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), true)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9671,10 +9150,9 @@ func TestCheckCallExprFixedTypedSingleFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9688,7 +9166,6 @@ func TestCheckCallExprFixedTypedSingleFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), I(1))`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9707,10 +9184,9 @@ func TestCheckCallExprFixedTypedSingleFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9724,7 +9200,6 @@ func TestCheckCallExprFixedTypedSingleFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), is...)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9744,10 +9219,9 @@ func TestCheckCallExprFixedTypedSingleFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9761,7 +9235,6 @@ func TestCheckCallExprFixedTypedSingleFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), e())`, env,
 		`e() used as value`,
@@ -9780,10 +9253,9 @@ func TestCheckCallExprFixedTypedSingleFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9797,7 +9269,6 @@ func TestCheckCallExprFixedTypedSingleFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -9816,10 +9287,9 @@ func TestCheckCallExprFixedTypedSingleFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9833,7 +9303,6 @@ func TestCheckCallExprFixedTypedSingleFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -9852,10 +9321,9 @@ func TestCheckCallExprFixedTypedSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9869,7 +9337,6 @@ func TestCheckCallExprFixedTypedSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(s(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -9888,10 +9355,9 @@ func TestCheckCallExprFixedTypedMultiFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9905,7 +9371,6 @@ func TestCheckCallExprFixedTypedMultiFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m())`, env,
 		`cannot use int as type eval.I in argument to ft`,
@@ -9924,10 +9389,9 @@ func TestCheckCallExprFixedTypedMultiFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9941,7 +9405,6 @@ func TestCheckCallExprFixedTypedMultiFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), 1)`, env,
 		`multiple-value m() in single-value context`,
@@ -9960,10 +9423,9 @@ func TestCheckCallExprFixedTypedMultiFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -9977,7 +9439,6 @@ func TestCheckCallExprFixedTypedMultiFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), 1.5)`, env,
 		`multiple-value m() in single-value context`,
@@ -9996,10 +9457,9 @@ func TestCheckCallExprFixedTypedMultiFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10013,7 +9473,6 @@ func TestCheckCallExprFixedTypedMultiFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), true)`, env,
 		`multiple-value m() in single-value context`,
@@ -10031,10 +9490,9 @@ func TestCheckCallExprFixedTypedMultiFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10048,7 +9506,6 @@ func TestCheckCallExprFixedTypedMultiFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), I(1))`, env,
 		`multiple-value m() in single-value context`,
@@ -10067,10 +9524,9 @@ func TestCheckCallExprFixedTypedMultiFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10084,7 +9540,6 @@ func TestCheckCallExprFixedTypedMultiFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), is...)`, env,
 		`multiple-value m() in single-value context`,
@@ -10104,10 +9559,9 @@ func TestCheckCallExprFixedTypedMultiFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10121,7 +9575,6 @@ func TestCheckCallExprFixedTypedMultiFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), e())`, env,
 		`multiple-value m() in single-value context`,
@@ -10140,10 +9593,9 @@ func TestCheckCallExprFixedTypedMultiFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10157,7 +9609,6 @@ func TestCheckCallExprFixedTypedMultiFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), s())`, env,
 		`multiple-value m() in single-value context`,
@@ -10176,10 +9627,9 @@ func TestCheckCallExprFixedTypedMultiFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10193,7 +9643,6 @@ func TestCheckCallExprFixedTypedMultiFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -10212,10 +9661,9 @@ func TestCheckCallExprFixedTypedMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10229,7 +9677,6 @@ func TestCheckCallExprFixedTypedMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(m(), mt())`, env,
 		`multiple-value m() in single-value context`,
@@ -10248,10 +9695,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10265,7 +9711,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt())`, env,
 		`cannot use int as type eval.I in argument to ft`,
@@ -10284,10 +9729,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10301,7 +9745,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), 1)`, env,
 		`multiple-value mt() in single-value context`,
@@ -10320,10 +9763,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10337,7 +9779,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), 1.5)`, env,
 		`multiple-value mt() in single-value context`,
@@ -10356,10 +9797,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10373,7 +9813,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), true)`, env,
 		`multiple-value mt() in single-value context`,
@@ -10391,10 +9830,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10408,7 +9846,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), I(1))`, env,
 		`multiple-value mt() in single-value context`,
@@ -10427,10 +9864,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10444,7 +9880,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), is...)`, env,
 		`multiple-value mt() in single-value context`,
@@ -10464,10 +9899,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10481,7 +9915,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), e())`, env,
 		`multiple-value mt() in single-value context`,
@@ -10500,10 +9933,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10517,7 +9949,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), s())`, env,
 		`multiple-value mt() in single-value context`,
@@ -10536,10 +9967,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10553,7 +9983,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), m())`, env,
 		`multiple-value mt() in single-value context`,
@@ -10572,10 +10001,9 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesMultiFuncMixedTypes(t *testin
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10589,7 +10017,6 @@ func TestCheckCallExprFixedTypedMultiFuncMixedTypesMultiFuncMixedTypes(t *testin
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `ft(mt(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -10608,10 +10035,9 @@ func TestCheckCallExprVariadic1XX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10625,7 +10051,6 @@ func TestCheckCallExprVariadic1XX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1()`, env, reflect.TypeOf(v1()))
 }
@@ -10640,10 +10065,9 @@ func TestCheckCallExprVariadic1XInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10657,7 +10081,6 @@ func TestCheckCallExprVariadic1XInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(1)`, env, reflect.TypeOf(v1(1)))
 }
@@ -10672,10 +10095,9 @@ func TestCheckCallExprVariadic1XFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10689,7 +10111,6 @@ func TestCheckCallExprVariadic1XFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -10707,10 +10128,9 @@ func TestCheckCallExprVariadic1XBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10724,7 +10144,6 @@ func TestCheckCallExprVariadic1XBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -10742,10 +10161,9 @@ func TestCheckCallExprVariadic1XIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10759,7 +10177,6 @@ func TestCheckCallExprVariadic1XIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -10777,10 +10194,9 @@ func TestCheckCallExprVariadic1XInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10794,7 +10210,6 @@ func TestCheckCallExprVariadic1XInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(is...)`, env, reflect.TypeOf(v1(is...)))
 }
@@ -10809,10 +10224,9 @@ func TestCheckCallExprVariadic1XEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10826,7 +10240,6 @@ func TestCheckCallExprVariadic1XEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e())`, env,
 		`e() used as value`,
@@ -10844,10 +10257,9 @@ func TestCheckCallExprVariadic1XSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10861,7 +10273,6 @@ func TestCheckCallExprVariadic1XSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(s())`, env, reflect.TypeOf(v1(s())))
 }
@@ -10876,10 +10287,9 @@ func TestCheckCallExprVariadic1XMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10893,7 +10303,6 @@ func TestCheckCallExprVariadic1XMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(m())`, env, reflect.TypeOf(v1(m())))
 }
@@ -10908,10 +10317,9 @@ func TestCheckCallExprVariadic1XMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10925,7 +10333,6 @@ func TestCheckCallExprVariadic1XMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt())`, env,
 		`cannot use eval.I as type int in argument to v1`,
@@ -10943,10 +10350,9 @@ func TestCheckCallExprVariadic1IntX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10960,7 +10366,6 @@ func TestCheckCallExprVariadic1IntX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(1)`, env, reflect.TypeOf(v1(1)))
 }
@@ -10975,10 +10380,9 @@ func TestCheckCallExprVariadic1IntInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -10992,7 +10396,6 @@ func TestCheckCallExprVariadic1IntInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(1, 1)`, env, reflect.TypeOf(v1(1, 1)))
 }
@@ -11007,10 +10410,9 @@ func TestCheckCallExprVariadic1IntFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11024,7 +10426,6 @@ func TestCheckCallExprVariadic1IntFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -11042,10 +10443,9 @@ func TestCheckCallExprVariadic1IntBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11059,7 +10459,6 @@ func TestCheckCallExprVariadic1IntBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11077,10 +10476,9 @@ func TestCheckCallExprVariadic1IntIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11094,7 +10492,6 @@ func TestCheckCallExprVariadic1IntIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -11112,10 +10509,9 @@ func TestCheckCallExprVariadic1IntInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11129,7 +10525,6 @@ func TestCheckCallExprVariadic1IntInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, is...)`, env,
 		`too many arguments in call to v1`,
@@ -11147,10 +10542,9 @@ func TestCheckCallExprVariadic1IntEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11164,7 +10558,6 @@ func TestCheckCallExprVariadic1IntEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, e())`, env,
 		`e() used as value`,
@@ -11182,10 +10575,9 @@ func TestCheckCallExprVariadic1IntSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11199,7 +10591,6 @@ func TestCheckCallExprVariadic1IntSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(1, s())`, env, reflect.TypeOf(v1(1, s())))
 }
@@ -11214,10 +10605,9 @@ func TestCheckCallExprVariadic1IntMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11231,7 +10621,6 @@ func TestCheckCallExprVariadic1IntMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -11249,10 +10638,9 @@ func TestCheckCallExprVariadic1IntMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11266,7 +10654,6 @@ func TestCheckCallExprVariadic1IntMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -11284,10 +10671,9 @@ func TestCheckCallExprVariadic1FloatX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11301,7 +10687,6 @@ func TestCheckCallExprVariadic1FloatX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -11319,10 +10704,9 @@ func TestCheckCallExprVariadic1FloatInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11336,7 +10720,6 @@ func TestCheckCallExprVariadic1FloatInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, 1)`, env,
 		`constant 1.5 truncated to integer`,
@@ -11354,10 +10737,9 @@ func TestCheckCallExprVariadic1FloatFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11371,7 +10753,6 @@ func TestCheckCallExprVariadic1FloatFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -11390,10 +10771,9 @@ func TestCheckCallExprVariadic1FloatBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11407,7 +10787,6 @@ func TestCheckCallExprVariadic1FloatBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, true)`, env,
 		`constant 1.5 truncated to integer`,
@@ -11426,10 +10805,9 @@ func TestCheckCallExprVariadic1FloatIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11443,7 +10821,6 @@ func TestCheckCallExprVariadic1FloatIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, I(1))`, env,
 		`constant 1.5 truncated to integer`,
@@ -11462,10 +10839,9 @@ func TestCheckCallExprVariadic1FloatInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11479,7 +10855,6 @@ func TestCheckCallExprVariadic1FloatInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, is...)`, env,
 		`too many arguments in call to v1`,
@@ -11497,10 +10872,9 @@ func TestCheckCallExprVariadic1FloatEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11514,7 +10888,6 @@ func TestCheckCallExprVariadic1FloatEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, e())`, env,
 		`e() used as value`,
@@ -11533,10 +10906,9 @@ func TestCheckCallExprVariadic1FloatSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11550,7 +10922,6 @@ func TestCheckCallExprVariadic1FloatSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, s())`, env,
 		`constant 1.5 truncated to integer`,
@@ -11568,10 +10939,9 @@ func TestCheckCallExprVariadic1FloatMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11585,7 +10955,6 @@ func TestCheckCallExprVariadic1FloatMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -11604,10 +10973,9 @@ func TestCheckCallExprVariadic1FloatMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11621,7 +10989,6 @@ func TestCheckCallExprVariadic1FloatMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(1.5, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -11640,10 +11007,9 @@ func TestCheckCallExprVariadic1BoolX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11657,7 +11023,6 @@ func TestCheckCallExprVariadic1BoolX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11675,10 +11040,9 @@ func TestCheckCallExprVariadic1BoolInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11692,7 +11056,6 @@ func TestCheckCallExprVariadic1BoolInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, 1)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11710,10 +11073,9 @@ func TestCheckCallExprVariadic1BoolFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11727,7 +11089,6 @@ func TestCheckCallExprVariadic1BoolFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, 1.5)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11746,10 +11107,9 @@ func TestCheckCallExprVariadic1BoolBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11763,7 +11123,6 @@ func TestCheckCallExprVariadic1BoolBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11782,10 +11141,9 @@ func TestCheckCallExprVariadic1BoolIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11799,7 +11157,6 @@ func TestCheckCallExprVariadic1BoolIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, I(1))`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11818,10 +11175,9 @@ func TestCheckCallExprVariadic1BoolInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11835,7 +11191,6 @@ func TestCheckCallExprVariadic1BoolInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, is...)`, env,
 		`too many arguments in call to v1`,
@@ -11853,10 +11208,9 @@ func TestCheckCallExprVariadic1BoolEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11870,7 +11224,6 @@ func TestCheckCallExprVariadic1BoolEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, e())`, env,
 		`e() used as value`,
@@ -11889,10 +11242,9 @@ func TestCheckCallExprVariadic1BoolSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11906,7 +11258,6 @@ func TestCheckCallExprVariadic1BoolSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, s())`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -11924,10 +11275,9 @@ func TestCheckCallExprVariadic1BoolMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11941,7 +11291,6 @@ func TestCheckCallExprVariadic1BoolMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -11960,10 +11309,9 @@ func TestCheckCallExprVariadic1BoolMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -11977,7 +11325,6 @@ func TestCheckCallExprVariadic1BoolMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(true, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -11996,10 +11343,9 @@ func TestCheckCallExprVariadic1IntTypedX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12013,7 +11359,6 @@ func TestCheckCallExprVariadic1IntTypedX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -12031,10 +11376,9 @@ func TestCheckCallExprVariadic1IntTypedInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12048,7 +11392,6 @@ func TestCheckCallExprVariadic1IntTypedInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), 1)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -12066,10 +11409,9 @@ func TestCheckCallExprVariadic1IntTypedFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12083,7 +11425,6 @@ func TestCheckCallExprVariadic1IntTypedFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), 1.5)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -12102,10 +11443,9 @@ func TestCheckCallExprVariadic1IntTypedBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12119,7 +11459,6 @@ func TestCheckCallExprVariadic1IntTypedBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), true)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -12138,10 +11477,9 @@ func TestCheckCallExprVariadic1IntTypedIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12155,7 +11493,6 @@ func TestCheckCallExprVariadic1IntTypedIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -12174,10 +11511,9 @@ func TestCheckCallExprVariadic1IntTypedInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12191,7 +11527,6 @@ func TestCheckCallExprVariadic1IntTypedInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), is...)`, env,
 		`too many arguments in call to v1`,
@@ -12209,10 +11544,9 @@ func TestCheckCallExprVariadic1IntTypedEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12226,7 +11560,6 @@ func TestCheckCallExprVariadic1IntTypedEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), e())`, env,
 		`e() used as value`,
@@ -12245,10 +11578,9 @@ func TestCheckCallExprVariadic1IntTypedSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12262,7 +11594,6 @@ func TestCheckCallExprVariadic1IntTypedSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), s())`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -12280,10 +11611,9 @@ func TestCheckCallExprVariadic1IntTypedMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12297,7 +11627,6 @@ func TestCheckCallExprVariadic1IntTypedMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -12316,10 +11645,9 @@ func TestCheckCallExprVariadic1IntTypedMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12333,7 +11661,6 @@ func TestCheckCallExprVariadic1IntTypedMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(I(1), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -12352,10 +11679,9 @@ func TestCheckCallExprVariadic1IntsX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12370,7 +11696,6 @@ func TestCheckCallExprVariadic1IntsX(t *testing.T) {
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
 
-
 	expectType(t, `v1(is...)`, env, reflect.TypeOf(v1(is...)))
 }
 
@@ -12384,10 +11709,9 @@ func TestCheckCallExprVariadic1IntsInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12416,10 +11740,9 @@ func TestCheckCallExprVariadic1IntsFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12448,10 +11771,9 @@ func TestCheckCallExprVariadic1IntsBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12480,10 +11802,9 @@ func TestCheckCallExprVariadic1IntsIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12512,10 +11833,9 @@ func TestCheckCallExprVariadic1IntsInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12544,10 +11864,9 @@ func TestCheckCallExprVariadic1IntsEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12576,10 +11895,9 @@ func TestCheckCallExprVariadic1IntsSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12608,10 +11926,9 @@ func TestCheckCallExprVariadic1IntsMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12640,10 +11957,9 @@ func TestCheckCallExprVariadic1IntsMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12672,10 +11988,9 @@ func TestCheckCallExprVariadic1EmptyFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12689,7 +12004,6 @@ func TestCheckCallExprVariadic1EmptyFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e())`, env,
 		`e() used as value`,
@@ -12707,10 +12021,9 @@ func TestCheckCallExprVariadic1EmptyFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12724,7 +12037,6 @@ func TestCheckCallExprVariadic1EmptyFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), 1)`, env,
 		`e() used as value`,
@@ -12742,10 +12054,9 @@ func TestCheckCallExprVariadic1EmptyFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12759,7 +12070,6 @@ func TestCheckCallExprVariadic1EmptyFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), 1.5)`, env,
 		`e() used as value`,
@@ -12778,10 +12088,9 @@ func TestCheckCallExprVariadic1EmptyFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12795,7 +12104,6 @@ func TestCheckCallExprVariadic1EmptyFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), true)`, env,
 		`e() used as value`,
@@ -12814,10 +12122,9 @@ func TestCheckCallExprVariadic1EmptyFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12831,7 +12138,6 @@ func TestCheckCallExprVariadic1EmptyFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), I(1))`, env,
 		`e() used as value`,
@@ -12850,10 +12156,9 @@ func TestCheckCallExprVariadic1EmptyFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12867,7 +12172,6 @@ func TestCheckCallExprVariadic1EmptyFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), is...)`, env,
 		`e() used as value`,
@@ -12886,10 +12190,9 @@ func TestCheckCallExprVariadic1EmptyFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12903,7 +12206,6 @@ func TestCheckCallExprVariadic1EmptyFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), e())`, env,
 		`e() used as value`,
@@ -12922,10 +12224,9 @@ func TestCheckCallExprVariadic1EmptyFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12939,7 +12240,6 @@ func TestCheckCallExprVariadic1EmptyFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), s())`, env,
 		`e() used as value`,
@@ -12957,10 +12257,9 @@ func TestCheckCallExprVariadic1EmptyFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -12974,7 +12273,6 @@ func TestCheckCallExprVariadic1EmptyFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), m())`, env,
 		`e() used as value`,
@@ -12993,10 +12291,9 @@ func TestCheckCallExprVariadic1EmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13010,7 +12307,6 @@ func TestCheckCallExprVariadic1EmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(e(), mt())`, env,
 		`e() used as value`,
@@ -13029,10 +12325,9 @@ func TestCheckCallExprVariadic1SingleFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13046,7 +12341,6 @@ func TestCheckCallExprVariadic1SingleFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(s())`, env, reflect.TypeOf(v1(s())))
 }
@@ -13061,10 +12355,9 @@ func TestCheckCallExprVariadic1SingleFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13078,7 +12371,6 @@ func TestCheckCallExprVariadic1SingleFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(s(), 1)`, env, reflect.TypeOf(v1(s(), 1)))
 }
@@ -13093,10 +12385,9 @@ func TestCheckCallExprVariadic1SingleFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13110,7 +12401,6 @@ func TestCheckCallExprVariadic1SingleFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -13128,10 +12418,9 @@ func TestCheckCallExprVariadic1SingleFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13145,7 +12434,6 @@ func TestCheckCallExprVariadic1SingleFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -13163,10 +12451,9 @@ func TestCheckCallExprVariadic1SingleFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13180,7 +12467,6 @@ func TestCheckCallExprVariadic1SingleFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -13198,10 +12484,9 @@ func TestCheckCallExprVariadic1SingleFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13215,7 +12500,6 @@ func TestCheckCallExprVariadic1SingleFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), is...)`, env,
 		`too many arguments in call to v1`,
@@ -13233,10 +12517,9 @@ func TestCheckCallExprVariadic1SingleFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13250,7 +12533,6 @@ func TestCheckCallExprVariadic1SingleFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), e())`, env,
 		`e() used as value`,
@@ -13268,10 +12550,9 @@ func TestCheckCallExprVariadic1SingleFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13285,7 +12566,6 @@ func TestCheckCallExprVariadic1SingleFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(s(), s())`, env, reflect.TypeOf(v1(s(), s())))
 }
@@ -13300,10 +12580,9 @@ func TestCheckCallExprVariadic1SingleFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13317,7 +12596,6 @@ func TestCheckCallExprVariadic1SingleFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -13335,10 +12613,9 @@ func TestCheckCallExprVariadic1SingleFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13352,7 +12629,6 @@ func TestCheckCallExprVariadic1SingleFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(s(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -13370,10 +12646,9 @@ func TestCheckCallExprVariadic1MultiFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13387,7 +12662,6 @@ func TestCheckCallExprVariadic1MultiFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v1(m())`, env, reflect.TypeOf(v1(m())))
 }
@@ -13402,10 +12676,9 @@ func TestCheckCallExprVariadic1MultiFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13419,7 +12692,6 @@ func TestCheckCallExprVariadic1MultiFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), 1)`, env,
 		`multiple-value m() in single-value context`,
@@ -13437,10 +12709,9 @@ func TestCheckCallExprVariadic1MultiFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13454,7 +12725,6 @@ func TestCheckCallExprVariadic1MultiFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), 1.5)`, env,
 		`multiple-value m() in single-value context`,
@@ -13473,10 +12743,9 @@ func TestCheckCallExprVariadic1MultiFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13490,7 +12759,6 @@ func TestCheckCallExprVariadic1MultiFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), true)`, env,
 		`multiple-value m() in single-value context`,
@@ -13509,10 +12777,9 @@ func TestCheckCallExprVariadic1MultiFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13526,7 +12793,6 @@ func TestCheckCallExprVariadic1MultiFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), I(1))`, env,
 		`multiple-value m() in single-value context`,
@@ -13545,10 +12811,9 @@ func TestCheckCallExprVariadic1MultiFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13562,7 +12827,6 @@ func TestCheckCallExprVariadic1MultiFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), is...)`, env,
 		`multiple-value m() in single-value context`,
@@ -13581,10 +12845,9 @@ func TestCheckCallExprVariadic1MultiFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13598,7 +12861,6 @@ func TestCheckCallExprVariadic1MultiFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), e())`, env,
 		`multiple-value m() in single-value context`,
@@ -13617,10 +12879,9 @@ func TestCheckCallExprVariadic1MultiFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13634,7 +12895,6 @@ func TestCheckCallExprVariadic1MultiFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), s())`, env,
 		`multiple-value m() in single-value context`,
@@ -13652,10 +12912,9 @@ func TestCheckCallExprVariadic1MultiFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13669,7 +12928,6 @@ func TestCheckCallExprVariadic1MultiFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -13688,10 +12946,9 @@ func TestCheckCallExprVariadic1MultiFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13705,7 +12962,6 @@ func TestCheckCallExprVariadic1MultiFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(m(), mt())`, env,
 		`multiple-value m() in single-value context`,
@@ -13724,10 +12980,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13741,7 +12996,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt())`, env,
 		`cannot use eval.I as type int in argument to v1`,
@@ -13759,10 +13013,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13776,7 +13029,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), 1)`, env,
 		`multiple-value mt() in single-value context`,
@@ -13794,10 +13046,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13811,7 +13062,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), 1.5)`, env,
 		`multiple-value mt() in single-value context`,
@@ -13830,10 +13080,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13847,7 +13096,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), true)`, env,
 		`multiple-value mt() in single-value context`,
@@ -13866,10 +13114,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13883,7 +13130,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), I(1))`, env,
 		`multiple-value mt() in single-value context`,
@@ -13902,10 +13148,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13919,7 +13164,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), is...)`, env,
 		`multiple-value mt() in single-value context`,
@@ -13938,10 +13182,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13955,7 +13198,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), e())`, env,
 		`multiple-value mt() in single-value context`,
@@ -13974,10 +13216,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -13991,7 +13232,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), s())`, env,
 		`multiple-value mt() in single-value context`,
@@ -14009,10 +13249,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14026,7 +13265,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), m())`, env,
 		`multiple-value mt() in single-value context`,
@@ -14045,10 +13283,9 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesMultiFuncMixedTypes(t *testing
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14062,7 +13299,6 @@ func TestCheckCallExprVariadic1MultiFuncMixedTypesMultiFuncMixedTypes(t *testing
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v1(mt(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -14081,10 +13317,9 @@ func TestCheckCallExprVariadic2XX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14098,7 +13333,6 @@ func TestCheckCallExprVariadic2XX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2()`, env,
 		`not enough arguments in call to v2`,
@@ -14116,10 +13350,9 @@ func TestCheckCallExprVariadic2XInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14133,7 +13366,6 @@ func TestCheckCallExprVariadic2XInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(1)`, env, reflect.TypeOf(v2(1)))
 }
@@ -14148,10 +13380,9 @@ func TestCheckCallExprVariadic2XFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14165,7 +13396,6 @@ func TestCheckCallExprVariadic2XFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14183,10 +13413,9 @@ func TestCheckCallExprVariadic2XBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14200,7 +13429,6 @@ func TestCheckCallExprVariadic2XBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -14218,10 +13446,9 @@ func TestCheckCallExprVariadic2XIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14235,7 +13462,6 @@ func TestCheckCallExprVariadic2XIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -14253,10 +13479,9 @@ func TestCheckCallExprVariadic2XInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14270,7 +13495,6 @@ func TestCheckCallExprVariadic2XInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(is...)`, env,
 		`cannot use is (type []int) as type int in function argument`,
@@ -14289,10 +13513,9 @@ func TestCheckCallExprVariadic2XEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14306,7 +13529,6 @@ func TestCheckCallExprVariadic2XEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e())`, env,
 		`e() used as value`,
@@ -14324,10 +13546,9 @@ func TestCheckCallExprVariadic2XSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14341,7 +13562,6 @@ func TestCheckCallExprVariadic2XSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(s())`, env, reflect.TypeOf(v2(s())))
 }
@@ -14356,10 +13576,9 @@ func TestCheckCallExprVariadic2XMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14373,7 +13592,6 @@ func TestCheckCallExprVariadic2XMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(m())`, env, reflect.TypeOf(v2(m())))
 }
@@ -14388,10 +13606,9 @@ func TestCheckCallExprVariadic2XMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14405,7 +13622,6 @@ func TestCheckCallExprVariadic2XMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt())`, env,
 		`cannot use eval.I as type int in argument to v2`,
@@ -14423,10 +13639,9 @@ func TestCheckCallExprVariadic2IntX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14440,7 +13655,6 @@ func TestCheckCallExprVariadic2IntX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(1)`, env, reflect.TypeOf(v2(1)))
 }
@@ -14455,10 +13669,9 @@ func TestCheckCallExprVariadic2IntInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14472,7 +13685,6 @@ func TestCheckCallExprVariadic2IntInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(1, 1)`, env, reflect.TypeOf(v2(1, 1)))
 }
@@ -14487,10 +13699,9 @@ func TestCheckCallExprVariadic2IntFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14504,7 +13715,6 @@ func TestCheckCallExprVariadic2IntFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14522,10 +13732,9 @@ func TestCheckCallExprVariadic2IntBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14539,7 +13748,6 @@ func TestCheckCallExprVariadic2IntBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1, true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -14557,10 +13765,9 @@ func TestCheckCallExprVariadic2IntIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14574,7 +13781,6 @@ func TestCheckCallExprVariadic2IntIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1, I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -14592,10 +13798,9 @@ func TestCheckCallExprVariadic2IntInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14609,7 +13814,6 @@ func TestCheckCallExprVariadic2IntInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(1, is...)`, env, reflect.TypeOf(v2(1, is...)))
 }
@@ -14624,10 +13828,9 @@ func TestCheckCallExprVariadic2IntEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14641,7 +13844,6 @@ func TestCheckCallExprVariadic2IntEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1, e())`, env,
 		`e() used as value`,
@@ -14659,10 +13861,9 @@ func TestCheckCallExprVariadic2IntSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14676,7 +13877,6 @@ func TestCheckCallExprVariadic2IntSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(1, s())`, env, reflect.TypeOf(v2(1, s())))
 }
@@ -14691,10 +13891,9 @@ func TestCheckCallExprVariadic2IntMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14708,7 +13907,6 @@ func TestCheckCallExprVariadic2IntMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -14726,10 +13924,9 @@ func TestCheckCallExprVariadic2IntMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14743,7 +13940,6 @@ func TestCheckCallExprVariadic2IntMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -14761,10 +13957,9 @@ func TestCheckCallExprVariadic2FloatX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14778,7 +13973,6 @@ func TestCheckCallExprVariadic2FloatX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14796,10 +13990,9 @@ func TestCheckCallExprVariadic2FloatInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14813,7 +14006,6 @@ func TestCheckCallExprVariadic2FloatInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, 1)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14831,10 +14023,9 @@ func TestCheckCallExprVariadic2FloatFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14848,7 +14039,6 @@ func TestCheckCallExprVariadic2FloatFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14867,10 +14057,9 @@ func TestCheckCallExprVariadic2FloatBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14884,7 +14073,6 @@ func TestCheckCallExprVariadic2FloatBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, true)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14903,10 +14091,9 @@ func TestCheckCallExprVariadic2FloatIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14920,7 +14107,6 @@ func TestCheckCallExprVariadic2FloatIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, I(1))`, env,
 		`constant 1.5 truncated to integer`,
@@ -14939,10 +14125,9 @@ func TestCheckCallExprVariadic2FloatInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14956,7 +14141,6 @@ func TestCheckCallExprVariadic2FloatInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, is...)`, env,
 		`constant 1.5 truncated to integer`,
@@ -14974,10 +14158,9 @@ func TestCheckCallExprVariadic2FloatEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -14991,7 +14174,6 @@ func TestCheckCallExprVariadic2FloatEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, e())`, env,
 		`e() used as value`,
@@ -15010,10 +14192,9 @@ func TestCheckCallExprVariadic2FloatSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15027,7 +14208,6 @@ func TestCheckCallExprVariadic2FloatSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, s())`, env,
 		`constant 1.5 truncated to integer`,
@@ -15045,10 +14225,9 @@ func TestCheckCallExprVariadic2FloatMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15062,7 +14241,6 @@ func TestCheckCallExprVariadic2FloatMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -15081,10 +14259,9 @@ func TestCheckCallExprVariadic2FloatMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15098,7 +14275,6 @@ func TestCheckCallExprVariadic2FloatMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(1.5, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -15117,10 +14293,9 @@ func TestCheckCallExprVariadic2BoolX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15134,7 +14309,6 @@ func TestCheckCallExprVariadic2BoolX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15152,10 +14326,9 @@ func TestCheckCallExprVariadic2BoolInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15169,7 +14342,6 @@ func TestCheckCallExprVariadic2BoolInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, 1)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15187,10 +14359,9 @@ func TestCheckCallExprVariadic2BoolFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15204,7 +14375,6 @@ func TestCheckCallExprVariadic2BoolFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, 1.5)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15223,10 +14393,9 @@ func TestCheckCallExprVariadic2BoolBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15240,7 +14409,6 @@ func TestCheckCallExprVariadic2BoolBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15259,10 +14427,9 @@ func TestCheckCallExprVariadic2BoolIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15276,7 +14443,6 @@ func TestCheckCallExprVariadic2BoolIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, I(1))`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15295,10 +14461,9 @@ func TestCheckCallExprVariadic2BoolInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15312,7 +14477,6 @@ func TestCheckCallExprVariadic2BoolInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, is...)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15330,10 +14494,9 @@ func TestCheckCallExprVariadic2BoolEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15347,7 +14510,6 @@ func TestCheckCallExprVariadic2BoolEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, e())`, env,
 		`e() used as value`,
@@ -15366,10 +14528,9 @@ func TestCheckCallExprVariadic2BoolSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15383,7 +14544,6 @@ func TestCheckCallExprVariadic2BoolSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, s())`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -15401,10 +14561,9 @@ func TestCheckCallExprVariadic2BoolMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15418,7 +14577,6 @@ func TestCheckCallExprVariadic2BoolMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -15437,10 +14595,9 @@ func TestCheckCallExprVariadic2BoolMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15454,7 +14611,6 @@ func TestCheckCallExprVariadic2BoolMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(true, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -15473,10 +14629,9 @@ func TestCheckCallExprVariadic2IntTypedX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15490,7 +14645,6 @@ func TestCheckCallExprVariadic2IntTypedX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15508,10 +14662,9 @@ func TestCheckCallExprVariadic2IntTypedInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15525,7 +14678,6 @@ func TestCheckCallExprVariadic2IntTypedInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), 1)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15543,10 +14695,9 @@ func TestCheckCallExprVariadic2IntTypedFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15560,7 +14711,6 @@ func TestCheckCallExprVariadic2IntTypedFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), 1.5)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15579,10 +14729,9 @@ func TestCheckCallExprVariadic2IntTypedBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15596,7 +14745,6 @@ func TestCheckCallExprVariadic2IntTypedBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), true)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15615,10 +14763,9 @@ func TestCheckCallExprVariadic2IntTypedIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15632,7 +14779,6 @@ func TestCheckCallExprVariadic2IntTypedIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15651,10 +14797,9 @@ func TestCheckCallExprVariadic2IntTypedInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15668,7 +14813,6 @@ func TestCheckCallExprVariadic2IntTypedInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), is...)`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15686,10 +14830,9 @@ func TestCheckCallExprVariadic2IntTypedEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15703,7 +14846,6 @@ func TestCheckCallExprVariadic2IntTypedEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), e())`, env,
 		`e() used as value`,
@@ -15722,10 +14864,9 @@ func TestCheckCallExprVariadic2IntTypedSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15739,7 +14880,6 @@ func TestCheckCallExprVariadic2IntTypedSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), s())`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -15757,10 +14897,9 @@ func TestCheckCallExprVariadic2IntTypedMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15774,7 +14913,6 @@ func TestCheckCallExprVariadic2IntTypedMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -15793,10 +14931,9 @@ func TestCheckCallExprVariadic2IntTypedMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15810,7 +14947,6 @@ func TestCheckCallExprVariadic2IntTypedMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(I(1), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -15829,10 +14965,9 @@ func TestCheckCallExprVariadic2IntsX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15846,7 +14981,6 @@ func TestCheckCallExprVariadic2IntsX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(is...)`, env,
 		`cannot use is (type []int) as type int in function argument`,
@@ -15865,10 +14999,9 @@ func TestCheckCallExprVariadic2IntsInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15897,10 +15030,9 @@ func TestCheckCallExprVariadic2IntsFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15929,10 +15061,9 @@ func TestCheckCallExprVariadic2IntsBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15961,10 +15092,9 @@ func TestCheckCallExprVariadic2IntsIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -15993,10 +15123,9 @@ func TestCheckCallExprVariadic2IntsInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16025,10 +15154,9 @@ func TestCheckCallExprVariadic2IntsEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16057,10 +15185,9 @@ func TestCheckCallExprVariadic2IntsSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16089,10 +15216,9 @@ func TestCheckCallExprVariadic2IntsMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16121,10 +15247,9 @@ func TestCheckCallExprVariadic2IntsMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16153,10 +15278,9 @@ func TestCheckCallExprVariadic2EmptyFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16170,7 +15294,6 @@ func TestCheckCallExprVariadic2EmptyFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e())`, env,
 		`e() used as value`,
@@ -16188,10 +15311,9 @@ func TestCheckCallExprVariadic2EmptyFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16205,7 +15327,6 @@ func TestCheckCallExprVariadic2EmptyFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), 1)`, env,
 		`e() used as value`,
@@ -16223,10 +15344,9 @@ func TestCheckCallExprVariadic2EmptyFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16240,7 +15360,6 @@ func TestCheckCallExprVariadic2EmptyFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), 1.5)`, env,
 		`e() used as value`,
@@ -16259,10 +15378,9 @@ func TestCheckCallExprVariadic2EmptyFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16276,7 +15394,6 @@ func TestCheckCallExprVariadic2EmptyFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), true)`, env,
 		`e() used as value`,
@@ -16295,10 +15412,9 @@ func TestCheckCallExprVariadic2EmptyFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16312,7 +15428,6 @@ func TestCheckCallExprVariadic2EmptyFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), I(1))`, env,
 		`e() used as value`,
@@ -16331,10 +15446,9 @@ func TestCheckCallExprVariadic2EmptyFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16348,7 +15462,6 @@ func TestCheckCallExprVariadic2EmptyFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), is...)`, env,
 		`e() used as value`,
@@ -16366,10 +15479,9 @@ func TestCheckCallExprVariadic2EmptyFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16383,7 +15495,6 @@ func TestCheckCallExprVariadic2EmptyFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), e())`, env,
 		`e() used as value`,
@@ -16402,10 +15513,9 @@ func TestCheckCallExprVariadic2EmptyFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16419,7 +15529,6 @@ func TestCheckCallExprVariadic2EmptyFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), s())`, env,
 		`e() used as value`,
@@ -16437,10 +15546,9 @@ func TestCheckCallExprVariadic2EmptyFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16454,7 +15562,6 @@ func TestCheckCallExprVariadic2EmptyFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), m())`, env,
 		`e() used as value`,
@@ -16473,10 +15580,9 @@ func TestCheckCallExprVariadic2EmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16490,7 +15596,6 @@ func TestCheckCallExprVariadic2EmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(e(), mt())`, env,
 		`e() used as value`,
@@ -16509,10 +15614,9 @@ func TestCheckCallExprVariadic2SingleFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16526,7 +15630,6 @@ func TestCheckCallExprVariadic2SingleFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(s())`, env, reflect.TypeOf(v2(s())))
 }
@@ -16541,10 +15644,9 @@ func TestCheckCallExprVariadic2SingleFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16558,7 +15660,6 @@ func TestCheckCallExprVariadic2SingleFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(s(), 1)`, env, reflect.TypeOf(v2(s(), 1)))
 }
@@ -16573,10 +15674,9 @@ func TestCheckCallExprVariadic2SingleFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16590,7 +15690,6 @@ func TestCheckCallExprVariadic2SingleFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(s(), 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -16608,10 +15707,9 @@ func TestCheckCallExprVariadic2SingleFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16625,7 +15723,6 @@ func TestCheckCallExprVariadic2SingleFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(s(), true)`, env,
 		`cannot use true (type bool) as type int in function argument`,
@@ -16643,10 +15740,9 @@ func TestCheckCallExprVariadic2SingleFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16660,7 +15756,6 @@ func TestCheckCallExprVariadic2SingleFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(s(), I(1))`, env,
 		`cannot use eval.I(1) (type eval.I) as type int in function argument`,
@@ -16678,10 +15773,9 @@ func TestCheckCallExprVariadic2SingleFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16695,7 +15789,6 @@ func TestCheckCallExprVariadic2SingleFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(s(), is...)`, env, reflect.TypeOf(v2(s(), is...)))
 }
@@ -16710,10 +15803,9 @@ func TestCheckCallExprVariadic2SingleFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16727,7 +15819,6 @@ func TestCheckCallExprVariadic2SingleFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(s(), e())`, env,
 		`e() used as value`,
@@ -16745,10 +15836,9 @@ func TestCheckCallExprVariadic2SingleFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16762,7 +15852,6 @@ func TestCheckCallExprVariadic2SingleFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(s(), s())`, env, reflect.TypeOf(v2(s(), s())))
 }
@@ -16777,10 +15866,9 @@ func TestCheckCallExprVariadic2SingleFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16794,7 +15882,6 @@ func TestCheckCallExprVariadic2SingleFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(s(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -16812,10 +15899,9 @@ func TestCheckCallExprVariadic2SingleFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16829,7 +15915,6 @@ func TestCheckCallExprVariadic2SingleFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(s(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -16847,10 +15932,9 @@ func TestCheckCallExprVariadic2MultiFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16864,7 +15948,6 @@ func TestCheckCallExprVariadic2MultiFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `v2(m())`, env, reflect.TypeOf(v2(m())))
 }
@@ -16879,10 +15962,9 @@ func TestCheckCallExprVariadic2MultiFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16896,7 +15978,6 @@ func TestCheckCallExprVariadic2MultiFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), 1)`, env,
 		`multiple-value m() in single-value context`,
@@ -16914,10 +15995,9 @@ func TestCheckCallExprVariadic2MultiFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16931,7 +16011,6 @@ func TestCheckCallExprVariadic2MultiFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), 1.5)`, env,
 		`multiple-value m() in single-value context`,
@@ -16950,10 +16029,9 @@ func TestCheckCallExprVariadic2MultiFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -16967,7 +16045,6 @@ func TestCheckCallExprVariadic2MultiFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), true)`, env,
 		`multiple-value m() in single-value context`,
@@ -16986,10 +16063,9 @@ func TestCheckCallExprVariadic2MultiFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17003,7 +16079,6 @@ func TestCheckCallExprVariadic2MultiFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), I(1))`, env,
 		`multiple-value m() in single-value context`,
@@ -17022,10 +16097,9 @@ func TestCheckCallExprVariadic2MultiFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17039,7 +16113,6 @@ func TestCheckCallExprVariadic2MultiFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), is...)`, env,
 		`multiple-value m() in single-value context`,
@@ -17057,10 +16130,9 @@ func TestCheckCallExprVariadic2MultiFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17074,7 +16146,6 @@ func TestCheckCallExprVariadic2MultiFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), e())`, env,
 		`multiple-value m() in single-value context`,
@@ -17093,10 +16164,9 @@ func TestCheckCallExprVariadic2MultiFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17110,7 +16180,6 @@ func TestCheckCallExprVariadic2MultiFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), s())`, env,
 		`multiple-value m() in single-value context`,
@@ -17128,10 +16197,9 @@ func TestCheckCallExprVariadic2MultiFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17145,7 +16213,6 @@ func TestCheckCallExprVariadic2MultiFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -17164,10 +16231,9 @@ func TestCheckCallExprVariadic2MultiFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17181,7 +16247,6 @@ func TestCheckCallExprVariadic2MultiFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(m(), mt())`, env,
 		`multiple-value m() in single-value context`,
@@ -17200,10 +16265,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17217,7 +16281,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt())`, env,
 		`cannot use eval.I as type int in argument to v2`,
@@ -17235,10 +16298,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17252,7 +16314,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), 1)`, env,
 		`multiple-value mt() in single-value context`,
@@ -17270,10 +16331,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17287,7 +16347,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), 1.5)`, env,
 		`multiple-value mt() in single-value context`,
@@ -17306,10 +16365,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17323,7 +16381,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), true)`, env,
 		`multiple-value mt() in single-value context`,
@@ -17342,10 +16399,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17359,7 +16415,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), I(1))`, env,
 		`multiple-value mt() in single-value context`,
@@ -17378,10 +16433,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17395,7 +16449,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), is...)`, env,
 		`multiple-value mt() in single-value context`,
@@ -17413,10 +16466,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17430,7 +16482,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), e())`, env,
 		`multiple-value mt() in single-value context`,
@@ -17449,10 +16500,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17466,7 +16516,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), s())`, env,
 		`multiple-value mt() in single-value context`,
@@ -17484,10 +16533,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17501,7 +16549,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), m())`, env,
 		`multiple-value mt() in single-value context`,
@@ -17520,10 +16567,9 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesMultiFuncMixedTypes(t *testing
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17537,7 +16583,6 @@ func TestCheckCallExprVariadic2MultiFuncMixedTypesMultiFuncMixedTypes(t *testing
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `v2(mt(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -17556,10 +16601,9 @@ func TestCheckCallExprVariadicTypedXX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17573,7 +16617,6 @@ func TestCheckCallExprVariadicTypedXX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt()`, env,
 		`not enough arguments in call to vt`,
@@ -17591,10 +16634,9 @@ func TestCheckCallExprVariadicTypedXInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17608,7 +16650,6 @@ func TestCheckCallExprVariadicTypedXInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(1)`, env, reflect.TypeOf(vt(1)))
 }
@@ -17623,10 +16664,9 @@ func TestCheckCallExprVariadicTypedXFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17640,7 +16680,6 @@ func TestCheckCallExprVariadicTypedXFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -17658,10 +16697,9 @@ func TestCheckCallExprVariadicTypedXBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17675,7 +16713,6 @@ func TestCheckCallExprVariadicTypedXBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -17693,10 +16730,9 @@ func TestCheckCallExprVariadicTypedXIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17710,7 +16746,6 @@ func TestCheckCallExprVariadicTypedXIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(I(1))`, env, reflect.TypeOf(vt(I(1))))
 }
@@ -17725,10 +16760,9 @@ func TestCheckCallExprVariadicTypedXInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17742,7 +16776,6 @@ func TestCheckCallExprVariadicTypedXInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(is...)`, env,
 		`cannot use is (type []int) as type eval.I in function argument`,
@@ -17761,10 +16794,9 @@ func TestCheckCallExprVariadicTypedXEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17778,7 +16810,6 @@ func TestCheckCallExprVariadicTypedXEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e())`, env,
 		`e() used as value`,
@@ -17796,10 +16827,9 @@ func TestCheckCallExprVariadicTypedXSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17813,7 +16843,6 @@ func TestCheckCallExprVariadicTypedXSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -17831,10 +16860,9 @@ func TestCheckCallExprVariadicTypedXMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17848,7 +16876,6 @@ func TestCheckCallExprVariadicTypedXMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m())`, env,
 		`cannot use int as type eval.I in argument to vt`,
@@ -17867,10 +16894,9 @@ func TestCheckCallExprVariadicTypedXMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17884,7 +16910,6 @@ func TestCheckCallExprVariadicTypedXMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt())`, env,
 		`cannot use int as type eval.I in argument to vt`,
@@ -17902,10 +16927,9 @@ func TestCheckCallExprVariadicTypedIntX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17919,7 +16943,6 @@ func TestCheckCallExprVariadicTypedIntX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(1)`, env, reflect.TypeOf(vt(1)))
 }
@@ -17934,10 +16957,9 @@ func TestCheckCallExprVariadicTypedIntInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17951,7 +16973,6 @@ func TestCheckCallExprVariadicTypedIntInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(1, 1)`, env, reflect.TypeOf(vt(1, 1)))
 }
@@ -17966,10 +16987,9 @@ func TestCheckCallExprVariadicTypedIntFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -17983,7 +17003,6 @@ func TestCheckCallExprVariadicTypedIntFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -18001,10 +17020,9 @@ func TestCheckCallExprVariadicTypedIntBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18018,7 +17036,6 @@ func TestCheckCallExprVariadicTypedIntBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18036,10 +17053,9 @@ func TestCheckCallExprVariadicTypedIntIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18053,7 +17069,6 @@ func TestCheckCallExprVariadicTypedIntIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(1, I(1))`, env, reflect.TypeOf(vt(1, I(1))))
 }
@@ -18068,10 +17083,9 @@ func TestCheckCallExprVariadicTypedIntInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18085,7 +17099,6 @@ func TestCheckCallExprVariadicTypedIntInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, is...)`, env,
 		`cannot use is (type []int) as type []eval.I in function argument`,
@@ -18103,10 +17116,9 @@ func TestCheckCallExprVariadicTypedIntEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18120,7 +17132,6 @@ func TestCheckCallExprVariadicTypedIntEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, e())`, env,
 		`e() used as value`,
@@ -18138,10 +17149,9 @@ func TestCheckCallExprVariadicTypedIntSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18155,7 +17165,6 @@ func TestCheckCallExprVariadicTypedIntSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -18173,10 +17182,9 @@ func TestCheckCallExprVariadicTypedIntMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18190,7 +17198,6 @@ func TestCheckCallExprVariadicTypedIntMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -18208,10 +17215,9 @@ func TestCheckCallExprVariadicTypedIntMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18225,7 +17231,6 @@ func TestCheckCallExprVariadicTypedIntMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -18243,10 +17248,9 @@ func TestCheckCallExprVariadicTypedFloatX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18260,7 +17264,6 @@ func TestCheckCallExprVariadicTypedFloatX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -18278,10 +17281,9 @@ func TestCheckCallExprVariadicTypedFloatInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18295,7 +17297,6 @@ func TestCheckCallExprVariadicTypedFloatInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, 1)`, env,
 		`constant 1.5 truncated to integer`,
@@ -18313,10 +17314,9 @@ func TestCheckCallExprVariadicTypedFloatFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18330,7 +17330,6 @@ func TestCheckCallExprVariadicTypedFloatFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -18349,10 +17348,9 @@ func TestCheckCallExprVariadicTypedFloatBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18366,7 +17364,6 @@ func TestCheckCallExprVariadicTypedFloatBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, true)`, env,
 		`constant 1.5 truncated to integer`,
@@ -18385,10 +17382,9 @@ func TestCheckCallExprVariadicTypedFloatIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18402,7 +17398,6 @@ func TestCheckCallExprVariadicTypedFloatIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, I(1))`, env,
 		`constant 1.5 truncated to integer`,
@@ -18420,10 +17415,9 @@ func TestCheckCallExprVariadicTypedFloatInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18437,7 +17431,6 @@ func TestCheckCallExprVariadicTypedFloatInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, is...)`, env,
 		`constant 1.5 truncated to integer`,
@@ -18456,10 +17449,9 @@ func TestCheckCallExprVariadicTypedFloatEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18473,7 +17465,6 @@ func TestCheckCallExprVariadicTypedFloatEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, e())`, env,
 		`e() used as value`,
@@ -18492,10 +17483,9 @@ func TestCheckCallExprVariadicTypedFloatSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18509,7 +17499,6 @@ func TestCheckCallExprVariadicTypedFloatSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, s())`, env,
 		`constant 1.5 truncated to integer`,
@@ -18528,10 +17517,9 @@ func TestCheckCallExprVariadicTypedFloatMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18545,7 +17533,6 @@ func TestCheckCallExprVariadicTypedFloatMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -18564,10 +17551,9 @@ func TestCheckCallExprVariadicTypedFloatMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18581,7 +17567,6 @@ func TestCheckCallExprVariadicTypedFloatMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(1.5, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -18600,10 +17585,9 @@ func TestCheckCallExprVariadicTypedBoolX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18617,7 +17601,6 @@ func TestCheckCallExprVariadicTypedBoolX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18635,10 +17618,9 @@ func TestCheckCallExprVariadicTypedBoolInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18652,7 +17634,6 @@ func TestCheckCallExprVariadicTypedBoolInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, 1)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18670,10 +17651,9 @@ func TestCheckCallExprVariadicTypedBoolFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18687,7 +17667,6 @@ func TestCheckCallExprVariadicTypedBoolFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, 1.5)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18706,10 +17685,9 @@ func TestCheckCallExprVariadicTypedBoolBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18723,7 +17701,6 @@ func TestCheckCallExprVariadicTypedBoolBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18742,10 +17719,9 @@ func TestCheckCallExprVariadicTypedBoolIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18759,7 +17735,6 @@ func TestCheckCallExprVariadicTypedBoolIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, I(1))`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18777,10 +17752,9 @@ func TestCheckCallExprVariadicTypedBoolInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18794,7 +17768,6 @@ func TestCheckCallExprVariadicTypedBoolInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, is...)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18813,10 +17786,9 @@ func TestCheckCallExprVariadicTypedBoolEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18830,7 +17802,6 @@ func TestCheckCallExprVariadicTypedBoolEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, e())`, env,
 		`e() used as value`,
@@ -18849,10 +17820,9 @@ func TestCheckCallExprVariadicTypedBoolSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18866,7 +17836,6 @@ func TestCheckCallExprVariadicTypedBoolSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, s())`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -18885,10 +17854,9 @@ func TestCheckCallExprVariadicTypedBoolMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18902,7 +17870,6 @@ func TestCheckCallExprVariadicTypedBoolMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, m())`, env,
 		`multiple-value m() in single-value context`,
@@ -18921,10 +17888,9 @@ func TestCheckCallExprVariadicTypedBoolMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18938,7 +17904,6 @@ func TestCheckCallExprVariadicTypedBoolMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(true, mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -18957,10 +17922,9 @@ func TestCheckCallExprVariadicTypedIntTypedX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -18974,7 +17938,6 @@ func TestCheckCallExprVariadicTypedIntTypedX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(I(1))`, env, reflect.TypeOf(vt(I(1))))
 }
@@ -18989,10 +17952,9 @@ func TestCheckCallExprVariadicTypedIntTypedInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19006,7 +17968,6 @@ func TestCheckCallExprVariadicTypedIntTypedInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(I(1), 1)`, env, reflect.TypeOf(vt(I(1), 1)))
 }
@@ -19021,10 +17982,9 @@ func TestCheckCallExprVariadicTypedIntTypedFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19038,7 +17998,6 @@ func TestCheckCallExprVariadicTypedIntTypedFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), 1.5)`, env,
 		`constant 1.5 truncated to integer`,
@@ -19056,10 +18015,9 @@ func TestCheckCallExprVariadicTypedIntTypedBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19073,7 +18031,6 @@ func TestCheckCallExprVariadicTypedIntTypedBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), true)`, env,
 		`cannot use true (type bool) as type eval.I in function argument`,
@@ -19091,10 +18048,9 @@ func TestCheckCallExprVariadicTypedIntTypedIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19108,7 +18064,6 @@ func TestCheckCallExprVariadicTypedIntTypedIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectType(t, `vt(I(1), I(1))`, env, reflect.TypeOf(vt(I(1), I(1))))
 }
@@ -19123,10 +18078,9 @@ func TestCheckCallExprVariadicTypedIntTypedInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19140,7 +18094,6 @@ func TestCheckCallExprVariadicTypedIntTypedInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), is...)`, env,
 		`cannot use is (type []int) as type []eval.I in function argument`,
@@ -19158,10 +18111,9 @@ func TestCheckCallExprVariadicTypedIntTypedEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19175,7 +18127,6 @@ func TestCheckCallExprVariadicTypedIntTypedEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), e())`, env,
 		`e() used as value`,
@@ -19193,10 +18144,9 @@ func TestCheckCallExprVariadicTypedIntTypedSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19210,7 +18160,6 @@ func TestCheckCallExprVariadicTypedIntTypedSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -19228,10 +18177,9 @@ func TestCheckCallExprVariadicTypedIntTypedMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19245,7 +18193,6 @@ func TestCheckCallExprVariadicTypedIntTypedMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -19263,10 +18210,9 @@ func TestCheckCallExprVariadicTypedIntTypedMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19280,7 +18226,6 @@ func TestCheckCallExprVariadicTypedIntTypedMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(I(1), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -19298,10 +18243,9 @@ func TestCheckCallExprVariadicTypedIntsX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19315,7 +18259,6 @@ func TestCheckCallExprVariadicTypedIntsX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(is...)`, env,
 		`cannot use is (type []int) as type eval.I in function argument`,
@@ -19334,10 +18277,9 @@ func TestCheckCallExprVariadicTypedIntsInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19366,10 +18308,9 @@ func TestCheckCallExprVariadicTypedIntsFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19398,10 +18339,9 @@ func TestCheckCallExprVariadicTypedIntsBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19430,10 +18370,9 @@ func TestCheckCallExprVariadicTypedIntsIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19462,10 +18401,9 @@ func TestCheckCallExprVariadicTypedIntsInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19494,10 +18432,9 @@ func TestCheckCallExprVariadicTypedIntsEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19526,10 +18463,9 @@ func TestCheckCallExprVariadicTypedIntsSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19558,10 +18494,9 @@ func TestCheckCallExprVariadicTypedIntsMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19590,10 +18525,9 @@ func TestCheckCallExprVariadicTypedIntsMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19622,10 +18556,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19639,7 +18572,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e())`, env,
 		`e() used as value`,
@@ -19657,10 +18589,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19674,7 +18605,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), 1)`, env,
 		`e() used as value`,
@@ -19692,10 +18622,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19709,7 +18638,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), 1.5)`, env,
 		`e() used as value`,
@@ -19728,10 +18656,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19745,7 +18672,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), true)`, env,
 		`e() used as value`,
@@ -19764,10 +18690,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19781,7 +18706,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), I(1))`, env,
 		`e() used as value`,
@@ -19799,10 +18723,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19816,7 +18739,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), is...)`, env,
 		`e() used as value`,
@@ -19835,10 +18757,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19852,7 +18773,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), e())`, env,
 		`e() used as value`,
@@ -19871,10 +18791,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19888,7 +18807,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), s())`, env,
 		`e() used as value`,
@@ -19907,10 +18825,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19924,7 +18841,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), m())`, env,
 		`e() used as value`,
@@ -19943,10 +18859,9 @@ func TestCheckCallExprVariadicTypedEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19960,7 +18875,6 @@ func TestCheckCallExprVariadicTypedEmptyFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(e(), mt())`, env,
 		`e() used as value`,
@@ -19979,10 +18893,9 @@ func TestCheckCallExprVariadicTypedSingleFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -19996,7 +18909,6 @@ func TestCheckCallExprVariadicTypedSingleFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20014,10 +18926,9 @@ func TestCheckCallExprVariadicTypedSingleFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20031,7 +18942,6 @@ func TestCheckCallExprVariadicTypedSingleFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), 1)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20049,10 +18959,9 @@ func TestCheckCallExprVariadicTypedSingleFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20066,7 +18975,6 @@ func TestCheckCallExprVariadicTypedSingleFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), 1.5)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20085,10 +18993,9 @@ func TestCheckCallExprVariadicTypedSingleFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20102,7 +19009,6 @@ func TestCheckCallExprVariadicTypedSingleFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), true)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20121,10 +19027,9 @@ func TestCheckCallExprVariadicTypedSingleFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20138,7 +19043,6 @@ func TestCheckCallExprVariadicTypedSingleFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), I(1))`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20156,10 +19060,9 @@ func TestCheckCallExprVariadicTypedSingleFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20173,7 +19076,6 @@ func TestCheckCallExprVariadicTypedSingleFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), is...)`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20192,10 +19094,9 @@ func TestCheckCallExprVariadicTypedSingleFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20209,7 +19110,6 @@ func TestCheckCallExprVariadicTypedSingleFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), e())`, env,
 		`e() used as value`,
@@ -20228,10 +19128,9 @@ func TestCheckCallExprVariadicTypedSingleFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20245,7 +19144,6 @@ func TestCheckCallExprVariadicTypedSingleFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), s())`, env,
 		`cannot use s() (type int) as type eval.I in function argument`,
@@ -20264,10 +19162,9 @@ func TestCheckCallExprVariadicTypedSingleFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20281,7 +19178,6 @@ func TestCheckCallExprVariadicTypedSingleFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -20300,10 +19196,9 @@ func TestCheckCallExprVariadicTypedSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20317,7 +19212,6 @@ func TestCheckCallExprVariadicTypedSingleFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(s(), mt())`, env,
 		`multiple-value mt() in single-value context`,
@@ -20336,10 +19230,9 @@ func TestCheckCallExprVariadicTypedMultiFuncX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20353,7 +19246,6 @@ func TestCheckCallExprVariadicTypedMultiFuncX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m())`, env,
 		`cannot use int as type eval.I in argument to vt`,
@@ -20372,10 +19264,9 @@ func TestCheckCallExprVariadicTypedMultiFuncInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20389,7 +19280,6 @@ func TestCheckCallExprVariadicTypedMultiFuncInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), 1)`, env,
 		`multiple-value m() in single-value context`,
@@ -20407,10 +19297,9 @@ func TestCheckCallExprVariadicTypedMultiFuncFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20424,7 +19313,6 @@ func TestCheckCallExprVariadicTypedMultiFuncFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), 1.5)`, env,
 		`multiple-value m() in single-value context`,
@@ -20443,10 +19331,9 @@ func TestCheckCallExprVariadicTypedMultiFuncBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20460,7 +19347,6 @@ func TestCheckCallExprVariadicTypedMultiFuncBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), true)`, env,
 		`multiple-value m() in single-value context`,
@@ -20479,10 +19365,9 @@ func TestCheckCallExprVariadicTypedMultiFuncIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20496,7 +19381,6 @@ func TestCheckCallExprVariadicTypedMultiFuncIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), I(1))`, env,
 		`multiple-value m() in single-value context`,
@@ -20514,10 +19398,9 @@ func TestCheckCallExprVariadicTypedMultiFuncInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20531,7 +19414,6 @@ func TestCheckCallExprVariadicTypedMultiFuncInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), is...)`, env,
 		`multiple-value m() in single-value context`,
@@ -20550,10 +19432,9 @@ func TestCheckCallExprVariadicTypedMultiFuncEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20567,7 +19448,6 @@ func TestCheckCallExprVariadicTypedMultiFuncEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), e())`, env,
 		`multiple-value m() in single-value context`,
@@ -20586,10 +19466,9 @@ func TestCheckCallExprVariadicTypedMultiFuncSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20603,7 +19482,6 @@ func TestCheckCallExprVariadicTypedMultiFuncSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), s())`, env,
 		`multiple-value m() in single-value context`,
@@ -20622,10 +19500,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20639,7 +19516,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), m())`, env,
 		`multiple-value m() in single-value context`,
@@ -20658,10 +19534,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20675,7 +19550,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMultiFuncMixedTypes(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(m(), mt())`, env,
 		`multiple-value m() in single-value context`,
@@ -20694,10 +19568,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesX(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20711,7 +19584,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesX(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt())`, env,
 		`cannot use int as type eval.I in argument to vt`,
@@ -20729,10 +19601,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesInt(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20746,7 +19617,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesInt(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), 1)`, env,
 		`multiple-value mt() in single-value context`,
@@ -20764,10 +19634,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesFloat(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20781,7 +19650,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesFloat(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), 1.5)`, env,
 		`multiple-value mt() in single-value context`,
@@ -20800,10 +19668,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesBool(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20817,7 +19684,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesBool(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), true)`, env,
 		`multiple-value mt() in single-value context`,
@@ -20836,10 +19702,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesIntTyped(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20853,7 +19718,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesIntTyped(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), I(1))`, env,
 		`multiple-value mt() in single-value context`,
@@ -20871,10 +19735,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesInts(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20888,7 +19751,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesInts(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), is...)`, env,
 		`multiple-value mt() in single-value context`,
@@ -20907,10 +19769,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20924,7 +19785,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesEmptyFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), e())`, env,
 		`multiple-value mt() in single-value context`,
@@ -20943,10 +19803,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20960,7 +19819,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesSingleFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), s())`, env,
 		`multiple-value mt() in single-value context`,
@@ -20979,10 +19837,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -20996,7 +19853,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesMultiFunc(t *testing.T) {
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), m())`, env,
 		`multiple-value mt() in single-value context`,
@@ -21015,10 +19871,9 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesMultiFuncMixedTypes(t *tes
 	v2 := func(int, ...int) int { return 1 }
 	vt := func(I, ...I) int { return 1 }
 	e := func() {}
-	s := func() int { return 1}
+	s := func() int { return 1 }
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
-
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -21032,7 +19887,6 @@ func TestCheckCallExprVariadicTypedMultiFuncMixedTypesMultiFuncMixedTypes(t *tes
 	env.Funcs["s"] = reflect.ValueOf(s)
 	env.Funcs["m"] = reflect.ValueOf(m)
 	env.Funcs["mt"] = reflect.ValueOf(mt)
-
 
 	expectCheckError(t, `vt(mt(), mt())`, env,
 		`multiple-value mt() in single-value context`,

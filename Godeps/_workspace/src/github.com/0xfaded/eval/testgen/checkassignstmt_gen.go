@@ -1,23 +1,23 @@
 package main
 
 import (
+	"github.com/0xfaded/go-testgen"
 	"io"
 	"text/template"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Stmt.Name }}
+	`// Test {{ .Stmt.Name }}
 `))
 
 var body = template.Must(template.New("Body").Parse(
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 	f := func() (int, int) { return 1, 1 }
 	env.Vars["f"] = reflect.ValueOf(&f)
-	expectCheckError(t, `+"`{{ .Stmt.Value }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Stmt.Value }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	)
 `))
 
@@ -57,7 +57,7 @@ func (*Test) Globals(w io.Writer) error {
 }
 
 func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Stmt": elts[0],
 	}
 
@@ -71,11 +71,10 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		return err
 	}
 
-	vars := map[string] interface{} {
-		"Stmt": stmt,
+	vars := map[string]interface{}{
+		"Stmt":   stmt,
 		"Errors": compileErrs,
 	}
 
 	return body.Execute(w, &vars)
 }
-

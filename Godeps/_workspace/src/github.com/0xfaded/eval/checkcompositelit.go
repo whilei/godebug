@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"reflect"
 	"go/ast"
+	"reflect"
 )
 
 func checkCompositeLit(lit *ast.CompositeLit, env Env) (*CompositeLit, []error) {
@@ -50,9 +50,9 @@ func checkCompositeLitMap(lit *CompositeLit, t reflect.Type, env Env) (*Composit
 
 	// Don't check for duplicate interface{} keys. This is a gc bug
 	// http://code.google.com/p/go/issues/detail?id=7214
-	var seen map[interface{}] bool
+	var seen map[interface{}]bool
 	if kT.Kind() != reflect.Interface {
-		seen = make(map[interface{}] bool, len(lit.Elts))
+		seen = make(map[interface{}]bool, len(lit.Elts))
 	}
 	eltT := t.Elem()
 
@@ -110,7 +110,7 @@ func checkCompositeLitArrayOrSlice(lit *CompositeLit, t reflect.Type, env Env) (
 	if t.Kind() == reflect.Array {
 		length = t.Len()
 	}
-	used := make(map[int] bool, len(lit.Elts))
+	used := make(map[int]bool, len(lit.Elts))
 	// Check all keys are valid and calculate array or slice length.
 	// Elements with key are placed at the keyed position.
 	// Elements without are placed in the next position.
@@ -129,7 +129,7 @@ func checkCompositeLitArrayOrSlice(lit *CompositeLit, t reflect.Type, env Env) (
 			avalue, value = &akv.Value, kv.Value
 			// Check the array key
 			var index int
-			key, index, ok, moreErrs = checkArrayIndex(kv.Key, env);
+			key, index, ok, moreErrs = checkArrayIndex(kv.Key, env)
 			if !ok || moreErrs != nil {
 				// NOTE[crc] Haven't checked the gc implementation, but
 				// from experimentation it seems that only undefined
@@ -145,7 +145,7 @@ func checkCompositeLitArrayOrSlice(lit *CompositeLit, t reflect.Type, env Env) (
 				curIndex -= 1
 				skipIndexChecks = true
 			} else {
-				lit.indices = append(lit.indices, struct{pos, index int}{i, index})
+				lit.indices = append(lit.indices, struct{ pos, index int }{i, index})
 				curIndex = index
 			}
 		}
@@ -176,7 +176,7 @@ func checkCompositeLitArrayOrSlice(lit *CompositeLit, t reflect.Type, env Env) (
 
 		curIndex += 1
 	}
-	lit.indices = append(lit.indices, struct{pos, index int}{-1, -1})
+	lit.indices = append(lit.indices, struct{ pos, index int }{-1, -1})
 	if length == -1 {
 		lit.length = maxIndex + 1
 	} else {
@@ -203,7 +203,7 @@ func checkCompositeLitStruct(lit *CompositeLit, t reflect.Type, env Env) (*Compo
 	}
 
 	if keysPresent {
-		seen := make(map[string] bool, len(lit.Elts))
+		seen := make(map[string]bool, len(lit.Elts))
 		mixed := false
 		for i := 0; i < len(lit.Elts); i += 1 {
 			kv, ok := lit.CompositeLit.Elts[i].(*ast.KeyValueExpr)

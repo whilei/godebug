@@ -2,13 +2,13 @@ package eval
 
 import (
 	"fmt"
-	"reflect"
 	"go/token"
+	"reflect"
 )
 
 type State struct {
 	Last Stmt
-	Env Env
+	Env  Env
 }
 
 func InterpStmt(stmt Stmt, env Env) (last *State, err error) {
@@ -59,7 +59,7 @@ func InterpStmt(stmt Stmt, env Env) (last *State, err error) {
 		return nil, err
 	case *IfStmt:
 		env = env.PushScope()
-		if _ , err = InterpStmt(s.Init, env); err != nil {
+		if _, err = InterpStmt(s.Init, env); err != nil {
 			return nil, err
 		} else if rs, err := EvalExpr(s.Cond, env); err != nil {
 			return nil, err
@@ -96,7 +96,7 @@ func InterpStmt(stmt Stmt, env Env) (last *State, err error) {
 				}
 				return last, nil
 			}
-cont:
+		cont:
 			if _, err = InterpStmt(s.Post, env); err != nil {
 				return nil, err
 			}
@@ -220,12 +220,12 @@ func branch(list []Stmt, last *State, env Env) (*State, int) {
 		switch s := stmt.(type) {
 		case *LabeledStmt:
 			if branch.Label != nil && branch.Label.Name == s.Label.Name {
-				return nil, i+brk
+				return nil, i + brk
 			}
 		// TODO[crc] add SelectStmt and RangeStmt here when implemented
 		case *ForStmt, *SwitchStmt, *TypeSwitchStmt:
 			if branch.Label == nil {
-				return nil, i+brk
+				return nil, i + brk
 			}
 		}
 	}

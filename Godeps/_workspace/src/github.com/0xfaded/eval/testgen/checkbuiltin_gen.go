@@ -1,25 +1,25 @@
 package main
 
 import (
+	"github.com/0xfaded/go-testgen"
 	"io"
 	"text/template"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Comment }}
+	`// Test {{ .Comment }}
 `))
 
 var body = template.Must(template.New("Body").Parse(
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 {{ if .Errors }}{{ if .TestErrs }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	){{ else }}	_ = env{{ end }}
-{{ else }}	{{ if .TestSuccess }}{{ if .ExpectConst }}expectConst(t, `+"`{{ .Expr }}`"+`, env, {{ .Expr }}, reflect.TypeOf({{ .Expr}}))
-{{ else }}expectType(t, `+"`{{ .Expr }}`"+`, env, reflect.TypeOf({{ .Expr }})){{ end }}{{ else }}_ = env{{ end }}{{ end }}
+{{ else }}	{{ if .TestSuccess }}{{ if .ExpectConst }}expectConst(t, ` + "`{{ .Expr }}`" + `, env, {{ .Expr }}, reflect.TypeOf({{ .Expr}}))
+{{ else }}expectType(t, ` + "`{{ .Expr }}`" + `, env, reflect.TypeOf({{ .Expr }})){{ end }}{{ else }}_ = env{{ end }}{{ end }}
 `))
 
 func (*Test) Package() string {
@@ -31,7 +31,7 @@ func (*Test) Prefix() string {
 }
 
 func (*Test) Imports() map[string]string {
-	return map[string]string { "reflect": "" }
+	return map[string]string{"reflect": ""}
 }
 
 func (*Test) Dimensions() []testgen.Dimension {
@@ -86,7 +86,7 @@ func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
 	}
 	builtin += ")"
 
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Comment": builtin,
 	}
 
@@ -157,14 +157,13 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		}
 	}
 
-	vars := map[string] interface{} {
-		"Expr": expr,
-		"Errors": compileErrs,
-		"TestErrs": testErrs,
+	vars := map[string]interface{}{
+		"Expr":        expr,
+		"Errors":      compileErrs,
+		"TestErrs":    testErrs,
 		"TestSuccess": f != "Delete",
 		"ExpectConst": expectConst,
 	}
 
 	return body.Execute(w, &vars)
 }
-

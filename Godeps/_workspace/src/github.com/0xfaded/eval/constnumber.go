@@ -4,7 +4,7 @@ import "strconv"
 
 type ConstNumber struct {
 	Value BigComplex
-	Type ConstType
+	Type  ConstType
 }
 
 // Use with token.INT ast.BasicLit
@@ -189,4 +189,3 @@ func (z *ConstNumber) Rsh(x *ConstNumber, count uint) *ConstNumber {
 	z.Value.Rsh(&x.Value, count)
 	return z
 }
-

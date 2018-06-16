@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	"go/build"
 	"fmt"
+	"go/build"
 
 	"io"
 	"io/ioutil"
@@ -63,14 +63,14 @@ func compile(expr, defs, globals, body string) (compileErrors []string, err erro
 	}
 	defer os.Remove(f.Name())
 
-	_, err = fmt.Fprintf(f, body, globals, defs, expr);
+	_, err = fmt.Fprintf(f, body, globals, defs, expr)
 
 	if err != nil {
 		return nil, err
 	}
 
 	// -e prints all errors
-	cmd := exec.Command(build.ToolDir + "/8g", "-e", "-o", "/dev/null", f.Name())
+	cmd := exec.Command(build.ToolDir+"/8g", "-e", "-o", "/dev/null", f.Name())
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return nil, err
@@ -97,4 +97,3 @@ func compile(expr, defs, globals, body string) (compileErrors []string, err erro
 		return compileErrors, nil
 	}
 }
-

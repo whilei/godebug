@@ -1,29 +1,29 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 // Test + Int32
 func TestCheckUnaryTypedExprAddInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ int32(4)`, env, + int32(4), reflect.TypeOf(+ int32(4)))
+	expectConst(t, `+ int32(4)`, env, +int32(4), reflect.TypeOf(+int32(4)))
 }
 
 // Test + Float64
 func TestCheckUnaryTypedExprAddFloat64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ float64(2)`, env, + float64(2), reflect.TypeOf(+ float64(2)))
+	expectConst(t, `+ float64(2)`, env, +float64(2), reflect.TypeOf(+float64(2)))
 }
 
 // Test + Complex128
 func TestCheckUnaryTypedExprAddComplex128(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `+ complex128(8i)`, env, + complex128(8i), reflect.TypeOf(+ complex128(8i)))
+	expectConst(t, `+ complex128(8i)`, env, +complex128(8i), reflect.TypeOf(+complex128(8i)))
 }
 
 // Test + Bool
@@ -50,21 +50,21 @@ func TestCheckUnaryTypedExprAddString(t *testing.T) {
 func TestCheckUnaryTypedExprSubInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- int32(4)`, env, - int32(4), reflect.TypeOf(- int32(4)))
+	expectConst(t, `- int32(4)`, env, -int32(4), reflect.TypeOf(-int32(4)))
 }
 
 // Test - Float64
 func TestCheckUnaryTypedExprSubFloat64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- float64(2)`, env, - float64(2), reflect.TypeOf(- float64(2)))
+	expectConst(t, `- float64(2)`, env, -float64(2), reflect.TypeOf(-float64(2)))
 }
 
 // Test - Complex128
 func TestCheckUnaryTypedExprSubComplex128(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `- complex128(8i)`, env, - complex128(8i), reflect.TypeOf(- complex128(8i)))
+	expectConst(t, `- complex128(8i)`, env, -complex128(8i), reflect.TypeOf(-complex128(8i)))
 }
 
 // Test - Bool
@@ -91,7 +91,7 @@ func TestCheckUnaryTypedExprSubString(t *testing.T) {
 func TestCheckUnaryTypedExprXorInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `^ int32(4)`, env, ^ int32(4), reflect.TypeOf(^ int32(4)))
+	expectConst(t, `^ int32(4)`, env, ^int32(4), reflect.TypeOf(^int32(4)))
 }
 
 // Test ^ Float64
@@ -168,7 +168,7 @@ func TestCheckUnaryTypedExprNotComplex128(t *testing.T) {
 func TestCheckUnaryTypedExprNotBool(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `! bool(true)`, env, ! bool(true), reflect.TypeOf(! bool(true)))
+	expectConst(t, `! bool(true)`, env, !bool(true), reflect.TypeOf(!bool(true)))
 }
 
 // Test ! String

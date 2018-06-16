@@ -79,7 +79,7 @@ type CompositeLit struct {
 
 	// indices specified in array or slice literal.
 	// terminated by a {-1, -1} after last index.
-	indices []struct{pos, index int}
+	indices []struct{ pos, index int }
 
 	// fields of struct mapping position to struct index
 	fields []int
@@ -94,7 +94,7 @@ type ParenExpr struct {
 
 type SelectorExpr struct {
 	*ast.SelectorExpr
-	X Expr
+	X   Expr
 	Sel *Ident
 	knownType
 	constValue
@@ -115,7 +115,7 @@ type SelectorExpr struct {
 
 type IndexExpr struct {
 	*ast.IndexExpr
-	X Expr
+	X     Expr
 	Index Expr
 	knownType
 
@@ -127,22 +127,22 @@ type IndexExpr struct {
 
 type SliceExpr struct {
 	*ast.SliceExpr
-	X Expr
-	Low Expr
+	X    Expr
+	Low  Expr
 	High Expr
 	knownType
 }
 
 type TypeAssertExpr struct {
 	*ast.TypeAssertExpr
-	X Expr
+	X    Expr
 	Type Expr
 	knownType
 }
 
 type CallExpr struct {
 	*ast.CallExpr
-	Fun Expr
+	Fun  Expr
 	Args []Expr
 
 	// Is this a type conversion
@@ -192,7 +192,7 @@ func (b BinaryExpr) Op() token.Token {
 
 type KeyValueExpr struct {
 	*ast.KeyValueExpr
-	Key Expr
+	Key   Expr
 	Value Expr
 }
 
@@ -210,7 +210,7 @@ type StructType struct {
 
 type FuncType struct {
 	*ast.FuncType
-	Params *FieldList
+	Params  *FieldList
 	Results *FieldList
 	knownType
 }
@@ -222,7 +222,7 @@ type InterfaceType struct {
 
 type MapType struct {
 	*ast.MapType
-	Key Expr
+	Key   Expr
 	Value Expr
 	knownType
 }
@@ -230,14 +230,14 @@ type MapType struct {
 type ChanType struct {
 	*ast.ChanType
 	Value Expr
-	dir reflect.ChanDir
+	dir   reflect.ChanDir
 	knownType
 }
 
 type Field struct {
 	*ast.Field
 	Names []*Ident
-	Type Expr
+	Type  Expr
 
 	knownType
 }
@@ -253,7 +253,7 @@ type AssignStmt struct {
 	Rhs []Expr
 
 	newNames map[int]string
-	types []reflect.Type
+	types    []reflect.Type
 }
 
 type BranchStmt struct {
@@ -292,15 +292,15 @@ type IfStmt struct {
 type LabeledStmt struct {
 	*ast.LabeledStmt
 	Label *Ident
-	Stmt Stmt
+	Stmt  Stmt
 }
 
 type ForStmt struct {
 	*ast.ForStmt
-	Init Stmt
-	Cond Expr
-	Post Stmt
-	Body *BlockStmt
+	Init  Stmt
+	Cond  Expr
+	Post  Stmt
+	Body  *BlockStmt
 	label string
 }
 
@@ -312,21 +312,21 @@ type ReturnStmt struct {
 type SwitchStmt struct {
 	*ast.SwitchStmt
 	Init Stmt
-	Tag Expr
+	Tag  Expr
 	Body *BlockStmt
 
 	tagT reflect.Type
-	def Stmt // This is a *CaseClause, but we want it to be nil-able
+	def  Stmt // This is a *CaseClause, but we want it to be nil-able
 }
 
 type TypeSwitchStmt struct {
 	*ast.TypeSwitchStmt
-	Init Stmt
+	Init   Stmt
 	Assign Stmt
-	Body *BlockStmt
+	Body   *BlockStmt
 
-	clauses map[reflect.Type] CaseClause
-	def Stmt // This is a *CaseClause, but we want it to be nil-able
+	clauses map[reflect.Type]CaseClause
+	def     Stmt // This is a *CaseClause, but we want it to be nil-able
 }
 
 func (typeswitch *TypeSwitchStmt) Tag() Expr {
@@ -567,8 +567,8 @@ func (arrayType *ArrayType) String() string {
 	}
 }
 
-func (structType *StructType) String() string { return "TODO  structType.StructType" }
-func (funcType *FuncType) String() string { return "TODO  funcType.FuncType" }
+func (structType *StructType) String() string       { return "TODO  structType.StructType" }
+func (funcType *FuncType) String() string           { return "TODO  funcType.FuncType" }
 func (interfaceType *InterfaceType) String() string { return "TODO  interfaceType.InterfaceType" }
 
 func (mapType *MapType) String() string {
@@ -590,7 +590,7 @@ func (chanType *ChanType) String() string {
 // Returns a printable interface{} which replaces constant expressions with their constants
 func simplifyBinaryChildExpr(parent *BinaryExpr, expr, other Expr) interface{} {
 	op := parent.Op()
-        if expr.IsConst() {
+	if expr.IsConst() {
 		// This mess is due to automatic type conversions in binary expressions.
 		// It will disappear once the AST is retyped as a first step
 		v := expr.Const()
@@ -695,7 +695,7 @@ func quoteString(i interface{}) interface{} {
 }
 
 func (c constValue) String() string {
-        return reflect.Value(c).String()
+	return reflect.Value(c).String()
 }
 
 func isTypeDisplayed(t reflect.Type) bool {
@@ -706,8 +706,7 @@ func isTypeDisplayed(t reflect.Type) bool {
 		uintType, u8, u16, u32, u64,
 		f32, f64, c64, c128,
 		boolType, stringType:
-		     return false
+		return false
 	}
 	return true
 }
-

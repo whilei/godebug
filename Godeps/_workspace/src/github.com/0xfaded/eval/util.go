@@ -197,7 +197,7 @@ var parseError = regexp.MustCompile(`^([0-9]+):([0-9]+): `)
 //
 // If something is wrong parsing the error message or matching it with
 // the source, an empty slice is returned.
-func FormatErrorPos(source, errmsg string) (cursored [] string) {
+func FormatErrorPos(source, errmsg string) (cursored []string) {
 	matches := parseError.FindStringSubmatch(errmsg)
 	if len(matches) == 3 {
 		var err error
@@ -219,7 +219,7 @@ func FormatErrorPos(source, errmsg string) (cursored [] string) {
 		} else if column == 1 {
 			cursored = append(cursored, "^")
 		} else {
-			cursored = append(cursored, strings.Repeat("-", column-1) + "^")
+			cursored = append(cursored, strings.Repeat("-", column-1)+"^")
 		}
 	}
 	return cursored
@@ -259,18 +259,18 @@ func comprisingFloatType(complexType reflect.Type) reflect.Type {
 // the input is successfully type checked, and therefore is undefined
 // incorrectly typed inputs.
 func evalTypedExpr(expr Expr, t knownType, env Env) (xs []reflect.Value, err error) {
-        if expr.IsConst() {
-                x := expr.Const()
-                if ct, ok := expr.KnownType()[0].(ConstType); ok {
-                        cx, _ := promoteConstToTyped(ct, constValue(x), t[0], expr)
-                        xs = []reflect.Value{reflect.Value(cx)}
-                } else {
-                        xs = []reflect.Value{x}
-                }
-        } else {
-                xs, err = EvalExpr(expr, env)
-        }
-        return xs, err
+	if expr.IsConst() {
+		x := expr.Const()
+		if ct, ok := expr.KnownType()[0].(ConstType); ok {
+			cx, _ := promoteConstToTyped(ct, constValue(x), t[0], expr)
+			xs = []reflect.Value{reflect.Value(cx)}
+		} else {
+			xs = []reflect.Value{x}
+		}
+	} else {
+		xs, err = EvalExpr(expr, env)
+	}
+	return xs, err
 }
 
 // Type check an integral node. Returns the type checked node, the
@@ -319,16 +319,16 @@ func checkInteger(expr ast.Expr, env Env) (aexpr Expr, i int, ok bool, checkErrs
 
 // Eval a node and cast it to an int. expr must be a *ConstNumber or integral type
 func evalInteger(expr Expr, env Env) (int, error) {
-        if expr.IsConst() {
-                x := expr.Const()
-                if ct, ok := expr.KnownType()[0].(ConstType); ok {
-                        cx, _ := promoteConstToTyped(ct, constValue(x), intType, expr)
+	if expr.IsConst() {
+		x := expr.Const()
+		if ct, ok := expr.KnownType()[0].(ConstType); ok {
+			cx, _ := promoteConstToTyped(ct, constValue(x), intType, expr)
 			return int(reflect.Value(cx).Int()), nil
-                } else {
+		} else {
 			panic(dytc("const bool or string evaluated as int"))
-                }
-        } else {
-                xs, err := EvalExpr(expr, env);
+		}
+	} else {
+		xs, err := EvalExpr(expr, env)
 		if err != nil {
 			return 0, err
 		}
@@ -341,7 +341,7 @@ func evalInteger(expr Expr, env Env) (int, error) {
 		default:
 			panic(dytc("non-integral type evaluated as int"))
 		}
-        }
+	}
 }
 
 func checkArrayIndex(expr ast.Expr, env Env) (aexpr Expr, i int, ok bool, checkErrs []error) {
@@ -553,4 +553,3 @@ func equal(x, y reflect.Value) (bool, error) {
 		return x.Interface() == y.Interface(), nil
 	}
 }
-

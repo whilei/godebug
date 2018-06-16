@@ -2,27 +2,26 @@ package main
 
 import (
 	"fmt"
+	"github.com/0xfaded/go-testgen"
+	"go/token"
 	"io"
 	"text/template"
-	"go/token"
-	"github.com/0xfaded/go-testgen"
 )
-
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Op.Value }} {{ .Rhs.Name }}
+	`// Test {{ .Op.Value }} {{ .Rhs.Name }}
 `))
 
 var body = template.Must(template.New("Body").Parse(
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 {{ if .Errors }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	)
 {{ else }}
-	expectConst(t, `+"`{{ .Expr }}`"+`, env, {{ .Expr }}, reflect.TypeOf({{ .Expr }})){{ end }}
+	expectConst(t, ` + "`{{ .Expr }}`" + `, env, {{ .Expr }}, reflect.TypeOf({{ .Expr }})){{ end }}
 `))
 
 func (*Test) Package() string {
@@ -34,7 +33,7 @@ func (*Test) Prefix() string {
 }
 
 func (*Test) Imports() map[string]string {
-	return map[string]string {"reflect": ""}
+	return map[string]string{"reflect": ""}
 }
 
 func (*Test) Dimensions() []testgen.Dimension {
@@ -65,8 +64,8 @@ func (*Test) Globals(w io.Writer) error {
 }
 
 func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
-	vars := map[string] interface{} {
-		"Op": elts[0],
+	vars := map[string]interface{}{
+		"Op":  elts[0],
 		"Rhs": elts[1],
 	}
 
@@ -74,7 +73,7 @@ func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
 }
 
 func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
-	op  := elts[0].Value.(token.Token)
+	op := elts[0].Value.(token.Token)
 
 	expr := fmt.Sprintf("%v %v", op, elts[1].Value)
 	compileErrs, err := compileExpr(expr)
@@ -82,12 +81,11 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		return err
 	}
 
-	vars := map[string] interface{} {
-		"Expr": expr,
+	vars := map[string]interface{}{
+		"Expr":   expr,
 		"Errors": compileErrs,
-		"Op": elts[1],
+		"Op":     elts[1],
 	}
 
 	return body.Execute(w, &vars)
 }
-

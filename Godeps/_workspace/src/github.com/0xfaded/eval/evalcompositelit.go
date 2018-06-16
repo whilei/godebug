@@ -57,7 +57,7 @@ func evalCompositeLitArrayOrSlice(t reflect.Type, lit *CompositeLit, env Env) (r
 	}
 
 	eT := knownType{t.Elem()}
-	for src, dst, i := 0, 0, 0; src < len(lit.Elts); src, dst = src + 1, dst + 1 {
+	for src, dst, i := 0, 0, 0; src < len(lit.Elts); src, dst = src+1, dst+1 {
 		var elt Expr
 		if lit.indices[i].pos == src {
 			elt = lit.Elts[src].(*KeyValueExpr).Value

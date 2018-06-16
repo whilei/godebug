@@ -1,14 +1,14 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestFuncCallWithConst(t *testing.T) {
 	env := MakeSimpleEnv()
 	env.Consts["X"] = reflect.ValueOf(int(10))
-	env.Funcs["Foo"] = reflect.ValueOf(func (int) int { return 1; })
+	env.Funcs["Foo"] = reflect.ValueOf(func(int) int { return 1 })
 
 	expectResult(t, "Foo(X)", env, 1)
 }
@@ -54,4 +54,3 @@ func TestTypeConversionWithEmptyInterface(t *testing.T) {
 	expectResult(t, "interface{}([]int{})", env, interface{}([]int{}))
 	expectResult(t, "interface{}('a')", env, interface{}('a'))
 }
-

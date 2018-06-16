@@ -54,9 +54,12 @@ func evalUnaryIntExpr(x reflect.Value, op token.Token) (reflect.Value, error) {
 
 	xx := x.Int()
 	switch op {
-	case token.ADD: r = +xx
-	case token.SUB: r = -xx
-	case token.XOR: r = ^xx
+	case token.ADD:
+		r = +xx
+	case token.SUB:
+		r = -xx
+	case token.XOR:
+		r = ^xx
 	default:
 		panic("eval: impossible unary op " + op.String())
 	}
@@ -69,9 +72,12 @@ func evalUnaryUintExpr(x reflect.Value, op token.Token) (reflect.Value, error) {
 
 	xx := x.Uint()
 	switch op {
-	case token.ADD: r = +xx
-	case token.SUB: r = -xx
-	case token.XOR: r = ^xx
+	case token.ADD:
+		r = +xx
+	case token.SUB:
+		r = -xx
+	case token.XOR:
+		r = ^xx
 	default:
 		panic("eval: impossible unary op " + op.String())
 	}
@@ -84,8 +90,10 @@ func evalUnaryFloatExpr(x reflect.Value, op token.Token) (reflect.Value, error) 
 
 	xx := x.Float()
 	switch op {
-	case token.ADD: r = + xx
-	case token.SUB: r = - xx
+	case token.ADD:
+		r = +xx
+	case token.SUB:
+		r = -xx
 	default:
 		panic("eval: impossible unary op " + op.String())
 	}
@@ -98,8 +106,10 @@ func evalUnaryComplexExpr(x reflect.Value, op token.Token) (reflect.Value, error
 
 	xx := x.Complex()
 	switch op {
-	case token.ADD: r = +xx
-	case token.SUB: r = -xx
+	case token.ADD:
+		r = +xx
+	case token.SUB:
+		r = -xx
 	default:
 		panic("eval: impossible unary op " + op.String())
 	}
@@ -112,7 +122,8 @@ func evalUnaryBoolExpr(x reflect.Value, op token.Token) (reflect.Value, error) {
 
 	xx := x.Bool()
 	switch op {
-	case token.NOT: r = !xx
+	case token.NOT:
+		r = !xx
 	default:
 		panic("eval: impossible unary op " + op.String())
 	}

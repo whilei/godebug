@@ -1,20 +1,19 @@
 package main
 
 import (
+	"github.com/0xfaded/go-testgen"
 	"io"
 	"strings"
 	"text/template"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Comment }}
+	`// Test {{ .Comment }}
 `))
 
-var defs string =
-`	type I int
+var defs string = `	type I int
 	is := []int{1, 2, 3}
 	f := func(int, bool) int { return 1 }
 	ft := func(I, bool) int { return 1 }
@@ -26,8 +25,7 @@ var defs string =
 	m := func() (int, int) { return 1, 1 }
 	mt := func() (int, I) { return 1, 1 }
 `
-var underscores string =
-`	_ = is
+var underscores string = `	_ = is
 	_ = f
 	_ = ft
 	_ = v1
@@ -39,7 +37,7 @@ var underscores string =
 	_ = mt
 `
 var body = template.Must(template.New("Body").Parse(
-defs + `
+	defs + `
 
 	env := MakeSimpleEnv()
 	env.Types["I"] = reflect.TypeOf(I(0))
@@ -55,11 +53,11 @@ defs + `
 	env.Funcs["mt"] = reflect.ValueOf(mt)
 
 {{ if .Errors }}{{ if .TestErrs }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	){{ else }}	_ = env{{ end }}
 {{ else }}
-	expectType(t, `+"`{{ .Expr }}`"+`, env, reflect.TypeOf({{ .Expr }})){{ end }}
+	expectType(t, ` + "`{{ .Expr }}`" + `, env, reflect.TypeOf({{ .Expr }})){{ end }}
 `))
 
 func (*Test) Package() string {
@@ -71,7 +69,7 @@ func (*Test) Prefix() string {
 }
 
 func (*Test) Imports() map[string]string {
-	return map[string]string { "reflect": "" }
+	return map[string]string{"reflect": ""}
 }
 
 func (*Test) Dimensions() []testgen.Dimension {
@@ -120,7 +118,7 @@ func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
 	}
 	fun += ")"
 
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Comment": fun,
 	}
 
@@ -141,7 +139,7 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 	}
 	expr += ")"
 
-	compileErrs, err := compileExprWithDefs(expr, defs + underscores)
+	compileErrs, err := compileExprWithDefs(expr, defs+underscores)
 	if err != nil {
 		return err
 	}
@@ -176,12 +174,11 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 		compileErrs = append(compileErrs[:1], append([]string{compileErrs[0]}, compileErrs[1:]...)...)
 	}
 
-	vars := map[string] interface{} {
-		"Expr": expr,
-		"Errors": compileErrs,
+	vars := map[string]interface{}{
+		"Expr":     expr,
+		"Errors":   compileErrs,
 		"TestErrs": testErrs,
 	}
 
 	return body.Execute(w, &vars)
 }
-

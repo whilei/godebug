@@ -61,4 +61,3 @@ func TestCheckBuiltinMakeBadType(t *testing.T) {
 	env := MakeSimpleEnv()
 	expectCheckError(t, "make(int)", env, "cannot make type int")
 }
-

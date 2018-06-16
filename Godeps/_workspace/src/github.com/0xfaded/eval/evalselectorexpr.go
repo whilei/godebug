@@ -29,4 +29,3 @@ func evalSelectorExpr(selector *SelectorExpr, env Env) (reflect.Value, error) {
 	}
 	return v.Method(selector.method), nil
 }
-

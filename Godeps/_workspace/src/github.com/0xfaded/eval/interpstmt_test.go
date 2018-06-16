@@ -421,4 +421,3 @@ func TestLabeledBreakLoopFromUnlabeled(t *testing.T) {
 	expectInterp(t, loop, env)
 	expectResult(t, "x", env, 1)
 }
-

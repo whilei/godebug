@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 // Test Int8 + Int
@@ -231,21 +231,21 @@ func TestCheckBinaryTypedExprInt8AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt8SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) - 4`, env, int8(0x7f) - 4, reflect.TypeOf(int8(0x7f) - 4))
+	expectConst(t, `int8(0x7f) - 4`, env, int8(0x7f)-4, reflect.TypeOf(int8(0x7f)-4))
 }
 
 // Test Int8 - Rune
 func TestCheckBinaryTypedExprInt8SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) - '@'`, env, int8(0x7f) - '@', reflect.TypeOf(int8(0x7f) - '@'))
+	expectConst(t, `int8(0x7f) - '@'`, env, int8(0x7f)-'@', reflect.TypeOf(int8(0x7f)-'@'))
 }
 
 // Test Int8 - Float
 func TestCheckBinaryTypedExprInt8SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) - 2.0`, env, int8(0x7f) - 2.0, reflect.TypeOf(int8(0x7f) - 2.0))
+	expectConst(t, `int8(0x7f) - 2.0`, env, int8(0x7f)-2.0, reflect.TypeOf(int8(0x7f)-2.0))
 }
 
 // Test Int8 - Complex
@@ -294,7 +294,7 @@ func TestCheckBinaryTypedExprInt8SubNil(t *testing.T) {
 func TestCheckBinaryTypedExprInt8SubInt8(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) - int8(0x7f)`, env, int8(0x7f) - int8(0x7f), reflect.TypeOf(int8(0x7f) - int8(0x7f)))
+	expectConst(t, `int8(0x7f) - int8(0x7f)`, env, int8(0x7f)-int8(0x7f), reflect.TypeOf(int8(0x7f)-int8(0x7f)))
 }
 
 // Test Int8 - Int16
@@ -441,21 +441,21 @@ func TestCheckBinaryTypedExprInt8SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt8AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) & 4`, env, int8(0x7f) & 4, reflect.TypeOf(int8(0x7f) & 4))
+	expectConst(t, `int8(0x7f) & 4`, env, int8(0x7f)&4, reflect.TypeOf(int8(0x7f)&4))
 }
 
 // Test Int8 & Rune
 func TestCheckBinaryTypedExprInt8AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) & '@'`, env, int8(0x7f) & '@', reflect.TypeOf(int8(0x7f) & '@'))
+	expectConst(t, `int8(0x7f) & '@'`, env, int8(0x7f)&'@', reflect.TypeOf(int8(0x7f)&'@'))
 }
 
 // Test Int8 & Float
 func TestCheckBinaryTypedExprInt8AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) & 2.0`, env, int8(0x7f) & 2.0, reflect.TypeOf(int8(0x7f) & 2.0))
+	expectConst(t, `int8(0x7f) & 2.0`, env, int8(0x7f)&2.0, reflect.TypeOf(int8(0x7f)&2.0))
 }
 
 // Test Int8 & Complex
@@ -504,7 +504,7 @@ func TestCheckBinaryTypedExprInt8AndNil(t *testing.T) {
 func TestCheckBinaryTypedExprInt8AndInt8(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) & int8(0x7f)`, env, int8(0x7f) & int8(0x7f), reflect.TypeOf(int8(0x7f) & int8(0x7f)))
+	expectConst(t, `int8(0x7f) & int8(0x7f)`, env, int8(0x7f)&int8(0x7f), reflect.TypeOf(int8(0x7f)&int8(0x7f)))
 }
 
 // Test Int8 & Int16
@@ -651,21 +651,21 @@ func TestCheckBinaryTypedExprInt8AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt8RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) % 4`, env, int8(0x7f) % 4, reflect.TypeOf(int8(0x7f) % 4))
+	expectConst(t, `int8(0x7f) % 4`, env, int8(0x7f)%4, reflect.TypeOf(int8(0x7f)%4))
 }
 
 // Test Int8 % Rune
 func TestCheckBinaryTypedExprInt8RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) % '@'`, env, int8(0x7f) % '@', reflect.TypeOf(int8(0x7f) % '@'))
+	expectConst(t, `int8(0x7f) % '@'`, env, int8(0x7f)%'@', reflect.TypeOf(int8(0x7f)%'@'))
 }
 
 // Test Int8 % Float
 func TestCheckBinaryTypedExprInt8RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) % 2.0`, env, int8(0x7f) % 2.0, reflect.TypeOf(int8(0x7f) % 2.0))
+	expectConst(t, `int8(0x7f) % 2.0`, env, int8(0x7f)%2.0, reflect.TypeOf(int8(0x7f)%2.0))
 }
 
 // Test Int8 % Complex
@@ -715,7 +715,7 @@ func TestCheckBinaryTypedExprInt8RemNil(t *testing.T) {
 func TestCheckBinaryTypedExprInt8RemInt8(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int8(0x7f) % int8(0x7f)`, env, int8(0x7f) % int8(0x7f), reflect.TypeOf(int8(0x7f) % int8(0x7f)))
+	expectConst(t, `int8(0x7f) % int8(0x7f)`, env, int8(0x7f)%int8(0x7f), reflect.TypeOf(int8(0x7f)%int8(0x7f)))
 }
 
 // Test Int8 % Int16
@@ -1725,21 +1725,21 @@ func TestCheckBinaryTypedExprInt16AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt16SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) - 4`, env, int16(0x7fff) - 4, reflect.TypeOf(int16(0x7fff) - 4))
+	expectConst(t, `int16(0x7fff) - 4`, env, int16(0x7fff)-4, reflect.TypeOf(int16(0x7fff)-4))
 }
 
 // Test Int16 - Rune
 func TestCheckBinaryTypedExprInt16SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) - '@'`, env, int16(0x7fff) - '@', reflect.TypeOf(int16(0x7fff) - '@'))
+	expectConst(t, `int16(0x7fff) - '@'`, env, int16(0x7fff)-'@', reflect.TypeOf(int16(0x7fff)-'@'))
 }
 
 // Test Int16 - Float
 func TestCheckBinaryTypedExprInt16SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) - 2.0`, env, int16(0x7fff) - 2.0, reflect.TypeOf(int16(0x7fff) - 2.0))
+	expectConst(t, `int16(0x7fff) - 2.0`, env, int16(0x7fff)-2.0, reflect.TypeOf(int16(0x7fff)-2.0))
 }
 
 // Test Int16 - Complex
@@ -1798,7 +1798,7 @@ func TestCheckBinaryTypedExprInt16SubInt8(t *testing.T) {
 func TestCheckBinaryTypedExprInt16SubInt16(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) - int16(0x7fff)`, env, int16(0x7fff) - int16(0x7fff), reflect.TypeOf(int16(0x7fff) - int16(0x7fff)))
+	expectConst(t, `int16(0x7fff) - int16(0x7fff)`, env, int16(0x7fff)-int16(0x7fff), reflect.TypeOf(int16(0x7fff)-int16(0x7fff)))
 }
 
 // Test Int16 - Int32
@@ -1935,21 +1935,21 @@ func TestCheckBinaryTypedExprInt16SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt16AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) & 4`, env, int16(0x7fff) & 4, reflect.TypeOf(int16(0x7fff) & 4))
+	expectConst(t, `int16(0x7fff) & 4`, env, int16(0x7fff)&4, reflect.TypeOf(int16(0x7fff)&4))
 }
 
 // Test Int16 & Rune
 func TestCheckBinaryTypedExprInt16AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) & '@'`, env, int16(0x7fff) & '@', reflect.TypeOf(int16(0x7fff) & '@'))
+	expectConst(t, `int16(0x7fff) & '@'`, env, int16(0x7fff)&'@', reflect.TypeOf(int16(0x7fff)&'@'))
 }
 
 // Test Int16 & Float
 func TestCheckBinaryTypedExprInt16AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) & 2.0`, env, int16(0x7fff) & 2.0, reflect.TypeOf(int16(0x7fff) & 2.0))
+	expectConst(t, `int16(0x7fff) & 2.0`, env, int16(0x7fff)&2.0, reflect.TypeOf(int16(0x7fff)&2.0))
 }
 
 // Test Int16 & Complex
@@ -2008,7 +2008,7 @@ func TestCheckBinaryTypedExprInt16AndInt8(t *testing.T) {
 func TestCheckBinaryTypedExprInt16AndInt16(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) & int16(0x7fff)`, env, int16(0x7fff) & int16(0x7fff), reflect.TypeOf(int16(0x7fff) & int16(0x7fff)))
+	expectConst(t, `int16(0x7fff) & int16(0x7fff)`, env, int16(0x7fff)&int16(0x7fff), reflect.TypeOf(int16(0x7fff)&int16(0x7fff)))
 }
 
 // Test Int16 & Int32
@@ -2145,21 +2145,21 @@ func TestCheckBinaryTypedExprInt16AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt16RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) % 4`, env, int16(0x7fff) % 4, reflect.TypeOf(int16(0x7fff) % 4))
+	expectConst(t, `int16(0x7fff) % 4`, env, int16(0x7fff)%4, reflect.TypeOf(int16(0x7fff)%4))
 }
 
 // Test Int16 % Rune
 func TestCheckBinaryTypedExprInt16RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) % '@'`, env, int16(0x7fff) % '@', reflect.TypeOf(int16(0x7fff) % '@'))
+	expectConst(t, `int16(0x7fff) % '@'`, env, int16(0x7fff)%'@', reflect.TypeOf(int16(0x7fff)%'@'))
 }
 
 // Test Int16 % Float
 func TestCheckBinaryTypedExprInt16RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) % 2.0`, env, int16(0x7fff) % 2.0, reflect.TypeOf(int16(0x7fff) % 2.0))
+	expectConst(t, `int16(0x7fff) % 2.0`, env, int16(0x7fff)%2.0, reflect.TypeOf(int16(0x7fff)%2.0))
 }
 
 // Test Int16 % Complex
@@ -2219,7 +2219,7 @@ func TestCheckBinaryTypedExprInt16RemInt8(t *testing.T) {
 func TestCheckBinaryTypedExprInt16RemInt16(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int16(0x7fff) % int16(0x7fff)`, env, int16(0x7fff) % int16(0x7fff), reflect.TypeOf(int16(0x7fff) % int16(0x7fff)))
+	expectConst(t, `int16(0x7fff) % int16(0x7fff)`, env, int16(0x7fff)%int16(0x7fff), reflect.TypeOf(int16(0x7fff)%int16(0x7fff)))
 }
 
 // Test Int16 % Int32
@@ -3219,21 +3219,21 @@ func TestCheckBinaryTypedExprInt32AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt32SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) - 4`, env, int32(0x7fffffff) - 4, reflect.TypeOf(int32(0x7fffffff) - 4))
+	expectConst(t, `int32(0x7fffffff) - 4`, env, int32(0x7fffffff)-4, reflect.TypeOf(int32(0x7fffffff)-4))
 }
 
 // Test Int32 - Rune
 func TestCheckBinaryTypedExprInt32SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) - '@'`, env, int32(0x7fffffff) - '@', reflect.TypeOf(int32(0x7fffffff) - '@'))
+	expectConst(t, `int32(0x7fffffff) - '@'`, env, int32(0x7fffffff)-'@', reflect.TypeOf(int32(0x7fffffff)-'@'))
 }
 
 // Test Int32 - Float
 func TestCheckBinaryTypedExprInt32SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) - 2.0`, env, int32(0x7fffffff) - 2.0, reflect.TypeOf(int32(0x7fffffff) - 2.0))
+	expectConst(t, `int32(0x7fffffff) - 2.0`, env, int32(0x7fffffff)-2.0, reflect.TypeOf(int32(0x7fffffff)-2.0))
 }
 
 // Test Int32 - Complex
@@ -3302,7 +3302,7 @@ func TestCheckBinaryTypedExprInt32SubInt16(t *testing.T) {
 func TestCheckBinaryTypedExprInt32SubInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) - int32(0x7fffffff)`, env, int32(0x7fffffff) - int32(0x7fffffff), reflect.TypeOf(int32(0x7fffffff) - int32(0x7fffffff)))
+	expectConst(t, `int32(0x7fffffff) - int32(0x7fffffff)`, env, int32(0x7fffffff)-int32(0x7fffffff), reflect.TypeOf(int32(0x7fffffff)-int32(0x7fffffff)))
 }
 
 // Test Int32 - Int64
@@ -3399,7 +3399,7 @@ func TestCheckBinaryTypedExprInt32SubComplex128(t *testing.T) {
 func TestCheckBinaryTypedExprInt32SubRune32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) - rune(0x7fffffff)`, env, int32(0x7fffffff) - rune(0x7fffffff), reflect.TypeOf(int32(0x7fffffff) - rune(0x7fffffff)))
+	expectConst(t, `int32(0x7fffffff) - rune(0x7fffffff)`, env, int32(0x7fffffff)-rune(0x7fffffff), reflect.TypeOf(int32(0x7fffffff)-rune(0x7fffffff)))
 }
 
 // Test Int32 - StringT
@@ -3426,21 +3426,21 @@ func TestCheckBinaryTypedExprInt32SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt32AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) & 4`, env, int32(0x7fffffff) & 4, reflect.TypeOf(int32(0x7fffffff) & 4))
+	expectConst(t, `int32(0x7fffffff) & 4`, env, int32(0x7fffffff)&4, reflect.TypeOf(int32(0x7fffffff)&4))
 }
 
 // Test Int32 & Rune
 func TestCheckBinaryTypedExprInt32AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) & '@'`, env, int32(0x7fffffff) & '@', reflect.TypeOf(int32(0x7fffffff) & '@'))
+	expectConst(t, `int32(0x7fffffff) & '@'`, env, int32(0x7fffffff)&'@', reflect.TypeOf(int32(0x7fffffff)&'@'))
 }
 
 // Test Int32 & Float
 func TestCheckBinaryTypedExprInt32AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) & 2.0`, env, int32(0x7fffffff) & 2.0, reflect.TypeOf(int32(0x7fffffff) & 2.0))
+	expectConst(t, `int32(0x7fffffff) & 2.0`, env, int32(0x7fffffff)&2.0, reflect.TypeOf(int32(0x7fffffff)&2.0))
 }
 
 // Test Int32 & Complex
@@ -3509,7 +3509,7 @@ func TestCheckBinaryTypedExprInt32AndInt16(t *testing.T) {
 func TestCheckBinaryTypedExprInt32AndInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) & int32(0x7fffffff)`, env, int32(0x7fffffff) & int32(0x7fffffff), reflect.TypeOf(int32(0x7fffffff) & int32(0x7fffffff)))
+	expectConst(t, `int32(0x7fffffff) & int32(0x7fffffff)`, env, int32(0x7fffffff)&int32(0x7fffffff), reflect.TypeOf(int32(0x7fffffff)&int32(0x7fffffff)))
 }
 
 // Test Int32 & Int64
@@ -3606,7 +3606,7 @@ func TestCheckBinaryTypedExprInt32AndComplex128(t *testing.T) {
 func TestCheckBinaryTypedExprInt32AndRune32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) & rune(0x7fffffff)`, env, int32(0x7fffffff) & rune(0x7fffffff), reflect.TypeOf(int32(0x7fffffff) & rune(0x7fffffff)))
+	expectConst(t, `int32(0x7fffffff) & rune(0x7fffffff)`, env, int32(0x7fffffff)&rune(0x7fffffff), reflect.TypeOf(int32(0x7fffffff)&rune(0x7fffffff)))
 }
 
 // Test Int32 & StringT
@@ -3633,21 +3633,21 @@ func TestCheckBinaryTypedExprInt32AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt32RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) % 4`, env, int32(0x7fffffff) % 4, reflect.TypeOf(int32(0x7fffffff) % 4))
+	expectConst(t, `int32(0x7fffffff) % 4`, env, int32(0x7fffffff)%4, reflect.TypeOf(int32(0x7fffffff)%4))
 }
 
 // Test Int32 % Rune
 func TestCheckBinaryTypedExprInt32RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) % '@'`, env, int32(0x7fffffff) % '@', reflect.TypeOf(int32(0x7fffffff) % '@'))
+	expectConst(t, `int32(0x7fffffff) % '@'`, env, int32(0x7fffffff)%'@', reflect.TypeOf(int32(0x7fffffff)%'@'))
 }
 
 // Test Int32 % Float
 func TestCheckBinaryTypedExprInt32RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) % 2.0`, env, int32(0x7fffffff) % 2.0, reflect.TypeOf(int32(0x7fffffff) % 2.0))
+	expectConst(t, `int32(0x7fffffff) % 2.0`, env, int32(0x7fffffff)%2.0, reflect.TypeOf(int32(0x7fffffff)%2.0))
 }
 
 // Test Int32 % Complex
@@ -3717,7 +3717,7 @@ func TestCheckBinaryTypedExprInt32RemInt16(t *testing.T) {
 func TestCheckBinaryTypedExprInt32RemInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) % int32(0x7fffffff)`, env, int32(0x7fffffff) % int32(0x7fffffff), reflect.TypeOf(int32(0x7fffffff) % int32(0x7fffffff)))
+	expectConst(t, `int32(0x7fffffff) % int32(0x7fffffff)`, env, int32(0x7fffffff)%int32(0x7fffffff), reflect.TypeOf(int32(0x7fffffff)%int32(0x7fffffff)))
 }
 
 // Test Int32 % Int64
@@ -3814,7 +3814,7 @@ func TestCheckBinaryTypedExprInt32RemComplex128(t *testing.T) {
 func TestCheckBinaryTypedExprInt32RemRune32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int32(0x7fffffff) % rune(0x7fffffff)`, env, int32(0x7fffffff) % rune(0x7fffffff), reflect.TypeOf(int32(0x7fffffff) % rune(0x7fffffff)))
+	expectConst(t, `int32(0x7fffffff) % rune(0x7fffffff)`, env, int32(0x7fffffff)%rune(0x7fffffff), reflect.TypeOf(int32(0x7fffffff)%rune(0x7fffffff)))
 }
 
 // Test Int32 % StringT
@@ -4698,21 +4698,21 @@ func TestCheckBinaryTypedExprInt64AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt64SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) - 4`, env, int64(0x7fffffffffffffff) - 4, reflect.TypeOf(int64(0x7fffffffffffffff) - 4))
+	expectConst(t, `int64(0x7fffffffffffffff) - 4`, env, int64(0x7fffffffffffffff)-4, reflect.TypeOf(int64(0x7fffffffffffffff)-4))
 }
 
 // Test Int64 - Rune
 func TestCheckBinaryTypedExprInt64SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) - '@'`, env, int64(0x7fffffffffffffff) - '@', reflect.TypeOf(int64(0x7fffffffffffffff) - '@'))
+	expectConst(t, `int64(0x7fffffffffffffff) - '@'`, env, int64(0x7fffffffffffffff)-'@', reflect.TypeOf(int64(0x7fffffffffffffff)-'@'))
 }
 
 // Test Int64 - Float
 func TestCheckBinaryTypedExprInt64SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) - 2.0`, env, int64(0x7fffffffffffffff) - 2.0, reflect.TypeOf(int64(0x7fffffffffffffff) - 2.0))
+	expectConst(t, `int64(0x7fffffffffffffff) - 2.0`, env, int64(0x7fffffffffffffff)-2.0, reflect.TypeOf(int64(0x7fffffffffffffff)-2.0))
 }
 
 // Test Int64 - Complex
@@ -4791,7 +4791,7 @@ func TestCheckBinaryTypedExprInt64SubInt32(t *testing.T) {
 func TestCheckBinaryTypedExprInt64SubInt64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) - int64(0x7fffffffffffffff)`, env, int64(0x7fffffffffffffff) - int64(0x7fffffffffffffff), reflect.TypeOf(int64(0x7fffffffffffffff) - int64(0x7fffffffffffffff)))
+	expectConst(t, `int64(0x7fffffffffffffff) - int64(0x7fffffffffffffff)`, env, int64(0x7fffffffffffffff)-int64(0x7fffffffffffffff), reflect.TypeOf(int64(0x7fffffffffffffff)-int64(0x7fffffffffffffff)))
 }
 
 // Test Int64 - Uint8
@@ -4908,21 +4908,21 @@ func TestCheckBinaryTypedExprInt64SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt64AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) & 4`, env, int64(0x7fffffffffffffff) & 4, reflect.TypeOf(int64(0x7fffffffffffffff) & 4))
+	expectConst(t, `int64(0x7fffffffffffffff) & 4`, env, int64(0x7fffffffffffffff)&4, reflect.TypeOf(int64(0x7fffffffffffffff)&4))
 }
 
 // Test Int64 & Rune
 func TestCheckBinaryTypedExprInt64AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) & '@'`, env, int64(0x7fffffffffffffff) & '@', reflect.TypeOf(int64(0x7fffffffffffffff) & '@'))
+	expectConst(t, `int64(0x7fffffffffffffff) & '@'`, env, int64(0x7fffffffffffffff)&'@', reflect.TypeOf(int64(0x7fffffffffffffff)&'@'))
 }
 
 // Test Int64 & Float
 func TestCheckBinaryTypedExprInt64AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) & 2.0`, env, int64(0x7fffffffffffffff) & 2.0, reflect.TypeOf(int64(0x7fffffffffffffff) & 2.0))
+	expectConst(t, `int64(0x7fffffffffffffff) & 2.0`, env, int64(0x7fffffffffffffff)&2.0, reflect.TypeOf(int64(0x7fffffffffffffff)&2.0))
 }
 
 // Test Int64 & Complex
@@ -5001,7 +5001,7 @@ func TestCheckBinaryTypedExprInt64AndInt32(t *testing.T) {
 func TestCheckBinaryTypedExprInt64AndInt64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) & int64(0x7fffffffffffffff)`, env, int64(0x7fffffffffffffff) & int64(0x7fffffffffffffff), reflect.TypeOf(int64(0x7fffffffffffffff) & int64(0x7fffffffffffffff)))
+	expectConst(t, `int64(0x7fffffffffffffff) & int64(0x7fffffffffffffff)`, env, int64(0x7fffffffffffffff)&int64(0x7fffffffffffffff), reflect.TypeOf(int64(0x7fffffffffffffff)&int64(0x7fffffffffffffff)))
 }
 
 // Test Int64 & Uint8
@@ -5118,21 +5118,21 @@ func TestCheckBinaryTypedExprInt64AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprInt64RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) % 4`, env, int64(0x7fffffffffffffff) % 4, reflect.TypeOf(int64(0x7fffffffffffffff) % 4))
+	expectConst(t, `int64(0x7fffffffffffffff) % 4`, env, int64(0x7fffffffffffffff)%4, reflect.TypeOf(int64(0x7fffffffffffffff)%4))
 }
 
 // Test Int64 % Rune
 func TestCheckBinaryTypedExprInt64RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) % '@'`, env, int64(0x7fffffffffffffff) % '@', reflect.TypeOf(int64(0x7fffffffffffffff) % '@'))
+	expectConst(t, `int64(0x7fffffffffffffff) % '@'`, env, int64(0x7fffffffffffffff)%'@', reflect.TypeOf(int64(0x7fffffffffffffff)%'@'))
 }
 
 // Test Int64 % Float
 func TestCheckBinaryTypedExprInt64RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) % 2.0`, env, int64(0x7fffffffffffffff) % 2.0, reflect.TypeOf(int64(0x7fffffffffffffff) % 2.0))
+	expectConst(t, `int64(0x7fffffffffffffff) % 2.0`, env, int64(0x7fffffffffffffff)%2.0, reflect.TypeOf(int64(0x7fffffffffffffff)%2.0))
 }
 
 // Test Int64 % Complex
@@ -5212,7 +5212,7 @@ func TestCheckBinaryTypedExprInt64RemInt32(t *testing.T) {
 func TestCheckBinaryTypedExprInt64RemInt64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `int64(0x7fffffffffffffff) % int64(0x7fffffffffffffff)`, env, int64(0x7fffffffffffffff) % int64(0x7fffffffffffffff), reflect.TypeOf(int64(0x7fffffffffffffff) % int64(0x7fffffffffffffff)))
+	expectConst(t, `int64(0x7fffffffffffffff) % int64(0x7fffffffffffffff)`, env, int64(0x7fffffffffffffff)%int64(0x7fffffffffffffff), reflect.TypeOf(int64(0x7fffffffffffffff)%int64(0x7fffffffffffffff)))
 }
 
 // Test Int64 % Uint8
@@ -6192,21 +6192,21 @@ func TestCheckBinaryTypedExprUint8AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint8SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) - 4`, env, uint8(0xff) - 4, reflect.TypeOf(uint8(0xff) - 4))
+	expectConst(t, `uint8(0xff) - 4`, env, uint8(0xff)-4, reflect.TypeOf(uint8(0xff)-4))
 }
 
 // Test Uint8 - Rune
 func TestCheckBinaryTypedExprUint8SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) - '@'`, env, uint8(0xff) - '@', reflect.TypeOf(uint8(0xff) - '@'))
+	expectConst(t, `uint8(0xff) - '@'`, env, uint8(0xff)-'@', reflect.TypeOf(uint8(0xff)-'@'))
 }
 
 // Test Uint8 - Float
 func TestCheckBinaryTypedExprUint8SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) - 2.0`, env, uint8(0xff) - 2.0, reflect.TypeOf(uint8(0xff) - 2.0))
+	expectConst(t, `uint8(0xff) - 2.0`, env, uint8(0xff)-2.0, reflect.TypeOf(uint8(0xff)-2.0))
 }
 
 // Test Uint8 - Complex
@@ -6295,7 +6295,7 @@ func TestCheckBinaryTypedExprUint8SubInt64(t *testing.T) {
 func TestCheckBinaryTypedExprUint8SubUint8(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) - uint8(0xff)`, env, uint8(0xff) - uint8(0xff), reflect.TypeOf(uint8(0xff) - uint8(0xff)))
+	expectConst(t, `uint8(0xff) - uint8(0xff)`, env, uint8(0xff)-uint8(0xff), reflect.TypeOf(uint8(0xff)-uint8(0xff)))
 }
 
 // Test Uint8 - Uint16
@@ -6402,21 +6402,21 @@ func TestCheckBinaryTypedExprUint8SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint8AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) & 4`, env, uint8(0xff) & 4, reflect.TypeOf(uint8(0xff) & 4))
+	expectConst(t, `uint8(0xff) & 4`, env, uint8(0xff)&4, reflect.TypeOf(uint8(0xff)&4))
 }
 
 // Test Uint8 & Rune
 func TestCheckBinaryTypedExprUint8AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) & '@'`, env, uint8(0xff) & '@', reflect.TypeOf(uint8(0xff) & '@'))
+	expectConst(t, `uint8(0xff) & '@'`, env, uint8(0xff)&'@', reflect.TypeOf(uint8(0xff)&'@'))
 }
 
 // Test Uint8 & Float
 func TestCheckBinaryTypedExprUint8AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) & 2.0`, env, uint8(0xff) & 2.0, reflect.TypeOf(uint8(0xff) & 2.0))
+	expectConst(t, `uint8(0xff) & 2.0`, env, uint8(0xff)&2.0, reflect.TypeOf(uint8(0xff)&2.0))
 }
 
 // Test Uint8 & Complex
@@ -6505,7 +6505,7 @@ func TestCheckBinaryTypedExprUint8AndInt64(t *testing.T) {
 func TestCheckBinaryTypedExprUint8AndUint8(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) & uint8(0xff)`, env, uint8(0xff) & uint8(0xff), reflect.TypeOf(uint8(0xff) & uint8(0xff)))
+	expectConst(t, `uint8(0xff) & uint8(0xff)`, env, uint8(0xff)&uint8(0xff), reflect.TypeOf(uint8(0xff)&uint8(0xff)))
 }
 
 // Test Uint8 & Uint16
@@ -6612,21 +6612,21 @@ func TestCheckBinaryTypedExprUint8AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint8RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) % 4`, env, uint8(0xff) % 4, reflect.TypeOf(uint8(0xff) % 4))
+	expectConst(t, `uint8(0xff) % 4`, env, uint8(0xff)%4, reflect.TypeOf(uint8(0xff)%4))
 }
 
 // Test Uint8 % Rune
 func TestCheckBinaryTypedExprUint8RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) % '@'`, env, uint8(0xff) % '@', reflect.TypeOf(uint8(0xff) % '@'))
+	expectConst(t, `uint8(0xff) % '@'`, env, uint8(0xff)%'@', reflect.TypeOf(uint8(0xff)%'@'))
 }
 
 // Test Uint8 % Float
 func TestCheckBinaryTypedExprUint8RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) % 2.0`, env, uint8(0xff) % 2.0, reflect.TypeOf(uint8(0xff) % 2.0))
+	expectConst(t, `uint8(0xff) % 2.0`, env, uint8(0xff)%2.0, reflect.TypeOf(uint8(0xff)%2.0))
 }
 
 // Test Uint8 % Complex
@@ -6716,7 +6716,7 @@ func TestCheckBinaryTypedExprUint8RemInt64(t *testing.T) {
 func TestCheckBinaryTypedExprUint8RemUint8(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint8(0xff) % uint8(0xff)`, env, uint8(0xff) % uint8(0xff), reflect.TypeOf(uint8(0xff) % uint8(0xff)))
+	expectConst(t, `uint8(0xff) % uint8(0xff)`, env, uint8(0xff)%uint8(0xff), reflect.TypeOf(uint8(0xff)%uint8(0xff)))
 }
 
 // Test Uint8 % Uint16
@@ -7686,21 +7686,21 @@ func TestCheckBinaryTypedExprUint16AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint16SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) - 4`, env, uint16(0xffff) - 4, reflect.TypeOf(uint16(0xffff) - 4))
+	expectConst(t, `uint16(0xffff) - 4`, env, uint16(0xffff)-4, reflect.TypeOf(uint16(0xffff)-4))
 }
 
 // Test Uint16 - Rune
 func TestCheckBinaryTypedExprUint16SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) - '@'`, env, uint16(0xffff) - '@', reflect.TypeOf(uint16(0xffff) - '@'))
+	expectConst(t, `uint16(0xffff) - '@'`, env, uint16(0xffff)-'@', reflect.TypeOf(uint16(0xffff)-'@'))
 }
 
 // Test Uint16 - Float
 func TestCheckBinaryTypedExprUint16SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) - 2.0`, env, uint16(0xffff) - 2.0, reflect.TypeOf(uint16(0xffff) - 2.0))
+	expectConst(t, `uint16(0xffff) - 2.0`, env, uint16(0xffff)-2.0, reflect.TypeOf(uint16(0xffff)-2.0))
 }
 
 // Test Uint16 - Complex
@@ -7799,7 +7799,7 @@ func TestCheckBinaryTypedExprUint16SubUint8(t *testing.T) {
 func TestCheckBinaryTypedExprUint16SubUint16(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) - uint16(0xffff)`, env, uint16(0xffff) - uint16(0xffff), reflect.TypeOf(uint16(0xffff) - uint16(0xffff)))
+	expectConst(t, `uint16(0xffff) - uint16(0xffff)`, env, uint16(0xffff)-uint16(0xffff), reflect.TypeOf(uint16(0xffff)-uint16(0xffff)))
 }
 
 // Test Uint16 - Uint32
@@ -7896,21 +7896,21 @@ func TestCheckBinaryTypedExprUint16SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint16AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) & 4`, env, uint16(0xffff) & 4, reflect.TypeOf(uint16(0xffff) & 4))
+	expectConst(t, `uint16(0xffff) & 4`, env, uint16(0xffff)&4, reflect.TypeOf(uint16(0xffff)&4))
 }
 
 // Test Uint16 & Rune
 func TestCheckBinaryTypedExprUint16AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) & '@'`, env, uint16(0xffff) & '@', reflect.TypeOf(uint16(0xffff) & '@'))
+	expectConst(t, `uint16(0xffff) & '@'`, env, uint16(0xffff)&'@', reflect.TypeOf(uint16(0xffff)&'@'))
 }
 
 // Test Uint16 & Float
 func TestCheckBinaryTypedExprUint16AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) & 2.0`, env, uint16(0xffff) & 2.0, reflect.TypeOf(uint16(0xffff) & 2.0))
+	expectConst(t, `uint16(0xffff) & 2.0`, env, uint16(0xffff)&2.0, reflect.TypeOf(uint16(0xffff)&2.0))
 }
 
 // Test Uint16 & Complex
@@ -8009,7 +8009,7 @@ func TestCheckBinaryTypedExprUint16AndUint8(t *testing.T) {
 func TestCheckBinaryTypedExprUint16AndUint16(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) & uint16(0xffff)`, env, uint16(0xffff) & uint16(0xffff), reflect.TypeOf(uint16(0xffff) & uint16(0xffff)))
+	expectConst(t, `uint16(0xffff) & uint16(0xffff)`, env, uint16(0xffff)&uint16(0xffff), reflect.TypeOf(uint16(0xffff)&uint16(0xffff)))
 }
 
 // Test Uint16 & Uint32
@@ -8106,21 +8106,21 @@ func TestCheckBinaryTypedExprUint16AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint16RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) % 4`, env, uint16(0xffff) % 4, reflect.TypeOf(uint16(0xffff) % 4))
+	expectConst(t, `uint16(0xffff) % 4`, env, uint16(0xffff)%4, reflect.TypeOf(uint16(0xffff)%4))
 }
 
 // Test Uint16 % Rune
 func TestCheckBinaryTypedExprUint16RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) % '@'`, env, uint16(0xffff) % '@', reflect.TypeOf(uint16(0xffff) % '@'))
+	expectConst(t, `uint16(0xffff) % '@'`, env, uint16(0xffff)%'@', reflect.TypeOf(uint16(0xffff)%'@'))
 }
 
 // Test Uint16 % Float
 func TestCheckBinaryTypedExprUint16RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) % 2.0`, env, uint16(0xffff) % 2.0, reflect.TypeOf(uint16(0xffff) % 2.0))
+	expectConst(t, `uint16(0xffff) % 2.0`, env, uint16(0xffff)%2.0, reflect.TypeOf(uint16(0xffff)%2.0))
 }
 
 // Test Uint16 % Complex
@@ -8220,7 +8220,7 @@ func TestCheckBinaryTypedExprUint16RemUint8(t *testing.T) {
 func TestCheckBinaryTypedExprUint16RemUint16(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint16(0xffff) % uint16(0xffff)`, env, uint16(0xffff) % uint16(0xffff), reflect.TypeOf(uint16(0xffff) % uint16(0xffff)))
+	expectConst(t, `uint16(0xffff) % uint16(0xffff)`, env, uint16(0xffff)%uint16(0xffff), reflect.TypeOf(uint16(0xffff)%uint16(0xffff)))
 }
 
 // Test Uint16 % Uint32
@@ -9180,21 +9180,21 @@ func TestCheckBinaryTypedExprUint32AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint32SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) - 4`, env, uint32(0xffffffff) - 4, reflect.TypeOf(uint32(0xffffffff) - 4))
+	expectConst(t, `uint32(0xffffffff) - 4`, env, uint32(0xffffffff)-4, reflect.TypeOf(uint32(0xffffffff)-4))
 }
 
 // Test Uint32 - Rune
 func TestCheckBinaryTypedExprUint32SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) - '@'`, env, uint32(0xffffffff) - '@', reflect.TypeOf(uint32(0xffffffff) - '@'))
+	expectConst(t, `uint32(0xffffffff) - '@'`, env, uint32(0xffffffff)-'@', reflect.TypeOf(uint32(0xffffffff)-'@'))
 }
 
 // Test Uint32 - Float
 func TestCheckBinaryTypedExprUint32SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) - 2.0`, env, uint32(0xffffffff) - 2.0, reflect.TypeOf(uint32(0xffffffff) - 2.0))
+	expectConst(t, `uint32(0xffffffff) - 2.0`, env, uint32(0xffffffff)-2.0, reflect.TypeOf(uint32(0xffffffff)-2.0))
 }
 
 // Test Uint32 - Complex
@@ -9303,7 +9303,7 @@ func TestCheckBinaryTypedExprUint32SubUint16(t *testing.T) {
 func TestCheckBinaryTypedExprUint32SubUint32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) - uint32(0xffffffff)`, env, uint32(0xffffffff) - uint32(0xffffffff), reflect.TypeOf(uint32(0xffffffff) - uint32(0xffffffff)))
+	expectConst(t, `uint32(0xffffffff) - uint32(0xffffffff)`, env, uint32(0xffffffff)-uint32(0xffffffff), reflect.TypeOf(uint32(0xffffffff)-uint32(0xffffffff)))
 }
 
 // Test Uint32 - Uint64
@@ -9390,21 +9390,21 @@ func TestCheckBinaryTypedExprUint32SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint32AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) & 4`, env, uint32(0xffffffff) & 4, reflect.TypeOf(uint32(0xffffffff) & 4))
+	expectConst(t, `uint32(0xffffffff) & 4`, env, uint32(0xffffffff)&4, reflect.TypeOf(uint32(0xffffffff)&4))
 }
 
 // Test Uint32 & Rune
 func TestCheckBinaryTypedExprUint32AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) & '@'`, env, uint32(0xffffffff) & '@', reflect.TypeOf(uint32(0xffffffff) & '@'))
+	expectConst(t, `uint32(0xffffffff) & '@'`, env, uint32(0xffffffff)&'@', reflect.TypeOf(uint32(0xffffffff)&'@'))
 }
 
 // Test Uint32 & Float
 func TestCheckBinaryTypedExprUint32AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) & 2.0`, env, uint32(0xffffffff) & 2.0, reflect.TypeOf(uint32(0xffffffff) & 2.0))
+	expectConst(t, `uint32(0xffffffff) & 2.0`, env, uint32(0xffffffff)&2.0, reflect.TypeOf(uint32(0xffffffff)&2.0))
 }
 
 // Test Uint32 & Complex
@@ -9513,7 +9513,7 @@ func TestCheckBinaryTypedExprUint32AndUint16(t *testing.T) {
 func TestCheckBinaryTypedExprUint32AndUint32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) & uint32(0xffffffff)`, env, uint32(0xffffffff) & uint32(0xffffffff), reflect.TypeOf(uint32(0xffffffff) & uint32(0xffffffff)))
+	expectConst(t, `uint32(0xffffffff) & uint32(0xffffffff)`, env, uint32(0xffffffff)&uint32(0xffffffff), reflect.TypeOf(uint32(0xffffffff)&uint32(0xffffffff)))
 }
 
 // Test Uint32 & Uint64
@@ -9600,21 +9600,21 @@ func TestCheckBinaryTypedExprUint32AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint32RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) % 4`, env, uint32(0xffffffff) % 4, reflect.TypeOf(uint32(0xffffffff) % 4))
+	expectConst(t, `uint32(0xffffffff) % 4`, env, uint32(0xffffffff)%4, reflect.TypeOf(uint32(0xffffffff)%4))
 }
 
 // Test Uint32 % Rune
 func TestCheckBinaryTypedExprUint32RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) % '@'`, env, uint32(0xffffffff) % '@', reflect.TypeOf(uint32(0xffffffff) % '@'))
+	expectConst(t, `uint32(0xffffffff) % '@'`, env, uint32(0xffffffff)%'@', reflect.TypeOf(uint32(0xffffffff)%'@'))
 }
 
 // Test Uint32 % Float
 func TestCheckBinaryTypedExprUint32RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) % 2.0`, env, uint32(0xffffffff) % 2.0, reflect.TypeOf(uint32(0xffffffff) % 2.0))
+	expectConst(t, `uint32(0xffffffff) % 2.0`, env, uint32(0xffffffff)%2.0, reflect.TypeOf(uint32(0xffffffff)%2.0))
 }
 
 // Test Uint32 % Complex
@@ -9724,7 +9724,7 @@ func TestCheckBinaryTypedExprUint32RemUint16(t *testing.T) {
 func TestCheckBinaryTypedExprUint32RemUint32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint32(0xffffffff) % uint32(0xffffffff)`, env, uint32(0xffffffff) % uint32(0xffffffff), reflect.TypeOf(uint32(0xffffffff) % uint32(0xffffffff)))
+	expectConst(t, `uint32(0xffffffff) % uint32(0xffffffff)`, env, uint32(0xffffffff)%uint32(0xffffffff), reflect.TypeOf(uint32(0xffffffff)%uint32(0xffffffff)))
 }
 
 // Test Uint32 % Uint64
@@ -10674,21 +10674,21 @@ func TestCheckBinaryTypedExprUint64AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint64SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) - 4`, env, uint64(0xffffffffffffffff) - 4, reflect.TypeOf(uint64(0xffffffffffffffff) - 4))
+	expectConst(t, `uint64(0xffffffffffffffff) - 4`, env, uint64(0xffffffffffffffff)-4, reflect.TypeOf(uint64(0xffffffffffffffff)-4))
 }
 
 // Test Uint64 - Rune
 func TestCheckBinaryTypedExprUint64SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) - '@'`, env, uint64(0xffffffffffffffff) - '@', reflect.TypeOf(uint64(0xffffffffffffffff) - '@'))
+	expectConst(t, `uint64(0xffffffffffffffff) - '@'`, env, uint64(0xffffffffffffffff)-'@', reflect.TypeOf(uint64(0xffffffffffffffff)-'@'))
 }
 
 // Test Uint64 - Float
 func TestCheckBinaryTypedExprUint64SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) - 2.0`, env, uint64(0xffffffffffffffff) - 2.0, reflect.TypeOf(uint64(0xffffffffffffffff) - 2.0))
+	expectConst(t, `uint64(0xffffffffffffffff) - 2.0`, env, uint64(0xffffffffffffffff)-2.0, reflect.TypeOf(uint64(0xffffffffffffffff)-2.0))
 }
 
 // Test Uint64 - Complex
@@ -10807,7 +10807,7 @@ func TestCheckBinaryTypedExprUint64SubUint32(t *testing.T) {
 func TestCheckBinaryTypedExprUint64SubUint64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) - uint64(0xffffffffffffffff)`, env, uint64(0xffffffffffffffff) - uint64(0xffffffffffffffff), reflect.TypeOf(uint64(0xffffffffffffffff) - uint64(0xffffffffffffffff)))
+	expectConst(t, `uint64(0xffffffffffffffff) - uint64(0xffffffffffffffff)`, env, uint64(0xffffffffffffffff)-uint64(0xffffffffffffffff), reflect.TypeOf(uint64(0xffffffffffffffff)-uint64(0xffffffffffffffff)))
 }
 
 // Test Uint64 - Float32
@@ -10884,21 +10884,21 @@ func TestCheckBinaryTypedExprUint64SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint64AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) & 4`, env, uint64(0xffffffffffffffff) & 4, reflect.TypeOf(uint64(0xffffffffffffffff) & 4))
+	expectConst(t, `uint64(0xffffffffffffffff) & 4`, env, uint64(0xffffffffffffffff)&4, reflect.TypeOf(uint64(0xffffffffffffffff)&4))
 }
 
 // Test Uint64 & Rune
 func TestCheckBinaryTypedExprUint64AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) & '@'`, env, uint64(0xffffffffffffffff) & '@', reflect.TypeOf(uint64(0xffffffffffffffff) & '@'))
+	expectConst(t, `uint64(0xffffffffffffffff) & '@'`, env, uint64(0xffffffffffffffff)&'@', reflect.TypeOf(uint64(0xffffffffffffffff)&'@'))
 }
 
 // Test Uint64 & Float
 func TestCheckBinaryTypedExprUint64AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) & 2.0`, env, uint64(0xffffffffffffffff) & 2.0, reflect.TypeOf(uint64(0xffffffffffffffff) & 2.0))
+	expectConst(t, `uint64(0xffffffffffffffff) & 2.0`, env, uint64(0xffffffffffffffff)&2.0, reflect.TypeOf(uint64(0xffffffffffffffff)&2.0))
 }
 
 // Test Uint64 & Complex
@@ -11017,7 +11017,7 @@ func TestCheckBinaryTypedExprUint64AndUint32(t *testing.T) {
 func TestCheckBinaryTypedExprUint64AndUint64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) & uint64(0xffffffffffffffff)`, env, uint64(0xffffffffffffffff) & uint64(0xffffffffffffffff), reflect.TypeOf(uint64(0xffffffffffffffff) & uint64(0xffffffffffffffff)))
+	expectConst(t, `uint64(0xffffffffffffffff) & uint64(0xffffffffffffffff)`, env, uint64(0xffffffffffffffff)&uint64(0xffffffffffffffff), reflect.TypeOf(uint64(0xffffffffffffffff)&uint64(0xffffffffffffffff)))
 }
 
 // Test Uint64 & Float32
@@ -11094,21 +11094,21 @@ func TestCheckBinaryTypedExprUint64AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprUint64RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) % 4`, env, uint64(0xffffffffffffffff) % 4, reflect.TypeOf(uint64(0xffffffffffffffff) % 4))
+	expectConst(t, `uint64(0xffffffffffffffff) % 4`, env, uint64(0xffffffffffffffff)%4, reflect.TypeOf(uint64(0xffffffffffffffff)%4))
 }
 
 // Test Uint64 % Rune
 func TestCheckBinaryTypedExprUint64RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) % '@'`, env, uint64(0xffffffffffffffff) % '@', reflect.TypeOf(uint64(0xffffffffffffffff) % '@'))
+	expectConst(t, `uint64(0xffffffffffffffff) % '@'`, env, uint64(0xffffffffffffffff)%'@', reflect.TypeOf(uint64(0xffffffffffffffff)%'@'))
 }
 
 // Test Uint64 % Float
 func TestCheckBinaryTypedExprUint64RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) % 2.0`, env, uint64(0xffffffffffffffff) % 2.0, reflect.TypeOf(uint64(0xffffffffffffffff) % 2.0))
+	expectConst(t, `uint64(0xffffffffffffffff) % 2.0`, env, uint64(0xffffffffffffffff)%2.0, reflect.TypeOf(uint64(0xffffffffffffffff)%2.0))
 }
 
 // Test Uint64 % Complex
@@ -11228,7 +11228,7 @@ func TestCheckBinaryTypedExprUint64RemUint32(t *testing.T) {
 func TestCheckBinaryTypedExprUint64RemUint64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `uint64(0xffffffffffffffff) % uint64(0xffffffffffffffff)`, env, uint64(0xffffffffffffffff) % uint64(0xffffffffffffffff), reflect.TypeOf(uint64(0xffffffffffffffff) % uint64(0xffffffffffffffff)))
+	expectConst(t, `uint64(0xffffffffffffffff) % uint64(0xffffffffffffffff)`, env, uint64(0xffffffffffffffff)%uint64(0xffffffffffffffff), reflect.TypeOf(uint64(0xffffffffffffffff)%uint64(0xffffffffffffffff)))
 }
 
 // Test Uint64 % Float32
@@ -11946,21 +11946,21 @@ func TestCheckBinaryTypedExprUint64ShlBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprFloat32AddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) + 4`, env, float32(0xffffffff) + 4, reflect.TypeOf(float32(0xffffffff) + 4))
+	expectConst(t, `float32(0xffffffff) + 4`, env, float32(0xffffffff)+4, reflect.TypeOf(float32(0xffffffff)+4))
 }
 
 // Test Float32 + Rune
 func TestCheckBinaryTypedExprFloat32AddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) + '@'`, env, float32(0xffffffff) + '@', reflect.TypeOf(float32(0xffffffff) + '@'))
+	expectConst(t, `float32(0xffffffff) + '@'`, env, float32(0xffffffff)+'@', reflect.TypeOf(float32(0xffffffff)+'@'))
 }
 
 // Test Float32 + Float
 func TestCheckBinaryTypedExprFloat32AddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) + 2.0`, env, float32(0xffffffff) + 2.0, reflect.TypeOf(float32(0xffffffff) + 2.0))
+	expectConst(t, `float32(0xffffffff) + 2.0`, env, float32(0xffffffff)+2.0, reflect.TypeOf(float32(0xffffffff)+2.0))
 }
 
 // Test Float32 + Complex
@@ -12089,7 +12089,7 @@ func TestCheckBinaryTypedExprFloat32AddUint64(t *testing.T) {
 func TestCheckBinaryTypedExprFloat32AddFloat32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) + float32(0xffffffff)`, env, float32(0xffffffff) + float32(0xffffffff), reflect.TypeOf(float32(0xffffffff) + float32(0xffffffff)))
+	expectConst(t, `float32(0xffffffff) + float32(0xffffffff)`, env, float32(0xffffffff)+float32(0xffffffff), reflect.TypeOf(float32(0xffffffff)+float32(0xffffffff)))
 }
 
 // Test Float32 + Float64
@@ -12156,21 +12156,21 @@ func TestCheckBinaryTypedExprFloat32AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprFloat32SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) - 4`, env, float32(0xffffffff) - 4, reflect.TypeOf(float32(0xffffffff) - 4))
+	expectConst(t, `float32(0xffffffff) - 4`, env, float32(0xffffffff)-4, reflect.TypeOf(float32(0xffffffff)-4))
 }
 
 // Test Float32 - Rune
 func TestCheckBinaryTypedExprFloat32SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) - '@'`, env, float32(0xffffffff) - '@', reflect.TypeOf(float32(0xffffffff) - '@'))
+	expectConst(t, `float32(0xffffffff) - '@'`, env, float32(0xffffffff)-'@', reflect.TypeOf(float32(0xffffffff)-'@'))
 }
 
 // Test Float32 - Float
 func TestCheckBinaryTypedExprFloat32SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) - 2.0`, env, float32(0xffffffff) - 2.0, reflect.TypeOf(float32(0xffffffff) - 2.0))
+	expectConst(t, `float32(0xffffffff) - 2.0`, env, float32(0xffffffff)-2.0, reflect.TypeOf(float32(0xffffffff)-2.0))
 }
 
 // Test Float32 - Complex
@@ -12299,7 +12299,7 @@ func TestCheckBinaryTypedExprFloat32SubUint64(t *testing.T) {
 func TestCheckBinaryTypedExprFloat32SubFloat32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float32(0xffffffff) - float32(0xffffffff)`, env, float32(0xffffffff) - float32(0xffffffff), reflect.TypeOf(float32(0xffffffff) - float32(0xffffffff)))
+	expectConst(t, `float32(0xffffffff) - float32(0xffffffff)`, env, float32(0xffffffff)-float32(0xffffffff), reflect.TypeOf(float32(0xffffffff)-float32(0xffffffff)))
 }
 
 // Test Float32 - Float64
@@ -13454,21 +13454,21 @@ func TestCheckBinaryTypedExprFloat32ShlBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprFloat64AddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) + 4`, env, float64(0xffffffff) + 4, reflect.TypeOf(float64(0xffffffff) + 4))
+	expectConst(t, `float64(0xffffffff) + 4`, env, float64(0xffffffff)+4, reflect.TypeOf(float64(0xffffffff)+4))
 }
 
 // Test Float64 + Rune
 func TestCheckBinaryTypedExprFloat64AddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) + '@'`, env, float64(0xffffffff) + '@', reflect.TypeOf(float64(0xffffffff) + '@'))
+	expectConst(t, `float64(0xffffffff) + '@'`, env, float64(0xffffffff)+'@', reflect.TypeOf(float64(0xffffffff)+'@'))
 }
 
 // Test Float64 + Float
 func TestCheckBinaryTypedExprFloat64AddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) + 2.0`, env, float64(0xffffffff) + 2.0, reflect.TypeOf(float64(0xffffffff) + 2.0))
+	expectConst(t, `float64(0xffffffff) + 2.0`, env, float64(0xffffffff)+2.0, reflect.TypeOf(float64(0xffffffff)+2.0))
 }
 
 // Test Float64 + Complex
@@ -13607,7 +13607,7 @@ func TestCheckBinaryTypedExprFloat64AddFloat32(t *testing.T) {
 func TestCheckBinaryTypedExprFloat64AddFloat64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) + float64(0xffffffff)`, env, float64(0xffffffff) + float64(0xffffffff), reflect.TypeOf(float64(0xffffffff) + float64(0xffffffff)))
+	expectConst(t, `float64(0xffffffff) + float64(0xffffffff)`, env, float64(0xffffffff)+float64(0xffffffff), reflect.TypeOf(float64(0xffffffff)+float64(0xffffffff)))
 }
 
 // Test Float64 + Complex64
@@ -13664,21 +13664,21 @@ func TestCheckBinaryTypedExprFloat64AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprFloat64SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) - 4`, env, float64(0xffffffff) - 4, reflect.TypeOf(float64(0xffffffff) - 4))
+	expectConst(t, `float64(0xffffffff) - 4`, env, float64(0xffffffff)-4, reflect.TypeOf(float64(0xffffffff)-4))
 }
 
 // Test Float64 - Rune
 func TestCheckBinaryTypedExprFloat64SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) - '@'`, env, float64(0xffffffff) - '@', reflect.TypeOf(float64(0xffffffff) - '@'))
+	expectConst(t, `float64(0xffffffff) - '@'`, env, float64(0xffffffff)-'@', reflect.TypeOf(float64(0xffffffff)-'@'))
 }
 
 // Test Float64 - Float
 func TestCheckBinaryTypedExprFloat64SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) - 2.0`, env, float64(0xffffffff) - 2.0, reflect.TypeOf(float64(0xffffffff) - 2.0))
+	expectConst(t, `float64(0xffffffff) - 2.0`, env, float64(0xffffffff)-2.0, reflect.TypeOf(float64(0xffffffff)-2.0))
 }
 
 // Test Float64 - Complex
@@ -13817,7 +13817,7 @@ func TestCheckBinaryTypedExprFloat64SubFloat32(t *testing.T) {
 func TestCheckBinaryTypedExprFloat64SubFloat64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `float64(0xffffffff) - float64(0xffffffff)`, env, float64(0xffffffff) - float64(0xffffffff), reflect.TypeOf(float64(0xffffffff) - float64(0xffffffff)))
+	expectConst(t, `float64(0xffffffff) - float64(0xffffffff)`, env, float64(0xffffffff)-float64(0xffffffff), reflect.TypeOf(float64(0xffffffff)-float64(0xffffffff)))
 }
 
 // Test Float64 - Complex64
@@ -14962,28 +14962,28 @@ func TestCheckBinaryTypedExprFloat64ShlBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprComplex64AddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + 4`, env, complex64(0xffffffff + 0xffffffff * 1i) + 4, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) + 4))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + 4`, env, complex64(0xffffffff+0xffffffff*1i)+4, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)+4))
 }
 
 // Test Complex64 + Rune
 func TestCheckBinaryTypedExprComplex64AddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + '@'`, env, complex64(0xffffffff + 0xffffffff * 1i) + '@', reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) + '@'))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + '@'`, env, complex64(0xffffffff+0xffffffff*1i)+'@', reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)+'@'))
 }
 
 // Test Complex64 + Float
 func TestCheckBinaryTypedExprComplex64AddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + 2.0`, env, complex64(0xffffffff + 0xffffffff * 1i) + 2.0, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) + 2.0))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + 2.0`, env, complex64(0xffffffff+0xffffffff*1i)+2.0, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)+2.0))
 }
 
 // Test Complex64 + Complex
 func TestCheckBinaryTypedExprComplex64AddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + 8.0i`, env, complex64(0xffffffff + 0xffffffff * 1i) + 8.0i, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) + 8.0i))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + 8.0i`, env, complex64(0xffffffff+0xffffffff*1i)+8.0i, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)+8.0i))
 }
 
 // Test Complex64 + Bool
@@ -15122,7 +15122,7 @@ func TestCheckBinaryTypedExprComplex64AddFloat64(t *testing.T) {
 func TestCheckBinaryTypedExprComplex64AddComplex64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + complex64(0xffffffff + 0xffffffff * 1i)`, env, complex64(0xffffffff + 0xffffffff * 1i) + complex64(0xffffffff + 0xffffffff * 1i), reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) + complex64(0xffffffff + 0xffffffff * 1i)))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) + complex64(0xffffffff + 0xffffffff * 1i)`, env, complex64(0xffffffff+0xffffffff*1i)+complex64(0xffffffff+0xffffffff*1i), reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)+complex64(0xffffffff+0xffffffff*1i)))
 }
 
 // Test Complex64 + Complex128
@@ -15169,28 +15169,28 @@ func TestCheckBinaryTypedExprComplex64AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprComplex64SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - 4`, env, complex64(0xffffffff + 0xffffffff * 1i) - 4, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) - 4))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - 4`, env, complex64(0xffffffff+0xffffffff*1i)-4, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)-4))
 }
 
 // Test Complex64 - Rune
 func TestCheckBinaryTypedExprComplex64SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - '@'`, env, complex64(0xffffffff + 0xffffffff * 1i) - '@', reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) - '@'))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - '@'`, env, complex64(0xffffffff+0xffffffff*1i)-'@', reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)-'@'))
 }
 
 // Test Complex64 - Float
 func TestCheckBinaryTypedExprComplex64SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - 2.0`, env, complex64(0xffffffff + 0xffffffff * 1i) - 2.0, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) - 2.0))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - 2.0`, env, complex64(0xffffffff+0xffffffff*1i)-2.0, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)-2.0))
 }
 
 // Test Complex64 - Complex
 func TestCheckBinaryTypedExprComplex64SubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - 8.0i`, env, complex64(0xffffffff + 0xffffffff * 1i) - 8.0i, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) - 8.0i))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - 8.0i`, env, complex64(0xffffffff+0xffffffff*1i)-8.0i, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)-8.0i))
 }
 
 // Test Complex64 - Bool
@@ -15329,7 +15329,7 @@ func TestCheckBinaryTypedExprComplex64SubFloat64(t *testing.T) {
 func TestCheckBinaryTypedExprComplex64SubComplex64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - complex64(0xffffffff + 0xffffffff * 1i)`, env, complex64(0xffffffff + 0xffffffff * 1i) - complex64(0xffffffff + 0xffffffff * 1i), reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) - complex64(0xffffffff + 0xffffffff * 1i)))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) - complex64(0xffffffff + 0xffffffff * 1i)`, env, complex64(0xffffffff+0xffffffff*1i)-complex64(0xffffffff+0xffffffff*1i), reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i)-complex64(0xffffffff+0xffffffff*1i)))
 }
 
 // Test Complex64 - Complex128
@@ -15820,28 +15820,28 @@ func TestCheckBinaryTypedExprComplex64RemBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprComplex64EqlInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == 4`, env, complex64(0xffffffff + 0xffffffff * 1i) == 4, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) == 4))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == 4`, env, complex64(0xffffffff+0xffffffff*1i) == 4, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i) == 4))
 }
 
 // Test Complex64 == Rune
 func TestCheckBinaryTypedExprComplex64EqlRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == '@'`, env, complex64(0xffffffff + 0xffffffff * 1i) == '@', reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) == '@'))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == '@'`, env, complex64(0xffffffff+0xffffffff*1i) == '@', reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i) == '@'))
 }
 
 // Test Complex64 == Float
 func TestCheckBinaryTypedExprComplex64EqlFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == 2.0`, env, complex64(0xffffffff + 0xffffffff * 1i) == 2.0, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) == 2.0))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == 2.0`, env, complex64(0xffffffff+0xffffffff*1i) == 2.0, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i) == 2.0))
 }
 
 // Test Complex64 == Complex
 func TestCheckBinaryTypedExprComplex64EqlComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == 8.0i`, env, complex64(0xffffffff + 0xffffffff * 1i) == 8.0i, reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) == 8.0i))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == 8.0i`, env, complex64(0xffffffff+0xffffffff*1i) == 8.0i, reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i) == 8.0i))
 }
 
 // Test Complex64 == Bool
@@ -15980,7 +15980,7 @@ func TestCheckBinaryTypedExprComplex64EqlFloat64(t *testing.T) {
 func TestCheckBinaryTypedExprComplex64EqlComplex64(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == complex64(0xffffffff + 0xffffffff * 1i)`, env, complex64(0xffffffff + 0xffffffff * 1i) == complex64(0xffffffff + 0xffffffff * 1i), reflect.TypeOf(complex64(0xffffffff + 0xffffffff * 1i) == complex64(0xffffffff + 0xffffffff * 1i)))
+	expectConst(t, `complex64(0xffffffff + 0xffffffff * 1i) == complex64(0xffffffff + 0xffffffff * 1i)`, env, complex64(0xffffffff+0xffffffff*1i) == complex64(0xffffffff+0xffffffff*1i), reflect.TypeOf(complex64(0xffffffff+0xffffffff*1i) == complex64(0xffffffff+0xffffffff*1i)))
 }
 
 // Test Complex64 == Complex128
@@ -16471,28 +16471,28 @@ func TestCheckBinaryTypedExprComplex64ShlBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprComplex128AddInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + 4`, env, complex128(0xffffffff + 0xffffffff * 1i) + 4, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) + 4))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + 4`, env, complex128(0xffffffff+0xffffffff*1i)+4, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)+4))
 }
 
 // Test Complex128 + Rune
 func TestCheckBinaryTypedExprComplex128AddRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + '@'`, env, complex128(0xffffffff + 0xffffffff * 1i) + '@', reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) + '@'))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + '@'`, env, complex128(0xffffffff+0xffffffff*1i)+'@', reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)+'@'))
 }
 
 // Test Complex128 + Float
 func TestCheckBinaryTypedExprComplex128AddFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + 2.0`, env, complex128(0xffffffff + 0xffffffff * 1i) + 2.0, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) + 2.0))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + 2.0`, env, complex128(0xffffffff+0xffffffff*1i)+2.0, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)+2.0))
 }
 
 // Test Complex128 + Complex
 func TestCheckBinaryTypedExprComplex128AddComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + 8.0i`, env, complex128(0xffffffff + 0xffffffff * 1i) + 8.0i, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) + 8.0i))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + 8.0i`, env, complex128(0xffffffff+0xffffffff*1i)+8.0i, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)+8.0i))
 }
 
 // Test Complex128 + Bool
@@ -16641,7 +16641,7 @@ func TestCheckBinaryTypedExprComplex128AddComplex64(t *testing.T) {
 func TestCheckBinaryTypedExprComplex128AddComplex128(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + complex128(0xffffffff + 0xffffffff * 1i)`, env, complex128(0xffffffff + 0xffffffff * 1i) + complex128(0xffffffff + 0xffffffff * 1i), reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) + complex128(0xffffffff + 0xffffffff * 1i)))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) + complex128(0xffffffff + 0xffffffff * 1i)`, env, complex128(0xffffffff+0xffffffff*1i)+complex128(0xffffffff+0xffffffff*1i), reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)+complex128(0xffffffff+0xffffffff*1i)))
 }
 
 // Test Complex128 + Rune32
@@ -16678,28 +16678,28 @@ func TestCheckBinaryTypedExprComplex128AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprComplex128SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - 4`, env, complex128(0xffffffff + 0xffffffff * 1i) - 4, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) - 4))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - 4`, env, complex128(0xffffffff+0xffffffff*1i)-4, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)-4))
 }
 
 // Test Complex128 - Rune
 func TestCheckBinaryTypedExprComplex128SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - '@'`, env, complex128(0xffffffff + 0xffffffff * 1i) - '@', reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) - '@'))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - '@'`, env, complex128(0xffffffff+0xffffffff*1i)-'@', reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)-'@'))
 }
 
 // Test Complex128 - Float
 func TestCheckBinaryTypedExprComplex128SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - 2.0`, env, complex128(0xffffffff + 0xffffffff * 1i) - 2.0, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) - 2.0))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - 2.0`, env, complex128(0xffffffff+0xffffffff*1i)-2.0, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)-2.0))
 }
 
 // Test Complex128 - Complex
 func TestCheckBinaryTypedExprComplex128SubComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - 8.0i`, env, complex128(0xffffffff + 0xffffffff * 1i) - 8.0i, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) - 8.0i))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - 8.0i`, env, complex128(0xffffffff+0xffffffff*1i)-8.0i, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)-8.0i))
 }
 
 // Test Complex128 - Bool
@@ -16848,7 +16848,7 @@ func TestCheckBinaryTypedExprComplex128SubComplex64(t *testing.T) {
 func TestCheckBinaryTypedExprComplex128SubComplex128(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - complex128(0xffffffff + 0xffffffff * 1i)`, env, complex128(0xffffffff + 0xffffffff * 1i) - complex128(0xffffffff + 0xffffffff * 1i), reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) - complex128(0xffffffff + 0xffffffff * 1i)))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) - complex128(0xffffffff + 0xffffffff * 1i)`, env, complex128(0xffffffff+0xffffffff*1i)-complex128(0xffffffff+0xffffffff*1i), reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i)-complex128(0xffffffff+0xffffffff*1i)))
 }
 
 // Test Complex128 - Rune32
@@ -17329,28 +17329,28 @@ func TestCheckBinaryTypedExprComplex128RemBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprComplex128EqlInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == 4`, env, complex128(0xffffffff + 0xffffffff * 1i) == 4, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) == 4))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == 4`, env, complex128(0xffffffff+0xffffffff*1i) == 4, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i) == 4))
 }
 
 // Test Complex128 == Rune
 func TestCheckBinaryTypedExprComplex128EqlRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == '@'`, env, complex128(0xffffffff + 0xffffffff * 1i) == '@', reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) == '@'))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == '@'`, env, complex128(0xffffffff+0xffffffff*1i) == '@', reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i) == '@'))
 }
 
 // Test Complex128 == Float
 func TestCheckBinaryTypedExprComplex128EqlFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == 2.0`, env, complex128(0xffffffff + 0xffffffff * 1i) == 2.0, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) == 2.0))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == 2.0`, env, complex128(0xffffffff+0xffffffff*1i) == 2.0, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i) == 2.0))
 }
 
 // Test Complex128 == Complex
 func TestCheckBinaryTypedExprComplex128EqlComplex(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == 8.0i`, env, complex128(0xffffffff + 0xffffffff * 1i) == 8.0i, reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) == 8.0i))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == 8.0i`, env, complex128(0xffffffff+0xffffffff*1i) == 8.0i, reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i) == 8.0i))
 }
 
 // Test Complex128 == Bool
@@ -17499,7 +17499,7 @@ func TestCheckBinaryTypedExprComplex128EqlComplex64(t *testing.T) {
 func TestCheckBinaryTypedExprComplex128EqlComplex128(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == complex128(0xffffffff + 0xffffffff * 1i)`, env, complex128(0xffffffff + 0xffffffff * 1i) == complex128(0xffffffff + 0xffffffff * 1i), reflect.TypeOf(complex128(0xffffffff + 0xffffffff * 1i) == complex128(0xffffffff + 0xffffffff * 1i)))
+	expectConst(t, `complex128(0xffffffff + 0xffffffff * 1i) == complex128(0xffffffff + 0xffffffff * 1i)`, env, complex128(0xffffffff+0xffffffff*1i) == complex128(0xffffffff+0xffffffff*1i), reflect.TypeOf(complex128(0xffffffff+0xffffffff*1i) == complex128(0xffffffff+0xffffffff*1i)))
 }
 
 // Test Complex128 == Rune32
@@ -18202,21 +18202,21 @@ func TestCheckBinaryTypedExprRune32AddBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprRune32SubInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) - 4`, env, rune(0x7fffffff) - 4, reflect.TypeOf(rune(0x7fffffff) - 4))
+	expectConst(t, `rune(0x7fffffff) - 4`, env, rune(0x7fffffff)-4, reflect.TypeOf(rune(0x7fffffff)-4))
 }
 
 // Test Rune32 - Rune
 func TestCheckBinaryTypedExprRune32SubRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) - '@'`, env, rune(0x7fffffff) - '@', reflect.TypeOf(rune(0x7fffffff) - '@'))
+	expectConst(t, `rune(0x7fffffff) - '@'`, env, rune(0x7fffffff)-'@', reflect.TypeOf(rune(0x7fffffff)-'@'))
 }
 
 // Test Rune32 - Float
 func TestCheckBinaryTypedExprRune32SubFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) - 2.0`, env, rune(0x7fffffff) - 2.0, reflect.TypeOf(rune(0x7fffffff) - 2.0))
+	expectConst(t, `rune(0x7fffffff) - 2.0`, env, rune(0x7fffffff)-2.0, reflect.TypeOf(rune(0x7fffffff)-2.0))
 }
 
 // Test Rune32 - Complex
@@ -18285,7 +18285,7 @@ func TestCheckBinaryTypedExprRune32SubInt16(t *testing.T) {
 func TestCheckBinaryTypedExprRune32SubInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) - int32(0x7fffffff)`, env, rune(0x7fffffff) - int32(0x7fffffff), reflect.TypeOf(rune(0x7fffffff) - int32(0x7fffffff)))
+	expectConst(t, `rune(0x7fffffff) - int32(0x7fffffff)`, env, rune(0x7fffffff)-int32(0x7fffffff), reflect.TypeOf(rune(0x7fffffff)-int32(0x7fffffff)))
 }
 
 // Test Rune32 - Int64
@@ -18382,7 +18382,7 @@ func TestCheckBinaryTypedExprRune32SubComplex128(t *testing.T) {
 func TestCheckBinaryTypedExprRune32SubRune32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) - rune(0x7fffffff)`, env, rune(0x7fffffff) - rune(0x7fffffff), reflect.TypeOf(rune(0x7fffffff) - rune(0x7fffffff)))
+	expectConst(t, `rune(0x7fffffff) - rune(0x7fffffff)`, env, rune(0x7fffffff)-rune(0x7fffffff), reflect.TypeOf(rune(0x7fffffff)-rune(0x7fffffff)))
 }
 
 // Test Rune32 - StringT
@@ -18409,21 +18409,21 @@ func TestCheckBinaryTypedExprRune32SubBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprRune32AndInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) & 4`, env, rune(0x7fffffff) & 4, reflect.TypeOf(rune(0x7fffffff) & 4))
+	expectConst(t, `rune(0x7fffffff) & 4`, env, rune(0x7fffffff)&4, reflect.TypeOf(rune(0x7fffffff)&4))
 }
 
 // Test Rune32 & Rune
 func TestCheckBinaryTypedExprRune32AndRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) & '@'`, env, rune(0x7fffffff) & '@', reflect.TypeOf(rune(0x7fffffff) & '@'))
+	expectConst(t, `rune(0x7fffffff) & '@'`, env, rune(0x7fffffff)&'@', reflect.TypeOf(rune(0x7fffffff)&'@'))
 }
 
 // Test Rune32 & Float
 func TestCheckBinaryTypedExprRune32AndFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) & 2.0`, env, rune(0x7fffffff) & 2.0, reflect.TypeOf(rune(0x7fffffff) & 2.0))
+	expectConst(t, `rune(0x7fffffff) & 2.0`, env, rune(0x7fffffff)&2.0, reflect.TypeOf(rune(0x7fffffff)&2.0))
 }
 
 // Test Rune32 & Complex
@@ -18492,7 +18492,7 @@ func TestCheckBinaryTypedExprRune32AndInt16(t *testing.T) {
 func TestCheckBinaryTypedExprRune32AndInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) & int32(0x7fffffff)`, env, rune(0x7fffffff) & int32(0x7fffffff), reflect.TypeOf(rune(0x7fffffff) & int32(0x7fffffff)))
+	expectConst(t, `rune(0x7fffffff) & int32(0x7fffffff)`, env, rune(0x7fffffff)&int32(0x7fffffff), reflect.TypeOf(rune(0x7fffffff)&int32(0x7fffffff)))
 }
 
 // Test Rune32 & Int64
@@ -18589,7 +18589,7 @@ func TestCheckBinaryTypedExprRune32AndComplex128(t *testing.T) {
 func TestCheckBinaryTypedExprRune32AndRune32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) & rune(0x7fffffff)`, env, rune(0x7fffffff) & rune(0x7fffffff), reflect.TypeOf(rune(0x7fffffff) & rune(0x7fffffff)))
+	expectConst(t, `rune(0x7fffffff) & rune(0x7fffffff)`, env, rune(0x7fffffff)&rune(0x7fffffff), reflect.TypeOf(rune(0x7fffffff)&rune(0x7fffffff)))
 }
 
 // Test Rune32 & StringT
@@ -18616,21 +18616,21 @@ func TestCheckBinaryTypedExprRune32AndBoolT(t *testing.T) {
 func TestCheckBinaryTypedExprRune32RemInt(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) % 4`, env, rune(0x7fffffff) % 4, reflect.TypeOf(rune(0x7fffffff) % 4))
+	expectConst(t, `rune(0x7fffffff) % 4`, env, rune(0x7fffffff)%4, reflect.TypeOf(rune(0x7fffffff)%4))
 }
 
 // Test Rune32 % Rune
 func TestCheckBinaryTypedExprRune32RemRune(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) % '@'`, env, rune(0x7fffffff) % '@', reflect.TypeOf(rune(0x7fffffff) % '@'))
+	expectConst(t, `rune(0x7fffffff) % '@'`, env, rune(0x7fffffff)%'@', reflect.TypeOf(rune(0x7fffffff)%'@'))
 }
 
 // Test Rune32 % Float
 func TestCheckBinaryTypedExprRune32RemFloat(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) % 2.0`, env, rune(0x7fffffff) % 2.0, reflect.TypeOf(rune(0x7fffffff) % 2.0))
+	expectConst(t, `rune(0x7fffffff) % 2.0`, env, rune(0x7fffffff)%2.0, reflect.TypeOf(rune(0x7fffffff)%2.0))
 }
 
 // Test Rune32 % Complex
@@ -18700,7 +18700,7 @@ func TestCheckBinaryTypedExprRune32RemInt16(t *testing.T) {
 func TestCheckBinaryTypedExprRune32RemInt32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) % int32(0x7fffffff)`, env, rune(0x7fffffff) % int32(0x7fffffff), reflect.TypeOf(rune(0x7fffffff) % int32(0x7fffffff)))
+	expectConst(t, `rune(0x7fffffff) % int32(0x7fffffff)`, env, rune(0x7fffffff)%int32(0x7fffffff), reflect.TypeOf(rune(0x7fffffff)%int32(0x7fffffff)))
 }
 
 // Test Rune32 % Int64
@@ -18797,7 +18797,7 @@ func TestCheckBinaryTypedExprRune32RemComplex128(t *testing.T) {
 func TestCheckBinaryTypedExprRune32RemRune32(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `rune(0x7fffffff) % rune(0x7fffffff)`, env, rune(0x7fffffff) % rune(0x7fffffff), reflect.TypeOf(rune(0x7fffffff) % rune(0x7fffffff)))
+	expectConst(t, `rune(0x7fffffff) % rune(0x7fffffff)`, env, rune(0x7fffffff)%rune(0x7fffffff), reflect.TypeOf(rune(0x7fffffff)%rune(0x7fffffff)))
 }
 
 // Test Rune32 % StringT
@@ -19514,7 +19514,7 @@ func TestCheckBinaryTypedExprStringTAddBool(t *testing.T) {
 func TestCheckBinaryTypedExprStringTAddString(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `string("abc") + "abc"`, env, string("abc") + "abc", reflect.TypeOf(string("abc") + "abc"))
+	expectConst(t, `string("abc") + "abc"`, env, string("abc")+"abc", reflect.TypeOf(string("abc")+"abc"))
 }
 
 // Test StringT + Nil
@@ -19661,7 +19661,7 @@ func TestCheckBinaryTypedExprStringTAddRune32(t *testing.T) {
 func TestCheckBinaryTypedExprStringTAddStringT(t *testing.T) {
 	env := MakeSimpleEnv()
 
-	expectConst(t, `string("abc") + string("abc")`, env, string("abc") + string("abc"), reflect.TypeOf(string("abc") + string("abc")))
+	expectConst(t, `string("abc") + string("abc")`, env, string("abc")+string("abc"), reflect.TypeOf(string("abc")+string("abc")))
 }
 
 // Test StringT + BoolT

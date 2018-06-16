@@ -4,8 +4,8 @@ package eval
 
 import (
 	"fmt"
-	"testing"
 	"reflect"
+	"testing"
 
 	"go/ast"
 	"go/parser"
@@ -135,7 +135,7 @@ func expectCheckError(t *testing.T, expr string, env Env, errorString ...string)
 		for i, s := range errorString {
 			t.Logf("%d. Expected `%v` missing\n", i, s)
 		}
-		t.Fatalf("Missing check errors for expression '%s'", expr )
+		t.Fatalf("Missing check errors for expression '%s'", expr)
 	}
 }
 
@@ -163,4 +163,3 @@ func typesEqual(expected, actual reflect.Type) bool {
 	}
 	return reflect.DeepEqual(expected, unwrapped)
 }
-

@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"reflect"
 	"go/ast"
+	"reflect"
 )
 
 func checkSelectorExpr(selector *ast.SelectorExpr, env Env) (*SelectorExpr, []error) {

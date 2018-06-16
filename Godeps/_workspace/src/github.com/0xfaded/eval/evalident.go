@@ -24,6 +24,5 @@ func evalIdent(ident *Ident, env Env) (reflect.Value, error) {
 			}
 		}
 	}
-        panic(dytc("missing identifier '"+name+"'"))
+	panic(dytc("missing identifier '" + name + "'"))
 }
-

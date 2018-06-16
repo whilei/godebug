@@ -33,7 +33,7 @@ type ErrDuplicateArg struct {
 
 type ErrBadReturnValue struct {
 	Expr
-	t reflect.Type
+	t     reflect.Type
 	index int
 }
 
@@ -49,7 +49,7 @@ type ErrWrongNumberOfArgs struct {
 
 type ErrWrongArgType struct {
 	Expr
-	call *CallExpr
+	call   *CallExpr
 	argPos int
 }
 
@@ -98,7 +98,7 @@ type ErrUnaddressableSliceOperand struct {
 
 type ErrInvalidIndex struct {
 	Expr
-	indexValue reflect.Value
+	indexValue    reflect.Value
 	containerType reflect.Type
 }
 
@@ -125,25 +125,25 @@ type ErrInvalidRecvFrom struct {
 type ErrBadConversion struct {
 	Expr
 	from reflect.Type
-	to reflect.Type
+	to   reflect.Type
 }
 
 type ErrBadConstConversion struct {
 	Expr
 	from reflect.Type
-	to reflect.Type
+	to   reflect.Type
 }
 
 type ErrTruncatedConstant struct {
 	Expr
-	to ConstType
+	to       ConstType
 	constant *ConstNumber
 }
 
 type ErrOverflowedConstant struct {
 	Expr
-	from ConstType
-	to reflect.Type
+	from     ConstType
+	to       reflect.Type
 	constant *ConstNumber
 }
 
@@ -185,7 +185,7 @@ type ErrBadArrayKey struct {
 type ErrArrayKeyOutOfBounds struct {
 	Expr
 	arrayT reflect.Type
-	index int
+	index  int
 }
 
 type ErrDuplicateArrayKey struct {
@@ -201,7 +201,7 @@ type ErrBadArrayValue struct {
 type ErrUnknownStructField struct {
 	Expr
 	structT reflect.Type
-	field string
+	field   string
 }
 
 type ErrInvalidStructField struct {
@@ -315,8 +315,8 @@ type ErrCannotAssignToUnaddressable struct {
 }
 
 type ErrCannotAssignToType struct {
-	Expr //lhs
-	rhs Expr
+	Expr          //lhs
+	rhs           Expr
 	multiValuePos int
 }
 
@@ -492,7 +492,7 @@ func (err ErrWrongNumberOfArgs) Error() string {
 func (err ErrWrongArgType) Error() string {
 	ft := err.call.Fun.KnownType()[0]
 	var expected reflect.Type
-	if ft.IsVariadic() && !err.call.argNEllipsis && err.argPos >= ft.NumIn() - 1 {
+	if ft.IsVariadic() && !err.call.argNEllipsis && err.argPos >= ft.NumIn()-1 {
 		expected = ft.In(ft.NumIn() - 1).Elem()
 	} else {
 		expected = ft.In(err.argPos)
@@ -590,9 +590,9 @@ func (err ErrInvalidBinaryOperation) Error() string {
 			}
 		}
 		if compatible && !isOpDefinedOn(op, yt) {
-                        return fmt.Sprintf("invalid operation: %v (operator %v not defined on %s)",
-                                binary, op, sprintOperandType(yt))
-                }
+			return fmt.Sprintf("invalid operation: %v (operator %v not defined on %s)",
+				binary, op, sprintOperandType(yt))
+		}
 	} else if ycok {
 		compatible := false
 		if yt == ConstNil {
@@ -604,8 +604,8 @@ func (err ErrInvalidBinaryOperation) Error() string {
 			}
 		}
 		if compatible && !isOpDefinedOn(op, xt) {
-                        return fmt.Sprintf("invalid operation: %v (operator %v not defined on %s)",
-                                binary, op, sprintOperandType(xt))
+			return fmt.Sprintf("invalid operation: %v (operator %v not defined on %s)",
+				binary, op, sprintOperandType(xt))
 		}
 	} else {
 		// Interfaces produce mismatched type errors unless
@@ -617,8 +617,8 @@ func (err ErrInvalidBinaryOperation) Error() string {
 			mismatch = !areTypesCompatible(xt, yt)
 		}
 		if !mismatch && !isOpDefinedOn(op, xt) {
-                        return fmt.Sprintf("invalid operation: %v (operator %v not defined on %s)",
-                                binary, op, sprintOperandType(xt))
+			return fmt.Sprintf("invalid operation: %v (operator %v not defined on %s)",
+				binary, op, sprintOperandType(xt))
 		} else if !mismatch && xt.Kind() == reflect.Struct {
 			if field, ok := nonComparableField(xt); ok {
 				return fmt.Sprintf("invalid operation: %v (struct containing %v cannot be compared)",
@@ -628,7 +628,7 @@ func (err ErrInvalidBinaryOperation) Error() string {
 			return fmt.Sprintf("invalid operation: %v (%v can only be compared to nil)",
 				binary, sprintOperandType(xt))
 		}
-        }
+	}
 
 	var xti, yti interface{} = defaultPromotion(xt), defaultPromotion(yt)
 	if ycok && xt == ConstNil {
@@ -794,7 +794,7 @@ func (err ErrImpossibleTypeAssert) Error() string {
 	iT := assert.KnownType()[0]
 	xT := assert.X.KnownType()[0]
 
-	return fmt.Sprintf("impossible type assertion:\n" +
+	return fmt.Sprintf("impossible type assertion:\n"+
 		"\t%v does not implement %v (missing %s method)",
 		xT, iT, missingMethod(iT, xT))
 }
@@ -1064,4 +1064,3 @@ func missingMethod(iT, xT reflect.Type) (method string) {
 	}
 	return ""
 }
-

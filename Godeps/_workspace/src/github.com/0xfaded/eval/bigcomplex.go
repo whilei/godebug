@@ -85,17 +85,17 @@ func (z *BigComplex) Int(bits int) (_ int64, truncation, overflow bool) {
 	res := new(big.Int).Set(integer.Re.Num())
 
 	// Numerator must fit in bits - 1, with 1 bit left for sign.
-        // An exceptional case when only the signed bit is set.
-	if overflow = res.BitLen() > bits - 1; overflow {
-		var mask uint64 = ^uint64(0) >> uint(64 - bits)
-                if res.BitLen() == bits && res.Sign() < 0 {
-                        // To detect the edge of minus 0b1000..., add one
-                        // to get 0b0ff... and recount the bits
-                        plus1 := new(big.Int).Add(res, big.NewInt(1))
-                        if plus1.BitLen() < bits {
-	                        return res.Int64(), truncation, false
-                        }
-                }
+	// An exceptional case when only the signed bit is set.
+	if overflow = res.BitLen() > bits-1; overflow {
+		var mask uint64 = ^uint64(0) >> uint(64-bits)
+		if res.BitLen() == bits && res.Sign() < 0 {
+			// To detect the edge of minus 0b1000..., add one
+			// to get 0b0ff... and recount the bits
+			plus1 := new(big.Int).Add(res, big.NewInt(1))
+			if plus1.BitLen() < bits {
+				return res.Int64(), truncation, false
+			}
+		}
 		res.And(res, new(big.Int).SetUint64(mask))
 	}
 	return res.Int64(), truncation, overflow
@@ -113,7 +113,7 @@ func (z *BigComplex) Uint(bits int) (_ uint64, truncation, overflow bool) {
 	integer, truncation = z.Integer()
 	res := new(big.Int).Set(integer.Re.Num())
 
-	var mask uint64 = ^uint64(0) >> uint(64 - bits)
+	var mask uint64 = ^uint64(0) >> uint(64-bits)
 	if overflow = res.BitLen() > bits; overflow {
 		res.And(res, new(big.Int).SetUint64(mask))
 		res = new(big.Int).And(res, new(big.Int).SetUint64(mask))

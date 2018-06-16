@@ -1,37 +1,36 @@
 package main
 
 import (
+	"github.com/0xfaded/go-testgen"
 	"io"
 	"strings"
 	"text/template"
-	"github.com/0xfaded/go-testgen"
 )
 
 type Test struct{}
 
 var comment = template.Must(template.New("Comment").Parse(
-`// Test {{ .Comment }}
+	`// Test {{ .Comment }}
 `))
 
-var defs =
-`	type a1 [1]int
+var defs = `	type a1 [1]int
 	type a2 [2]int
 	type s1 struct{ a int }
 	type s2 struct{ a, b int }
 `
 var body = template.Must(template.New("Body").Parse(defs +
-`	env := MakeSimpleEnv()
+	`	env := MakeSimpleEnv()
 	env.Types["a1"] = reflect.TypeOf(a1{})
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
 {{ if .Errors }}{{ if .TestErrs }}
-	expectCheckError(t, `+"`{{ .Expr }}`"+`, env,{{ range .Errors }}
-		`+"`{{ . }}`"+`,{{ end }}
+	expectCheckError(t, ` + "`{{ .Expr }}`" + `, env,{{ range .Errors }}
+		` + "`{{ . }}`" + `,{{ end }}
 	){{ else }}	_ = env{{ end }}
 {{ else }}
-	expectType(t, `+"`{{ .Expr }}`"+`, env, reflect.TypeOf({{ .Expr }})){{ end }}
+	expectType(t, ` + "`{{ .Expr }}`" + `, env, reflect.TypeOf({{ .Expr }})){{ end }}
 `))
 
 func (*Test) Package() string {
@@ -43,7 +42,7 @@ func (*Test) Prefix() string {
 }
 
 func (*Test) Imports() map[string]string {
-	return map[string]string { "reflect": "" }
+	return map[string]string{"reflect": ""}
 }
 
 func (*Test) Dimensions() []testgen.Dimension {
@@ -106,7 +105,7 @@ func (*Test) Comment(w io.Writer, elts ...testgen.Element) error {
 	}
 	fun += "}"
 
-	vars := map[string] interface{} {
+	vars := map[string]interface{}{
 		"Comment": fun,
 	}
 
@@ -203,12 +202,11 @@ func (*Test) Body(w io.Writer, elts ...testgen.Element) error {
 	if n0 == "Map" && n1 == "AKInt" && n2 == "AKString" {
 		compileErrs = append(compileErrs[:1], append([]string{compileErrs[0]}, compileErrs[1:]...)...)
 	}
-	vars := map[string] interface{} {
-		"Expr": expr,
-		"Errors": compileErrs,
+	vars := map[string]interface{}{
+		"Expr":     expr,
+		"Errors":   compileErrs,
 		"TestErrs": testErrs,
 	}
 
 	return body.Execute(w, &vars)
 }
-

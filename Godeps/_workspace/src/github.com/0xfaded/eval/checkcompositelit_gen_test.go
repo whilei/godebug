@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 // Test A1{}
@@ -16,7 +16,6 @@ func TestCheckCompositeLitExprA1XX(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectType(t, `a1{}`, env, reflect.TypeOf(a1{}))
 }
@@ -33,7 +32,6 @@ func TestCheckCompositeLitExprA1XInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a1{1}`, env, reflect.TypeOf(a1{1}))
 }
 
@@ -48,7 +46,6 @@ func TestCheckCompositeLitExprA1XString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{"a"}`, env,
 		`cannot convert "a" to type int`,
@@ -69,7 +66,6 @@ func TestCheckCompositeLitExprA1XNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -88,7 +84,6 @@ func TestCheckCompositeLitExprA1XIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 	)
@@ -106,7 +101,6 @@ func TestCheckCompositeLitExprA1XIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -128,7 +122,6 @@ func TestCheckCompositeLitExprA1XFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -146,7 +139,6 @@ func TestCheckCompositeLitExprA1XAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: 1}`, env,
 		`undefined: a`,
@@ -166,7 +158,6 @@ func TestCheckCompositeLitExprA1XAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: "a"}`, env,
 		`undefined: a`,
@@ -189,7 +180,6 @@ func TestCheckCompositeLitExprA1XBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -208,7 +198,6 @@ func TestCheckCompositeLitExprA1XCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{c: 1}`, env,
 		`undefined: c`,
@@ -229,7 +218,6 @@ func TestCheckCompositeLitExprA1IntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a1{1}`, env, reflect.TypeOf(a1{1}))
 }
 
@@ -244,7 +232,6 @@ func TestCheckCompositeLitExprA1IntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1, 1}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -263,7 +250,6 @@ func TestCheckCompositeLitExprA1IntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1, "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -285,7 +271,6 @@ func TestCheckCompositeLitExprA1IntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1, nil}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot convert nil to type int`,
@@ -305,7 +290,6 @@ func TestCheckCompositeLitExprA1IntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1, 1: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 	)
@@ -323,7 +307,6 @@ func TestCheckCompositeLitExprA1IntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1, 1: "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -345,7 +328,6 @@ func TestCheckCompositeLitExprA1IntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -363,7 +345,6 @@ func TestCheckCompositeLitExprA1IntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1, a: 1}`, env,
 		`undefined: a`,
@@ -383,7 +364,6 @@ func TestCheckCompositeLitExprA1IntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1, a: "a"}`, env,
 		`undefined: a`,
@@ -406,7 +386,6 @@ func TestCheckCompositeLitExprA1IntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -425,7 +404,6 @@ func TestCheckCompositeLitExprA1IntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1, c: 1}`, env,
 		`undefined: c`,
@@ -446,7 +424,6 @@ func TestCheckCompositeLitExprA1NilX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -464,7 +441,6 @@ func TestCheckCompositeLitExprA1NilInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{nil, 1}`, env,
 		`cannot convert nil to type int`,
@@ -484,7 +460,6 @@ func TestCheckCompositeLitExprA1NilString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{nil, "a"}`, env,
 		`cannot convert nil to type int`,
@@ -507,7 +482,6 @@ func TestCheckCompositeLitExprA1NilNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{nil, nil}`, env,
 		`cannot convert nil to type int`,
 		`array index 2 out of bounds [0:1]`,
@@ -528,7 +502,6 @@ func TestCheckCompositeLitExprA1NilIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{nil, 1: 1}`, env,
 		`cannot convert nil to type int`,
 		`array index 2 out of bounds [0:1]`,
@@ -547,7 +520,6 @@ func TestCheckCompositeLitExprA1NilIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{nil, 1: "a"}`, env,
 		`cannot convert nil to type int`,
@@ -570,7 +542,6 @@ func TestCheckCompositeLitExprA1NilFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{nil, float32(1.5): 1}`, env,
 		`cannot convert nil to type int`,
 		`array index must be non-negative integer constant`,
@@ -589,7 +560,6 @@ func TestCheckCompositeLitExprA1NilAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{nil, a: 1}`, env,
 		`cannot convert nil to type int`,
@@ -610,7 +580,6 @@ func TestCheckCompositeLitExprA1NilAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{nil, a: "a"}`, env,
 		`cannot convert nil to type int`,
@@ -634,7 +603,6 @@ func TestCheckCompositeLitExprA1NilBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{nil, b: 1}`, env,
 		`cannot convert nil to type int`,
 		`undefined: b`,
@@ -654,7 +622,6 @@ func TestCheckCompositeLitExprA1NilCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{nil, c: 1}`, env,
 		`cannot convert nil to type int`,
@@ -676,7 +643,6 @@ func TestCheckCompositeLitExprA1BoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{true}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -694,7 +660,6 @@ func TestCheckCompositeLitExprA1BoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{true, 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -714,7 +679,6 @@ func TestCheckCompositeLitExprA1BoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{true, "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -737,7 +701,6 @@ func TestCheckCompositeLitExprA1BoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{true, nil}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index 2 out of bounds [0:1]`,
@@ -758,7 +721,6 @@ func TestCheckCompositeLitExprA1BoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index 2 out of bounds [0:1]`,
@@ -777,7 +739,6 @@ func TestCheckCompositeLitExprA1BoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -800,7 +761,6 @@ func TestCheckCompositeLitExprA1BoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index must be non-negative integer constant`,
@@ -819,7 +779,6 @@ func TestCheckCompositeLitExprA1BoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{true, a: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -840,7 +799,6 @@ func TestCheckCompositeLitExprA1BoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -864,7 +822,6 @@ func TestCheckCompositeLitExprA1BoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{true, b: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`undefined: b`,
@@ -884,7 +841,6 @@ func TestCheckCompositeLitExprA1BoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{true, c: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -906,7 +862,6 @@ func TestCheckCompositeLitExprA1IntKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 	)
@@ -925,7 +880,6 @@ func TestCheckCompositeLitExprA1IntKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1, 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 	)
@@ -943,7 +897,6 @@ func TestCheckCompositeLitExprA1IntKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: 1, "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -965,7 +918,6 @@ func TestCheckCompositeLitExprA1IntKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1, nil}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot convert nil to type int`,
@@ -985,7 +937,6 @@ func TestCheckCompositeLitExprA1IntKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1, 1: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`duplicate index in array literal: 1`,
@@ -1004,7 +955,6 @@ func TestCheckCompositeLitExprA1IntKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: 1, 1: "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1027,7 +977,6 @@ func TestCheckCompositeLitExprA1IntKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1, float32(1.5): 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`array index must be non-negative integer constant`,
@@ -1046,7 +995,6 @@ func TestCheckCompositeLitExprA1IntKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: 1, a: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1067,7 +1015,6 @@ func TestCheckCompositeLitExprA1IntKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: 1, a: "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1091,7 +1038,6 @@ func TestCheckCompositeLitExprA1IntKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: 1, b: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`undefined: b`,
@@ -1111,7 +1057,6 @@ func TestCheckCompositeLitExprA1IntKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: 1, c: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1133,7 +1078,6 @@ func TestCheckCompositeLitExprA1IntKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: true}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot use true (type bool) as type int in array element`,
@@ -1153,7 +1097,6 @@ func TestCheckCompositeLitExprA1IntKBoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: true, 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot use true (type bool) as type int in array element`,
@@ -1172,7 +1115,6 @@ func TestCheckCompositeLitExprA1IntKBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: true, "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1195,7 +1137,6 @@ func TestCheckCompositeLitExprA1IntKBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: true, nil}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot use true (type bool) as type int in array element`,
@@ -1216,7 +1157,6 @@ func TestCheckCompositeLitExprA1IntKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: true, 1: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot use true (type bool) as type int in array element`,
@@ -1236,7 +1176,6 @@ func TestCheckCompositeLitExprA1IntKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: true, 1: "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1260,7 +1199,6 @@ func TestCheckCompositeLitExprA1IntKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: true, float32(1.5): 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot use true (type bool) as type int in array element`,
@@ -1280,7 +1218,6 @@ func TestCheckCompositeLitExprA1IntKBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: true, a: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1302,7 +1239,6 @@ func TestCheckCompositeLitExprA1IntKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: true, a: "a"}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1327,7 +1263,6 @@ func TestCheckCompositeLitExprA1IntKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{1: true, b: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
 		`cannot use true (type bool) as type int in array element`,
@@ -1348,7 +1283,6 @@ func TestCheckCompositeLitExprA1IntKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{1: true, c: 1}`, env,
 		`array index 2 out of bounds [0:1]`,
@@ -1371,7 +1305,6 @@ func TestCheckCompositeLitExprA1FloatKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.4): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -1390,7 +1323,6 @@ func TestCheckCompositeLitExprA1FloatKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.4): 1, 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -1408,7 +1340,6 @@ func TestCheckCompositeLitExprA1FloatKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{float32(1.4): 1, "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -1430,7 +1361,6 @@ func TestCheckCompositeLitExprA1FloatKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.4): 1, nil}`, env,
 		`array index must be non-negative integer constant`,
 		`cannot convert nil to type int`,
@@ -1450,7 +1380,6 @@ func TestCheckCompositeLitExprA1FloatKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.4): 1, 1: 1}`, env,
 		`array index must be non-negative integer constant`,
 		`array index 2 out of bounds [0:1]`,
@@ -1469,7 +1398,6 @@ func TestCheckCompositeLitExprA1FloatKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{float32(1.4): 1, 1: "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -1492,7 +1420,6 @@ func TestCheckCompositeLitExprA1FloatKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.4): 1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 		`array index must be non-negative integer constant`,
@@ -1511,7 +1438,6 @@ func TestCheckCompositeLitExprA1FloatKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{float32(1.4): 1, a: 1}`, env,
 		`array index must be non-negative integer constant`,
@@ -1532,7 +1458,6 @@ func TestCheckCompositeLitExprA1FloatKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{float32(1.4): 1, a: "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -1556,7 +1481,6 @@ func TestCheckCompositeLitExprA1FloatKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{float32(1.4): 1, b: 1}`, env,
 		`array index must be non-negative integer constant`,
 		`undefined: b`,
@@ -1576,7 +1500,6 @@ func TestCheckCompositeLitExprA1FloatKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{float32(1.4): 1, c: 1}`, env,
 		`array index must be non-negative integer constant`,
@@ -1598,7 +1521,6 @@ func TestCheckCompositeLitExprA1AKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1618,7 +1540,6 @@ func TestCheckCompositeLitExprA1AKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: 1, 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1637,7 +1558,6 @@ func TestCheckCompositeLitExprA1AKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: 1, "a"}`, env,
 		`undefined: a`,
@@ -1660,7 +1580,6 @@ func TestCheckCompositeLitExprA1AKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: 1, nil}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1681,7 +1600,6 @@ func TestCheckCompositeLitExprA1AKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: 1, 1: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1701,7 +1619,6 @@ func TestCheckCompositeLitExprA1AKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: 1, 1: "a"}`, env,
 		`undefined: a`,
@@ -1725,7 +1642,6 @@ func TestCheckCompositeLitExprA1AKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: 1, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1745,7 +1661,6 @@ func TestCheckCompositeLitExprA1AKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: 1, a: 1}`, env,
 		`undefined: a`,
@@ -1767,7 +1682,6 @@ func TestCheckCompositeLitExprA1AKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -1792,7 +1706,6 @@ func TestCheckCompositeLitExprA1AKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: 1, b: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1813,7 +1726,6 @@ func TestCheckCompositeLitExprA1AKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: 1, c: 1}`, env,
 		`undefined: a`,
@@ -1836,7 +1748,6 @@ func TestCheckCompositeLitExprA1AKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: true}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1857,7 +1768,6 @@ func TestCheckCompositeLitExprA1AKBoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: true, 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1877,7 +1787,6 @@ func TestCheckCompositeLitExprA1AKBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: true, "a"}`, env,
 		`undefined: a`,
@@ -1901,7 +1810,6 @@ func TestCheckCompositeLitExprA1AKBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: true, nil}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1923,7 +1831,6 @@ func TestCheckCompositeLitExprA1AKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: true, 1: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1944,7 +1851,6 @@ func TestCheckCompositeLitExprA1AKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: true, 1: "a"}`, env,
 		`undefined: a`,
@@ -1969,7 +1875,6 @@ func TestCheckCompositeLitExprA1AKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: true, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -1990,7 +1895,6 @@ func TestCheckCompositeLitExprA1AKBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: true, a: 1}`, env,
 		`undefined: a`,
@@ -2013,7 +1917,6 @@ func TestCheckCompositeLitExprA1AKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: true, a: "a"}`, env,
 		`undefined: a`,
@@ -2039,7 +1942,6 @@ func TestCheckCompositeLitExprA1AKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{a: true, b: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -2061,7 +1963,6 @@ func TestCheckCompositeLitExprA1AKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{a: true, c: 1}`, env,
 		`undefined: a`,
@@ -2085,7 +1986,6 @@ func TestCheckCompositeLitExprA1BKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2105,7 +2005,6 @@ func TestCheckCompositeLitExprA1BKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1, 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2124,7 +2023,6 @@ func TestCheckCompositeLitExprA1BKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{b: 1, "a"}`, env,
 		`undefined: b`,
@@ -2147,7 +2045,6 @@ func TestCheckCompositeLitExprA1BKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1, nil}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2168,7 +2065,6 @@ func TestCheckCompositeLitExprA1BKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1, 1: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2188,7 +2084,6 @@ func TestCheckCompositeLitExprA1BKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{b: 1, 1: "a"}`, env,
 		`undefined: b`,
@@ -2212,7 +2107,6 @@ func TestCheckCompositeLitExprA1BKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1, float32(1.5): 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2232,7 +2126,6 @@ func TestCheckCompositeLitExprA1BKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{b: 1, a: 1}`, env,
 		`undefined: b`,
@@ -2254,7 +2147,6 @@ func TestCheckCompositeLitExprA1BKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{b: 1, a: "a"}`, env,
 		`undefined: b`,
@@ -2279,7 +2171,6 @@ func TestCheckCompositeLitExprA1BKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{b: 1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2300,7 +2191,6 @@ func TestCheckCompositeLitExprA1BKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{b: 1, c: 1}`, env,
 		`undefined: b`,
@@ -2323,7 +2213,6 @@ func TestCheckCompositeLitExprA1CKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{c: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -2343,7 +2232,6 @@ func TestCheckCompositeLitExprA1CKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{c: 1, 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -2362,7 +2250,6 @@ func TestCheckCompositeLitExprA1CKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{c: 1, "a"}`, env,
 		`undefined: c`,
@@ -2385,7 +2272,6 @@ func TestCheckCompositeLitExprA1CKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{c: 1, nil}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -2406,7 +2292,6 @@ func TestCheckCompositeLitExprA1CKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{c: 1, 1: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -2426,7 +2311,6 @@ func TestCheckCompositeLitExprA1CKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{c: 1, 1: "a"}`, env,
 		`undefined: c`,
@@ -2450,7 +2334,6 @@ func TestCheckCompositeLitExprA1CKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{c: 1, float32(1.5): 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -2470,7 +2353,6 @@ func TestCheckCompositeLitExprA1CKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{c: 1, a: 1}`, env,
 		`undefined: c`,
@@ -2492,7 +2374,6 @@ func TestCheckCompositeLitExprA1CKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{c: 1, a: "a"}`, env,
 		`undefined: c`,
@@ -2517,7 +2398,6 @@ func TestCheckCompositeLitExprA1CKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a1{c: 1, b: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -2538,7 +2418,6 @@ func TestCheckCompositeLitExprA1CKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a1{c: 1, c: 1}`, env,
 		`undefined: c`,
@@ -2561,7 +2440,6 @@ func TestCheckCompositeLitExprA2XX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{}`, env, reflect.TypeOf(a2{}))
 }
 
@@ -2577,7 +2455,6 @@ func TestCheckCompositeLitExprA2XInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{1}`, env, reflect.TypeOf(a2{1}))
 }
 
@@ -2592,7 +2469,6 @@ func TestCheckCompositeLitExprA2XString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{"a"}`, env,
 		`cannot convert "a" to type int`,
@@ -2613,7 +2489,6 @@ func TestCheckCompositeLitExprA2XNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -2632,7 +2507,6 @@ func TestCheckCompositeLitExprA2XIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{1: 1}`, env, reflect.TypeOf(a2{1: 1}))
 }
 
@@ -2647,7 +2521,6 @@ func TestCheckCompositeLitExprA2XIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -2668,7 +2541,6 @@ func TestCheckCompositeLitExprA2XFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -2686,7 +2558,6 @@ func TestCheckCompositeLitExprA2XAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: 1}`, env,
 		`undefined: a`,
@@ -2706,7 +2577,6 @@ func TestCheckCompositeLitExprA2XAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: "a"}`, env,
 		`undefined: a`,
@@ -2729,7 +2599,6 @@ func TestCheckCompositeLitExprA2XBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2748,7 +2617,6 @@ func TestCheckCompositeLitExprA2XCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{c: 1}`, env,
 		`undefined: c`,
@@ -2769,7 +2637,6 @@ func TestCheckCompositeLitExprA2IntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{1}`, env, reflect.TypeOf(a2{1}))
 }
 
@@ -2785,7 +2652,6 @@ func TestCheckCompositeLitExprA2IntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{1, 1}`, env, reflect.TypeOf(a2{1, 1}))
 }
 
@@ -2800,7 +2666,6 @@ func TestCheckCompositeLitExprA2IntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1, "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -2821,7 +2686,6 @@ func TestCheckCompositeLitExprA2IntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1, nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -2840,7 +2704,6 @@ func TestCheckCompositeLitExprA2IntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{1, 1: 1}`, env, reflect.TypeOf(a2{1, 1: 1}))
 }
 
@@ -2855,7 +2718,6 @@ func TestCheckCompositeLitExprA2IntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1, 1: "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -2876,7 +2738,6 @@ func TestCheckCompositeLitExprA2IntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -2894,7 +2755,6 @@ func TestCheckCompositeLitExprA2IntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1, a: 1}`, env,
 		`undefined: a`,
@@ -2914,7 +2774,6 @@ func TestCheckCompositeLitExprA2IntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1, a: "a"}`, env,
 		`undefined: a`,
@@ -2937,7 +2796,6 @@ func TestCheckCompositeLitExprA2IntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -2956,7 +2814,6 @@ func TestCheckCompositeLitExprA2IntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1, c: 1}`, env,
 		`undefined: c`,
@@ -2977,7 +2834,6 @@ func TestCheckCompositeLitExprA2NilX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -2996,7 +2852,6 @@ func TestCheckCompositeLitExprA2NilInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil, 1}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -3014,7 +2869,6 @@ func TestCheckCompositeLitExprA2NilString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{nil, "a"}`, env,
 		`cannot convert nil to type int`,
@@ -3036,7 +2890,6 @@ func TestCheckCompositeLitExprA2NilNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil, nil}`, env,
 		`cannot convert nil to type int`,
 		`cannot convert nil to type int`,
@@ -3056,7 +2909,6 @@ func TestCheckCompositeLitExprA2NilIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil, 1: 1}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -3074,7 +2926,6 @@ func TestCheckCompositeLitExprA2NilIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{nil, 1: "a"}`, env,
 		`cannot convert nil to type int`,
@@ -3096,7 +2947,6 @@ func TestCheckCompositeLitExprA2NilFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil, float32(1.5): 1}`, env,
 		`cannot convert nil to type int`,
 		`array index must be non-negative integer constant`,
@@ -3115,7 +2965,6 @@ func TestCheckCompositeLitExprA2NilAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{nil, a: 1}`, env,
 		`cannot convert nil to type int`,
@@ -3136,7 +2985,6 @@ func TestCheckCompositeLitExprA2NilAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{nil, a: "a"}`, env,
 		`cannot convert nil to type int`,
@@ -3160,7 +3008,6 @@ func TestCheckCompositeLitExprA2NilBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{nil, b: 1}`, env,
 		`cannot convert nil to type int`,
 		`undefined: b`,
@@ -3180,7 +3027,6 @@ func TestCheckCompositeLitExprA2NilCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{nil, c: 1}`, env,
 		`cannot convert nil to type int`,
@@ -3202,7 +3048,6 @@ func TestCheckCompositeLitExprA2BoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{true}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -3221,7 +3066,6 @@ func TestCheckCompositeLitExprA2BoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{true, 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -3239,7 +3083,6 @@ func TestCheckCompositeLitExprA2BoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{true, "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3261,7 +3104,6 @@ func TestCheckCompositeLitExprA2BoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{true, nil}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`cannot convert nil to type int`,
@@ -3281,7 +3123,6 @@ func TestCheckCompositeLitExprA2BoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -3299,7 +3140,6 @@ func TestCheckCompositeLitExprA2BoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3321,7 +3161,6 @@ func TestCheckCompositeLitExprA2BoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index must be non-negative integer constant`,
@@ -3340,7 +3179,6 @@ func TestCheckCompositeLitExprA2BoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{true, a: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3361,7 +3199,6 @@ func TestCheckCompositeLitExprA2BoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3385,7 +3222,6 @@ func TestCheckCompositeLitExprA2BoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{true, b: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`undefined: b`,
@@ -3405,7 +3241,6 @@ func TestCheckCompositeLitExprA2BoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{true, c: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3427,7 +3262,6 @@ func TestCheckCompositeLitExprA2IntKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `a2{1: 1}`, env, reflect.TypeOf(a2{1: 1}))
 }
 
@@ -3442,7 +3276,6 @@ func TestCheckCompositeLitExprA2IntKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: 1, 1}`, env,
 		`array index 3 out of bounds [0:2]`,
@@ -3461,7 +3294,6 @@ func TestCheckCompositeLitExprA2IntKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: 1, "a"}`, env,
 		`array index 3 out of bounds [0:2]`,
@@ -3483,7 +3315,6 @@ func TestCheckCompositeLitExprA2IntKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: 1, nil}`, env,
 		`array index 3 out of bounds [0:2]`,
 		`cannot convert nil to type int`,
@@ -3503,7 +3334,6 @@ func TestCheckCompositeLitExprA2IntKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: 1, 1: 1}`, env,
 		`duplicate index in array literal: 1`,
 	)
@@ -3521,7 +3351,6 @@ func TestCheckCompositeLitExprA2IntKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: 1, 1: "a"}`, env,
 		`duplicate index in array literal: 1`,
@@ -3543,7 +3372,6 @@ func TestCheckCompositeLitExprA2IntKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: 1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -3561,7 +3389,6 @@ func TestCheckCompositeLitExprA2IntKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: 1, a: 1}`, env,
 		`undefined: a`,
@@ -3581,7 +3408,6 @@ func TestCheckCompositeLitExprA2IntKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -3604,7 +3430,6 @@ func TestCheckCompositeLitExprA2IntKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: 1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -3623,7 +3448,6 @@ func TestCheckCompositeLitExprA2IntKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: 1, c: 1}`, env,
 		`undefined: c`,
@@ -3644,7 +3468,6 @@ func TestCheckCompositeLitExprA2IntKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: true}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -3662,7 +3485,6 @@ func TestCheckCompositeLitExprA2IntKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: true, 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3682,7 +3504,6 @@ func TestCheckCompositeLitExprA2IntKBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: true, "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3705,7 +3526,6 @@ func TestCheckCompositeLitExprA2IntKBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: true, nil}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index 3 out of bounds [0:2]`,
@@ -3726,7 +3546,6 @@ func TestCheckCompositeLitExprA2IntKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`duplicate index in array literal: 1`,
@@ -3745,7 +3564,6 @@ func TestCheckCompositeLitExprA2IntKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3768,7 +3586,6 @@ func TestCheckCompositeLitExprA2IntKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index must be non-negative integer constant`,
@@ -3787,7 +3604,6 @@ func TestCheckCompositeLitExprA2IntKBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: true, a: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3808,7 +3624,6 @@ func TestCheckCompositeLitExprA2IntKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3832,7 +3647,6 @@ func TestCheckCompositeLitExprA2IntKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{1: true, b: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`undefined: b`,
@@ -3852,7 +3666,6 @@ func TestCheckCompositeLitExprA2IntKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{1: true, c: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -3874,7 +3687,6 @@ func TestCheckCompositeLitExprA2FloatKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.4): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -3893,7 +3705,6 @@ func TestCheckCompositeLitExprA2FloatKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.4): 1, 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -3911,7 +3722,6 @@ func TestCheckCompositeLitExprA2FloatKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{float32(1.4): 1, "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -3933,7 +3743,6 @@ func TestCheckCompositeLitExprA2FloatKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.4): 1, nil}`, env,
 		`array index must be non-negative integer constant`,
 		`cannot convert nil to type int`,
@@ -3953,7 +3762,6 @@ func TestCheckCompositeLitExprA2FloatKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.4): 1, 1: 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -3971,7 +3779,6 @@ func TestCheckCompositeLitExprA2FloatKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{float32(1.4): 1, 1: "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -3993,7 +3800,6 @@ func TestCheckCompositeLitExprA2FloatKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.4): 1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 		`array index must be non-negative integer constant`,
@@ -4012,7 +3818,6 @@ func TestCheckCompositeLitExprA2FloatKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{float32(1.4): 1, a: 1}`, env,
 		`array index must be non-negative integer constant`,
@@ -4033,7 +3838,6 @@ func TestCheckCompositeLitExprA2FloatKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{float32(1.4): 1, a: "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -4057,7 +3861,6 @@ func TestCheckCompositeLitExprA2FloatKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{float32(1.4): 1, b: 1}`, env,
 		`array index must be non-negative integer constant`,
 		`undefined: b`,
@@ -4077,7 +3880,6 @@ func TestCheckCompositeLitExprA2FloatKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{float32(1.4): 1, c: 1}`, env,
 		`array index must be non-negative integer constant`,
@@ -4099,7 +3901,6 @@ func TestCheckCompositeLitExprA2AKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4119,7 +3920,6 @@ func TestCheckCompositeLitExprA2AKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: 1, 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4138,7 +3938,6 @@ func TestCheckCompositeLitExprA2AKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: 1, "a"}`, env,
 		`undefined: a`,
@@ -4161,7 +3960,6 @@ func TestCheckCompositeLitExprA2AKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: 1, nil}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4182,7 +3980,6 @@ func TestCheckCompositeLitExprA2AKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: 1, 1: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4201,7 +3998,6 @@ func TestCheckCompositeLitExprA2AKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: 1, 1: "a"}`, env,
 		`undefined: a`,
@@ -4224,7 +4020,6 @@ func TestCheckCompositeLitExprA2AKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: 1, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4244,7 +4039,6 @@ func TestCheckCompositeLitExprA2AKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: 1, a: 1}`, env,
 		`undefined: a`,
@@ -4266,7 +4060,6 @@ func TestCheckCompositeLitExprA2AKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -4291,7 +4084,6 @@ func TestCheckCompositeLitExprA2AKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: 1, b: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4312,7 +4104,6 @@ func TestCheckCompositeLitExprA2AKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: 1, c: 1}`, env,
 		`undefined: a`,
@@ -4335,7 +4126,6 @@ func TestCheckCompositeLitExprA2AKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: true}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4356,7 +4146,6 @@ func TestCheckCompositeLitExprA2AKBoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: true, 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4376,7 +4165,6 @@ func TestCheckCompositeLitExprA2AKBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: true, "a"}`, env,
 		`undefined: a`,
@@ -4400,7 +4188,6 @@ func TestCheckCompositeLitExprA2AKBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: true, nil}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4422,7 +4209,6 @@ func TestCheckCompositeLitExprA2AKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: true, 1: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4442,7 +4228,6 @@ func TestCheckCompositeLitExprA2AKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: true, 1: "a"}`, env,
 		`undefined: a`,
@@ -4466,7 +4251,6 @@ func TestCheckCompositeLitExprA2AKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: true, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4487,7 +4271,6 @@ func TestCheckCompositeLitExprA2AKBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: true, a: 1}`, env,
 		`undefined: a`,
@@ -4510,7 +4293,6 @@ func TestCheckCompositeLitExprA2AKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: true, a: "a"}`, env,
 		`undefined: a`,
@@ -4536,7 +4318,6 @@ func TestCheckCompositeLitExprA2AKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{a: true, b: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -4558,7 +4339,6 @@ func TestCheckCompositeLitExprA2AKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{a: true, c: 1}`, env,
 		`undefined: a`,
@@ -4582,7 +4362,6 @@ func TestCheckCompositeLitExprA2BKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -4602,7 +4381,6 @@ func TestCheckCompositeLitExprA2BKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1, 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -4621,7 +4399,6 @@ func TestCheckCompositeLitExprA2BKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{b: 1, "a"}`, env,
 		`undefined: b`,
@@ -4644,7 +4421,6 @@ func TestCheckCompositeLitExprA2BKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1, nil}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -4665,7 +4441,6 @@ func TestCheckCompositeLitExprA2BKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1, 1: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -4684,7 +4459,6 @@ func TestCheckCompositeLitExprA2BKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{b: 1, 1: "a"}`, env,
 		`undefined: b`,
@@ -4707,7 +4481,6 @@ func TestCheckCompositeLitExprA2BKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1, float32(1.5): 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -4727,7 +4500,6 @@ func TestCheckCompositeLitExprA2BKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{b: 1, a: 1}`, env,
 		`undefined: b`,
@@ -4749,7 +4521,6 @@ func TestCheckCompositeLitExprA2BKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{b: 1, a: "a"}`, env,
 		`undefined: b`,
@@ -4774,7 +4545,6 @@ func TestCheckCompositeLitExprA2BKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{b: 1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -4795,7 +4565,6 @@ func TestCheckCompositeLitExprA2BKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{b: 1, c: 1}`, env,
 		`undefined: b`,
@@ -4818,7 +4587,6 @@ func TestCheckCompositeLitExprA2CKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{c: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -4838,7 +4606,6 @@ func TestCheckCompositeLitExprA2CKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{c: 1, 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -4857,7 +4624,6 @@ func TestCheckCompositeLitExprA2CKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{c: 1, "a"}`, env,
 		`undefined: c`,
@@ -4880,7 +4646,6 @@ func TestCheckCompositeLitExprA2CKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{c: 1, nil}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -4901,7 +4666,6 @@ func TestCheckCompositeLitExprA2CKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{c: 1, 1: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -4920,7 +4684,6 @@ func TestCheckCompositeLitExprA2CKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{c: 1, 1: "a"}`, env,
 		`undefined: c`,
@@ -4943,7 +4706,6 @@ func TestCheckCompositeLitExprA2CKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{c: 1, float32(1.5): 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -4963,7 +4725,6 @@ func TestCheckCompositeLitExprA2CKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{c: 1, a: 1}`, env,
 		`undefined: c`,
@@ -4985,7 +4746,6 @@ func TestCheckCompositeLitExprA2CKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{c: 1, a: "a"}`, env,
 		`undefined: c`,
@@ -5010,7 +4770,6 @@ func TestCheckCompositeLitExprA2CKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `a2{c: 1, b: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -5031,7 +4790,6 @@ func TestCheckCompositeLitExprA2CKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `a2{c: 1, c: 1}`, env,
 		`undefined: c`,
@@ -5054,7 +4812,6 @@ func TestCheckCompositeLitExprS1XX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s1{}`, env, reflect.TypeOf(s1{}))
 }
 
@@ -5070,7 +4827,6 @@ func TestCheckCompositeLitExprS1XInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s1{1}`, env, reflect.TypeOf(s1{1}))
 }
 
@@ -5085,7 +4841,6 @@ func TestCheckCompositeLitExprS1XString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{"a"}`, env,
 		`cannot use "a" (type string) as type int in field value`,
@@ -5105,7 +4860,6 @@ func TestCheckCompositeLitExprS1XNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil}`, env,
 		`cannot use nil as type int in field value`,
 	)
@@ -5123,7 +4877,6 @@ func TestCheckCompositeLitExprS1XIntKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -5143,7 +4896,6 @@ func TestCheckCompositeLitExprS1XIntKString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -5161,7 +4913,6 @@ func TestCheckCompositeLitExprS1XFloatKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{float32(1.5): 1}`, env,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -5181,7 +4932,6 @@ func TestCheckCompositeLitExprS1XAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s1{a: 1}`, env, reflect.TypeOf(s1{a: 1}))
 }
 
@@ -5196,7 +4946,6 @@ func TestCheckCompositeLitExprS1XAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: "a"}`, env,
 		`cannot use "a" (type string) as type int in field value`,
@@ -5216,7 +4965,6 @@ func TestCheckCompositeLitExprS1XBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 	)
@@ -5234,7 +4982,6 @@ func TestCheckCompositeLitExprS1XCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{c: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -5254,7 +5001,6 @@ func TestCheckCompositeLitExprS1IntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s1{1}`, env, reflect.TypeOf(s1{1}))
 }
 
@@ -5269,7 +5015,6 @@ func TestCheckCompositeLitExprS1IntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1, 1}`, env,
 		`too many values in struct initializer`,
@@ -5289,7 +5034,6 @@ func TestCheckCompositeLitExprS1IntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1, "a"}`, env,
 		`too many values in struct initializer`,
 	)
@@ -5308,7 +5052,6 @@ func TestCheckCompositeLitExprS1IntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1, nil}`, env,
 		`too many values in struct initializer`,
 	)
@@ -5326,7 +5069,6 @@ func TestCheckCompositeLitExprS1IntIntKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1, 1: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -5347,7 +5089,6 @@ func TestCheckCompositeLitExprS1IntIntKString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1, 1: "a"}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name 1 in struct initializer`,
@@ -5366,7 +5107,6 @@ func TestCheckCompositeLitExprS1IntFloatKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1, float32(1.5): 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -5387,7 +5127,6 @@ func TestCheckCompositeLitExprS1IntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1, a: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -5405,7 +5144,6 @@ func TestCheckCompositeLitExprS1IntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1, a: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -5426,7 +5164,6 @@ func TestCheckCompositeLitExprS1IntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1, b: 1}`, env,
 		`mixture of field:value and value initializers`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -5445,7 +5182,6 @@ func TestCheckCompositeLitExprS1IntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1, c: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -5466,7 +5202,6 @@ func TestCheckCompositeLitExprS1NilX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil}`, env,
 		`cannot use nil as type int in field value`,
 	)
@@ -5484,7 +5219,6 @@ func TestCheckCompositeLitExprS1NilInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{nil, 1}`, env,
 		`cannot use nil as type int in field value`,
@@ -5505,7 +5239,6 @@ func TestCheckCompositeLitExprS1NilString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil, "a"}`, env,
 		`cannot use nil as type int in field value`,
 		`too many values in struct initializer`,
@@ -5524,7 +5257,6 @@ func TestCheckCompositeLitExprS1NilNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{nil, nil}`, env,
 		`cannot use nil as type int in field value`,
@@ -5545,7 +5277,6 @@ func TestCheckCompositeLitExprS1NilIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil, 1: 1}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name 1 in struct initializer`,
@@ -5564,7 +5295,6 @@ func TestCheckCompositeLitExprS1NilIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{nil, 1: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -5585,7 +5315,6 @@ func TestCheckCompositeLitExprS1NilFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil, float32(1.5): 1}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -5605,7 +5334,6 @@ func TestCheckCompositeLitExprS1NilAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil, a: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -5623,7 +5351,6 @@ func TestCheckCompositeLitExprS1NilAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{nil, a: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -5644,7 +5371,6 @@ func TestCheckCompositeLitExprS1NilBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{nil, b: 1}`, env,
 		`mixture of field:value and value initializers`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -5663,7 +5389,6 @@ func TestCheckCompositeLitExprS1NilCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{nil, c: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -5684,7 +5409,6 @@ func TestCheckCompositeLitExprS1BoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{true}`, env,
 		`cannot use true (type bool) as type int in field value`,
 	)
@@ -5702,7 +5426,6 @@ func TestCheckCompositeLitExprS1BoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{true, 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -5723,7 +5446,6 @@ func TestCheckCompositeLitExprS1BoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{true, "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`too many values in struct initializer`,
@@ -5742,7 +5464,6 @@ func TestCheckCompositeLitExprS1BoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{true, nil}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -5763,7 +5484,6 @@ func TestCheckCompositeLitExprS1BoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{true, 1: 1}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name 1 in struct initializer`,
@@ -5782,7 +5502,6 @@ func TestCheckCompositeLitExprS1BoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{true, 1: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -5803,7 +5522,6 @@ func TestCheckCompositeLitExprS1BoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{true, float32(1.5): 1}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -5823,7 +5541,6 @@ func TestCheckCompositeLitExprS1BoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{true, a: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -5841,7 +5558,6 @@ func TestCheckCompositeLitExprS1BoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{true, a: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -5862,7 +5578,6 @@ func TestCheckCompositeLitExprS1BoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{true, b: 1}`, env,
 		`mixture of field:value and value initializers`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -5881,7 +5596,6 @@ func TestCheckCompositeLitExprS1BoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{true, c: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -5902,7 +5616,6 @@ func TestCheckCompositeLitExprS1IntKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -5920,7 +5633,6 @@ func TestCheckCompositeLitExprS1IntKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: 1, 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -5941,7 +5653,6 @@ func TestCheckCompositeLitExprS1IntKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: 1, "a"}`, env,
 		`invalid field name 1 in struct initializer`,
 		`mixture of field:value and value initializers`,
@@ -5960,7 +5671,6 @@ func TestCheckCompositeLitExprS1IntKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: 1, nil}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -5981,7 +5691,6 @@ func TestCheckCompositeLitExprS1IntKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: 1, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name 1 in struct initializer`,
@@ -6000,7 +5709,6 @@ func TestCheckCompositeLitExprS1IntKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: 1, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6021,7 +5729,6 @@ func TestCheckCompositeLitExprS1IntKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: 1, float32(1.5): 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -6041,7 +5748,6 @@ func TestCheckCompositeLitExprS1IntKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: 1, a: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -6059,7 +5765,6 @@ func TestCheckCompositeLitExprS1IntKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: 1, a: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6080,7 +5785,6 @@ func TestCheckCompositeLitExprS1IntKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: 1, b: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -6099,7 +5803,6 @@ func TestCheckCompositeLitExprS1IntKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: 1, c: 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6120,7 +5823,6 @@ func TestCheckCompositeLitExprS1IntKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: true}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -6138,7 +5840,6 @@ func TestCheckCompositeLitExprS1IntKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: true, 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6159,7 +5860,6 @@ func TestCheckCompositeLitExprS1IntKBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: true, "a"}`, env,
 		`invalid field name 1 in struct initializer`,
 		`mixture of field:value and value initializers`,
@@ -6178,7 +5878,6 @@ func TestCheckCompositeLitExprS1IntKBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: true, nil}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6199,7 +5898,6 @@ func TestCheckCompositeLitExprS1IntKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: true, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name 1 in struct initializer`,
@@ -6218,7 +5916,6 @@ func TestCheckCompositeLitExprS1IntKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: true, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6239,7 +5936,6 @@ func TestCheckCompositeLitExprS1IntKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: true, float32(1.5): 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -6259,7 +5955,6 @@ func TestCheckCompositeLitExprS1IntKBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: true, a: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -6277,7 +5972,6 @@ func TestCheckCompositeLitExprS1IntKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: true, a: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6298,7 +5992,6 @@ func TestCheckCompositeLitExprS1IntKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{1: true, b: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -6317,7 +6010,6 @@ func TestCheckCompositeLitExprS1IntKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{1: true, c: 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6338,7 +6030,6 @@ func TestCheckCompositeLitExprS1FloatKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{float32(1.4): 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 	)
@@ -6356,7 +6047,6 @@ func TestCheckCompositeLitExprS1FloatKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{float32(1.4): 1, 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -6377,7 +6067,6 @@ func TestCheckCompositeLitExprS1FloatKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{float32(1.4): 1, "a"}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`mixture of field:value and value initializers`,
@@ -6396,7 +6085,6 @@ func TestCheckCompositeLitExprS1FloatKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{float32(1.4): 1, nil}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -6417,7 +6105,6 @@ func TestCheckCompositeLitExprS1FloatKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{float32(1.4): 1, 1: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`invalid field name 1 in struct initializer`,
@@ -6436,7 +6123,6 @@ func TestCheckCompositeLitExprS1FloatKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{float32(1.4): 1, 1: "a"}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -6457,7 +6143,6 @@ func TestCheckCompositeLitExprS1FloatKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{float32(1.4): 1, float32(1.5): 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -6477,7 +6162,6 @@ func TestCheckCompositeLitExprS1FloatKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{float32(1.4): 1, a: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 	)
@@ -6495,7 +6179,6 @@ func TestCheckCompositeLitExprS1FloatKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{float32(1.4): 1, a: "a"}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -6516,7 +6199,6 @@ func TestCheckCompositeLitExprS1FloatKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{float32(1.4): 1, b: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -6535,7 +6217,6 @@ func TestCheckCompositeLitExprS1FloatKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{float32(1.4): 1, c: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -6556,7 +6237,6 @@ func TestCheckCompositeLitExprS1AKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s1{a: 1}`, env, reflect.TypeOf(s1{a: 1}))
 }
 
@@ -6571,7 +6251,6 @@ func TestCheckCompositeLitExprS1AKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: 1, 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -6591,7 +6270,6 @@ func TestCheckCompositeLitExprS1AKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: 1, "a"}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -6609,7 +6287,6 @@ func TestCheckCompositeLitExprS1AKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: 1, nil}`, env,
 		`mixture of field:value and value initializers`,
@@ -6629,7 +6306,6 @@ func TestCheckCompositeLitExprS1AKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: 1, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -6647,7 +6323,6 @@ func TestCheckCompositeLitExprS1AKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: 1, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -6667,7 +6342,6 @@ func TestCheckCompositeLitExprS1AKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: 1, float32(1.5): 1}`, env,
 		`invalid field name float32(1.5) in struct initializer`,
 	)
@@ -6686,7 +6360,6 @@ func TestCheckCompositeLitExprS1AKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: 1, a: 1}`, env,
 		`duplicate field name in struct literal: a`,
 	)
@@ -6704,7 +6377,6 @@ func TestCheckCompositeLitExprS1AKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: 1, a: "a"}`, env,
 		`duplicate field name in struct literal: a`,
@@ -6725,7 +6397,6 @@ func TestCheckCompositeLitExprS1AKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: 1, b: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 	)
@@ -6743,7 +6414,6 @@ func TestCheckCompositeLitExprS1AKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: 1, c: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -6763,7 +6433,6 @@ func TestCheckCompositeLitExprS1AKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: true}`, env,
 		`cannot use true (type bool) as type int in field value`,
 	)
@@ -6781,7 +6450,6 @@ func TestCheckCompositeLitExprS1AKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: true, 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -6802,7 +6470,6 @@ func TestCheckCompositeLitExprS1AKBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: true, "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`mixture of field:value and value initializers`,
@@ -6821,7 +6488,6 @@ func TestCheckCompositeLitExprS1AKBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: true, nil}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -6842,7 +6508,6 @@ func TestCheckCompositeLitExprS1AKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`invalid field name 1 in struct initializer`,
@@ -6861,7 +6526,6 @@ func TestCheckCompositeLitExprS1AKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -6882,7 +6546,6 @@ func TestCheckCompositeLitExprS1AKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -6902,7 +6565,6 @@ func TestCheckCompositeLitExprS1AKBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: true, a: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`duplicate field name in struct literal: a`,
@@ -6921,7 +6583,6 @@ func TestCheckCompositeLitExprS1AKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -6943,7 +6604,6 @@ func TestCheckCompositeLitExprS1AKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{a: true, b: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -6962,7 +6622,6 @@ func TestCheckCompositeLitExprS1AKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{a: true, c: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -6983,7 +6642,6 @@ func TestCheckCompositeLitExprS1BKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 	)
@@ -7001,7 +6659,6 @@ func TestCheckCompositeLitExprS1BKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{b: 1, 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7022,7 +6679,6 @@ func TestCheckCompositeLitExprS1BKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1, "a"}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 		`mixture of field:value and value initializers`,
@@ -7041,7 +6697,6 @@ func TestCheckCompositeLitExprS1BKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{b: 1, nil}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7062,7 +6717,6 @@ func TestCheckCompositeLitExprS1BKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1, 1: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 		`invalid field name 1 in struct initializer`,
@@ -7081,7 +6735,6 @@ func TestCheckCompositeLitExprS1BKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{b: 1, 1: "a"}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7102,7 +6755,6 @@ func TestCheckCompositeLitExprS1BKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1, float32(1.5): 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -7122,7 +6774,6 @@ func TestCheckCompositeLitExprS1BKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1, a: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 	)
@@ -7140,7 +6791,6 @@ func TestCheckCompositeLitExprS1BKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{b: 1, a: "a"}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7161,7 +6811,6 @@ func TestCheckCompositeLitExprS1BKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{b: 1, b: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7180,7 +6829,6 @@ func TestCheckCompositeLitExprS1BKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{b: 1, c: 1}`, env,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7201,7 +6849,6 @@ func TestCheckCompositeLitExprS1CKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{c: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
 	)
@@ -7219,7 +6866,6 @@ func TestCheckCompositeLitExprS1CKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{c: 1, 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -7240,7 +6886,6 @@ func TestCheckCompositeLitExprS1CKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{c: 1, "a"}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
 		`mixture of field:value and value initializers`,
@@ -7259,7 +6904,6 @@ func TestCheckCompositeLitExprS1CKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{c: 1, nil}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -7280,7 +6924,6 @@ func TestCheckCompositeLitExprS1CKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{c: 1, 1: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
 		`invalid field name 1 in struct initializer`,
@@ -7299,7 +6942,6 @@ func TestCheckCompositeLitExprS1CKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{c: 1, 1: "a"}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -7320,7 +6962,6 @@ func TestCheckCompositeLitExprS1CKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{c: 1, float32(1.5): 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -7340,7 +6981,6 @@ func TestCheckCompositeLitExprS1CKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{c: 1, a: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
 	)
@@ -7358,7 +6998,6 @@ func TestCheckCompositeLitExprS1CKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{c: 1, a: "a"}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -7379,7 +7018,6 @@ func TestCheckCompositeLitExprS1CKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s1{c: 1, b: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
 		`unknown eval.s1 field 'b' in struct literal`,
@@ -7398,7 +7036,6 @@ func TestCheckCompositeLitExprS1CKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s1{c: 1, c: 1}`, env,
 		`unknown eval.s1 field 'c' in struct literal`,
@@ -7419,7 +7056,6 @@ func TestCheckCompositeLitExprS2XX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{}`, env, reflect.TypeOf(s2{}))
 }
 
@@ -7434,7 +7070,6 @@ func TestCheckCompositeLitExprS2XInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1}`, env,
 		`too few values in struct initializer`,
@@ -7453,7 +7088,6 @@ func TestCheckCompositeLitExprS2XString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{"a"}`, env,
 		`cannot use "a" (type string) as type int in field value`,
@@ -7474,7 +7108,6 @@ func TestCheckCompositeLitExprS2XNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil}`, env,
 		`cannot use nil as type int in field value`,
 		`too few values in struct initializer`,
@@ -7494,7 +7127,6 @@ func TestCheckCompositeLitExprS2XIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -7512,7 +7144,6 @@ func TestCheckCompositeLitExprS2XIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -7532,7 +7163,6 @@ func TestCheckCompositeLitExprS2XFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.5): 1}`, env,
 		`invalid field name float32(1.5) in struct initializer`,
 	)
@@ -7551,7 +7181,6 @@ func TestCheckCompositeLitExprS2XAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{a: 1}`, env, reflect.TypeOf(s2{a: 1}))
 }
 
@@ -7566,7 +7195,6 @@ func TestCheckCompositeLitExprS2XAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: "a"}`, env,
 		`cannot use "a" (type string) as type int in field value`,
@@ -7586,7 +7214,6 @@ func TestCheckCompositeLitExprS2XBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{b: 1}`, env, reflect.TypeOf(s2{b: 1}))
 }
 
@@ -7601,7 +7228,6 @@ func TestCheckCompositeLitExprS2XCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{c: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -7621,7 +7247,6 @@ func TestCheckCompositeLitExprS2IntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1}`, env,
 		`too few values in struct initializer`,
 	)
@@ -7640,7 +7265,6 @@ func TestCheckCompositeLitExprS2IntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{1, 1}`, env, reflect.TypeOf(s2{1, 1}))
 }
 
@@ -7655,7 +7279,6 @@ func TestCheckCompositeLitExprS2IntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1, "a"}`, env,
 		`cannot use "a" (type string) as type int in field value`,
@@ -7675,7 +7298,6 @@ func TestCheckCompositeLitExprS2IntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1, nil}`, env,
 		`cannot use nil as type int in field value`,
 	)
@@ -7693,7 +7315,6 @@ func TestCheckCompositeLitExprS2IntIntKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1, 1: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -7714,7 +7335,6 @@ func TestCheckCompositeLitExprS2IntIntKString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1, 1: "a"}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name 1 in struct initializer`,
@@ -7733,7 +7353,6 @@ func TestCheckCompositeLitExprS2IntFloatKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1, float32(1.5): 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -7754,7 +7373,6 @@ func TestCheckCompositeLitExprS2IntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1, a: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -7772,7 +7390,6 @@ func TestCheckCompositeLitExprS2IntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1, a: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -7793,7 +7410,6 @@ func TestCheckCompositeLitExprS2IntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1, b: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -7811,7 +7427,6 @@ func TestCheckCompositeLitExprS2IntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1, c: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -7832,7 +7447,6 @@ func TestCheckCompositeLitExprS2NilX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil}`, env,
 		`cannot use nil as type int in field value`,
 		`too few values in struct initializer`,
@@ -7852,7 +7466,6 @@ func TestCheckCompositeLitExprS2NilInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil, 1}`, env,
 		`cannot use nil as type int in field value`,
 	)
@@ -7870,7 +7483,6 @@ func TestCheckCompositeLitExprS2NilString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{nil, "a"}`, env,
 		`cannot use nil as type int in field value`,
@@ -7891,7 +7503,6 @@ func TestCheckCompositeLitExprS2NilNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil, nil}`, env,
 		`cannot use nil as type int in field value`,
 		`cannot use nil as type int in field value`,
@@ -7910,7 +7521,6 @@ func TestCheckCompositeLitExprS2NilIntKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{nil, 1: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -7931,7 +7541,6 @@ func TestCheckCompositeLitExprS2NilIntKString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil, 1: "a"}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name 1 in struct initializer`,
@@ -7950,7 +7559,6 @@ func TestCheckCompositeLitExprS2NilFloatKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{nil, float32(1.5): 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -7971,7 +7579,6 @@ func TestCheckCompositeLitExprS2NilAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil, a: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -7989,7 +7596,6 @@ func TestCheckCompositeLitExprS2NilAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{nil, a: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -8010,7 +7616,6 @@ func TestCheckCompositeLitExprS2NilBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{nil, b: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -8028,7 +7633,6 @@ func TestCheckCompositeLitExprS2NilCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{nil, c: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -8049,7 +7653,6 @@ func TestCheckCompositeLitExprS2BoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{true}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`too few values in struct initializer`,
@@ -8069,7 +7672,6 @@ func TestCheckCompositeLitExprS2BoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{true, 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 	)
@@ -8087,7 +7689,6 @@ func TestCheckCompositeLitExprS2BoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{true, "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -8108,7 +7709,6 @@ func TestCheckCompositeLitExprS2BoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{true, nil}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`cannot use nil as type int in field value`,
@@ -8127,7 +7727,6 @@ func TestCheckCompositeLitExprS2BoolIntKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{true, 1: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -8148,7 +7747,6 @@ func TestCheckCompositeLitExprS2BoolIntKString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{true, 1: "a"}`, env,
 		`mixture of field:value and value initializers`,
 		`invalid field name 1 in struct initializer`,
@@ -8167,7 +7765,6 @@ func TestCheckCompositeLitExprS2BoolFloatKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{true, float32(1.5): 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -8188,7 +7785,6 @@ func TestCheckCompositeLitExprS2BoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{true, a: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -8206,7 +7802,6 @@ func TestCheckCompositeLitExprS2BoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{true, a: "a"}`, env,
 		`mixture of field:value and value initializers`,
@@ -8227,7 +7822,6 @@ func TestCheckCompositeLitExprS2BoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{true, b: 1}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -8245,7 +7839,6 @@ func TestCheckCompositeLitExprS2BoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{true, c: 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -8266,7 +7859,6 @@ func TestCheckCompositeLitExprS2IntKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -8284,7 +7876,6 @@ func TestCheckCompositeLitExprS2IntKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: 1, 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8305,7 +7896,6 @@ func TestCheckCompositeLitExprS2IntKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1, "a"}`, env,
 		`invalid field name 1 in struct initializer`,
 		`mixture of field:value and value initializers`,
@@ -8324,7 +7914,6 @@ func TestCheckCompositeLitExprS2IntKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: 1, nil}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8345,7 +7934,6 @@ func TestCheckCompositeLitExprS2IntKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name 1 in struct initializer`,
@@ -8364,7 +7952,6 @@ func TestCheckCompositeLitExprS2IntKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: 1, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8385,7 +7972,6 @@ func TestCheckCompositeLitExprS2IntKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1, float32(1.5): 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -8405,7 +7991,6 @@ func TestCheckCompositeLitExprS2IntKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1, a: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -8423,7 +8008,6 @@ func TestCheckCompositeLitExprS2IntKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: 1, a: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8444,7 +8028,6 @@ func TestCheckCompositeLitExprS2IntKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: 1, b: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -8462,7 +8045,6 @@ func TestCheckCompositeLitExprS2IntKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: 1, c: 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8483,7 +8065,6 @@ func TestCheckCompositeLitExprS2IntKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: true}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -8501,7 +8082,6 @@ func TestCheckCompositeLitExprS2IntKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: true, 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8522,7 +8102,6 @@ func TestCheckCompositeLitExprS2IntKBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: true, "a"}`, env,
 		`invalid field name 1 in struct initializer`,
 		`mixture of field:value and value initializers`,
@@ -8541,7 +8120,6 @@ func TestCheckCompositeLitExprS2IntKBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: true, nil}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8562,7 +8140,6 @@ func TestCheckCompositeLitExprS2IntKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: true, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name 1 in struct initializer`,
@@ -8581,7 +8158,6 @@ func TestCheckCompositeLitExprS2IntKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: true, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8602,7 +8178,6 @@ func TestCheckCompositeLitExprS2IntKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: true, float32(1.5): 1}`, env,
 		`invalid field name 1 in struct initializer`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -8622,7 +8197,6 @@ func TestCheckCompositeLitExprS2IntKBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: true, a: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -8640,7 +8214,6 @@ func TestCheckCompositeLitExprS2IntKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: true, a: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8661,7 +8234,6 @@ func TestCheckCompositeLitExprS2IntKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{1: true, b: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -8679,7 +8251,6 @@ func TestCheckCompositeLitExprS2IntKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{1: true, c: 1}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -8700,7 +8271,6 @@ func TestCheckCompositeLitExprS2FloatKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.4): 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 	)
@@ -8718,7 +8288,6 @@ func TestCheckCompositeLitExprS2FloatKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{float32(1.4): 1, 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -8739,7 +8308,6 @@ func TestCheckCompositeLitExprS2FloatKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.4): 1, "a"}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`mixture of field:value and value initializers`,
@@ -8758,7 +8326,6 @@ func TestCheckCompositeLitExprS2FloatKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{float32(1.4): 1, nil}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -8779,7 +8346,6 @@ func TestCheckCompositeLitExprS2FloatKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.4): 1, 1: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`invalid field name 1 in struct initializer`,
@@ -8798,7 +8364,6 @@ func TestCheckCompositeLitExprS2FloatKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{float32(1.4): 1, 1: "a"}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -8819,7 +8384,6 @@ func TestCheckCompositeLitExprS2FloatKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.4): 1, float32(1.5): 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -8839,7 +8403,6 @@ func TestCheckCompositeLitExprS2FloatKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.4): 1, a: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 	)
@@ -8857,7 +8420,6 @@ func TestCheckCompositeLitExprS2FloatKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{float32(1.4): 1, a: "a"}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -8878,7 +8440,6 @@ func TestCheckCompositeLitExprS2FloatKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{float32(1.4): 1, b: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
 	)
@@ -8896,7 +8457,6 @@ func TestCheckCompositeLitExprS2FloatKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{float32(1.4): 1, c: 1}`, env,
 		`invalid field name float32(1.4) in struct initializer`,
@@ -8917,7 +8477,6 @@ func TestCheckCompositeLitExprS2AKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{a: 1}`, env, reflect.TypeOf(s2{a: 1}))
 }
 
@@ -8932,7 +8491,6 @@ func TestCheckCompositeLitExprS2AKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: 1, 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -8952,7 +8510,6 @@ func TestCheckCompositeLitExprS2AKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: 1, "a"}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -8970,7 +8527,6 @@ func TestCheckCompositeLitExprS2AKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: 1, nil}`, env,
 		`mixture of field:value and value initializers`,
@@ -8990,7 +8546,6 @@ func TestCheckCompositeLitExprS2AKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: 1, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -9008,7 +8563,6 @@ func TestCheckCompositeLitExprS2AKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: 1, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -9028,7 +8582,6 @@ func TestCheckCompositeLitExprS2AKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: 1, float32(1.5): 1}`, env,
 		`invalid field name float32(1.5) in struct initializer`,
 	)
@@ -9047,7 +8600,6 @@ func TestCheckCompositeLitExprS2AKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: 1, a: 1}`, env,
 		`duplicate field name in struct literal: a`,
 	)
@@ -9065,7 +8617,6 @@ func TestCheckCompositeLitExprS2AKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: 1, a: "a"}`, env,
 		`duplicate field name in struct literal: a`,
@@ -9086,7 +8637,6 @@ func TestCheckCompositeLitExprS2AKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{a: 1, b: 1}`, env, reflect.TypeOf(s2{a: 1, b: 1}))
 }
 
@@ -9101,7 +8651,6 @@ func TestCheckCompositeLitExprS2AKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: 1, c: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9121,7 +8670,6 @@ func TestCheckCompositeLitExprS2AKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: true}`, env,
 		`cannot use true (type bool) as type int in field value`,
 	)
@@ -9139,7 +8687,6 @@ func TestCheckCompositeLitExprS2AKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: true, 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -9160,7 +8707,6 @@ func TestCheckCompositeLitExprS2AKBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: true, "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`mixture of field:value and value initializers`,
@@ -9179,7 +8725,6 @@ func TestCheckCompositeLitExprS2AKBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: true, nil}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -9200,7 +8745,6 @@ func TestCheckCompositeLitExprS2AKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`invalid field name 1 in struct initializer`,
@@ -9219,7 +8763,6 @@ func TestCheckCompositeLitExprS2AKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -9240,7 +8783,6 @@ func TestCheckCompositeLitExprS2AKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -9260,7 +8802,6 @@ func TestCheckCompositeLitExprS2AKBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: true, a: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 		`duplicate field name in struct literal: a`,
@@ -9279,7 +8820,6 @@ func TestCheckCompositeLitExprS2AKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -9301,7 +8841,6 @@ func TestCheckCompositeLitExprS2AKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{a: true, b: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
 	)
@@ -9319,7 +8858,6 @@ func TestCheckCompositeLitExprS2AKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{a: true, c: 1}`, env,
 		`cannot use true (type bool) as type int in field value`,
@@ -9340,7 +8878,6 @@ func TestCheckCompositeLitExprS2BKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{b: 1}`, env, reflect.TypeOf(s2{b: 1}))
 }
 
@@ -9355,7 +8892,6 @@ func TestCheckCompositeLitExprS2BKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{b: 1, 1}`, env,
 		`mixture of field:value and value initializers`,
@@ -9375,7 +8911,6 @@ func TestCheckCompositeLitExprS2BKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{b: 1, "a"}`, env,
 		`mixture of field:value and value initializers`,
 	)
@@ -9393,7 +8928,6 @@ func TestCheckCompositeLitExprS2BKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{b: 1, nil}`, env,
 		`mixture of field:value and value initializers`,
@@ -9413,7 +8947,6 @@ func TestCheckCompositeLitExprS2BKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{b: 1, 1: 1}`, env,
 		`invalid field name 1 in struct initializer`,
 	)
@@ -9431,7 +8964,6 @@ func TestCheckCompositeLitExprS2BKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{b: 1, 1: "a"}`, env,
 		`invalid field name 1 in struct initializer`,
@@ -9451,7 +8983,6 @@ func TestCheckCompositeLitExprS2BKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{b: 1, float32(1.5): 1}`, env,
 		`invalid field name float32(1.5) in struct initializer`,
 	)
@@ -9470,7 +9001,6 @@ func TestCheckCompositeLitExprS2BKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `s2{b: 1, a: 1}`, env, reflect.TypeOf(s2{b: 1, a: 1}))
 }
 
@@ -9485,7 +9015,6 @@ func TestCheckCompositeLitExprS2BKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{b: 1, a: "a"}`, env,
 		`cannot use "a" (type string) as type int in field value`,
@@ -9505,7 +9034,6 @@ func TestCheckCompositeLitExprS2BKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{b: 1, b: 1}`, env,
 		`duplicate field name in struct literal: b`,
 	)
@@ -9523,7 +9051,6 @@ func TestCheckCompositeLitExprS2BKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{b: 1, c: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9543,7 +9070,6 @@ func TestCheckCompositeLitExprS2CKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{c: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
 	)
@@ -9561,7 +9087,6 @@ func TestCheckCompositeLitExprS2CKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{c: 1, 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9582,7 +9107,6 @@ func TestCheckCompositeLitExprS2CKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{c: 1, "a"}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
 		`mixture of field:value and value initializers`,
@@ -9601,7 +9125,6 @@ func TestCheckCompositeLitExprS2CKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{c: 1, nil}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9622,7 +9145,6 @@ func TestCheckCompositeLitExprS2CKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{c: 1, 1: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
 		`invalid field name 1 in struct initializer`,
@@ -9641,7 +9163,6 @@ func TestCheckCompositeLitExprS2CKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{c: 1, 1: "a"}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9662,7 +9183,6 @@ func TestCheckCompositeLitExprS2CKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{c: 1, float32(1.5): 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
 		`invalid field name float32(1.5) in struct initializer`,
@@ -9682,7 +9202,6 @@ func TestCheckCompositeLitExprS2CKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{c: 1, a: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
 	)
@@ -9700,7 +9219,6 @@ func TestCheckCompositeLitExprS2CKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{c: 1, a: "a"}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9721,7 +9239,6 @@ func TestCheckCompositeLitExprS2CKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `s2{c: 1, b: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
 	)
@@ -9739,7 +9256,6 @@ func TestCheckCompositeLitExprS2CKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `s2{c: 1, c: 1}`, env,
 		`unknown eval.s2 field 'c' in struct literal`,
@@ -9760,7 +9276,6 @@ func TestCheckCompositeLitExprSliceXX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{}`, env, reflect.TypeOf([]int{}))
 }
 
@@ -9776,7 +9291,6 @@ func TestCheckCompositeLitExprSliceXInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1}`, env, reflect.TypeOf([]int{1}))
 }
 
@@ -9791,7 +9305,6 @@ func TestCheckCompositeLitExprSliceXString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{"a"}`, env,
 		`cannot convert "a" to type int`,
@@ -9812,7 +9325,6 @@ func TestCheckCompositeLitExprSliceXNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -9831,7 +9343,6 @@ func TestCheckCompositeLitExprSliceXIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1: 1}`, env, reflect.TypeOf([]int{1: 1}))
 }
 
@@ -9846,7 +9357,6 @@ func TestCheckCompositeLitExprSliceXIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -9867,7 +9377,6 @@ func TestCheckCompositeLitExprSliceXFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -9885,7 +9394,6 @@ func TestCheckCompositeLitExprSliceXAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: 1}`, env,
 		`undefined: a`,
@@ -9905,7 +9413,6 @@ func TestCheckCompositeLitExprSliceXAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: "a"}`, env,
 		`undefined: a`,
@@ -9928,7 +9435,6 @@ func TestCheckCompositeLitExprSliceXBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -9947,7 +9453,6 @@ func TestCheckCompositeLitExprSliceXCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{c: 1}`, env,
 		`undefined: c`,
@@ -9968,7 +9473,6 @@ func TestCheckCompositeLitExprSliceIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1}`, env, reflect.TypeOf([]int{1}))
 }
 
@@ -9984,7 +9488,6 @@ func TestCheckCompositeLitExprSliceIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1, 1}`, env, reflect.TypeOf([]int{1, 1}))
 }
 
@@ -9999,7 +9502,6 @@ func TestCheckCompositeLitExprSliceIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1, "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -10020,7 +9522,6 @@ func TestCheckCompositeLitExprSliceIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1, nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -10039,7 +9540,6 @@ func TestCheckCompositeLitExprSliceIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1, 1: 1}`, env, reflect.TypeOf([]int{1, 1: 1}))
 }
 
@@ -10054,7 +9554,6 @@ func TestCheckCompositeLitExprSliceIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1, 1: "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -10075,7 +9574,6 @@ func TestCheckCompositeLitExprSliceIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -10093,7 +9591,6 @@ func TestCheckCompositeLitExprSliceIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1, a: 1}`, env,
 		`undefined: a`,
@@ -10113,7 +9610,6 @@ func TestCheckCompositeLitExprSliceIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1, a: "a"}`, env,
 		`undefined: a`,
@@ -10136,7 +9632,6 @@ func TestCheckCompositeLitExprSliceIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -10155,7 +9650,6 @@ func TestCheckCompositeLitExprSliceIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1, c: 1}`, env,
 		`undefined: c`,
@@ -10176,7 +9670,6 @@ func TestCheckCompositeLitExprSliceNilX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -10195,7 +9688,6 @@ func TestCheckCompositeLitExprSliceNilInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil, 1}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -10213,7 +9705,6 @@ func TestCheckCompositeLitExprSliceNilString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{nil, "a"}`, env,
 		`cannot convert nil to type int`,
@@ -10235,7 +9726,6 @@ func TestCheckCompositeLitExprSliceNilNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil, nil}`, env,
 		`cannot convert nil to type int`,
 		`cannot convert nil to type int`,
@@ -10255,7 +9745,6 @@ func TestCheckCompositeLitExprSliceNilIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil, 1: 1}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -10273,7 +9762,6 @@ func TestCheckCompositeLitExprSliceNilIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{nil, 1: "a"}`, env,
 		`cannot convert nil to type int`,
@@ -10295,7 +9783,6 @@ func TestCheckCompositeLitExprSliceNilFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil, float32(1.5): 1}`, env,
 		`cannot convert nil to type int`,
 		`array index must be non-negative integer constant`,
@@ -10314,7 +9801,6 @@ func TestCheckCompositeLitExprSliceNilAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{nil, a: 1}`, env,
 		`cannot convert nil to type int`,
@@ -10335,7 +9821,6 @@ func TestCheckCompositeLitExprSliceNilAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{nil, a: "a"}`, env,
 		`cannot convert nil to type int`,
@@ -10359,7 +9844,6 @@ func TestCheckCompositeLitExprSliceNilBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{nil, b: 1}`, env,
 		`cannot convert nil to type int`,
 		`undefined: b`,
@@ -10379,7 +9863,6 @@ func TestCheckCompositeLitExprSliceNilCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{nil, c: 1}`, env,
 		`cannot convert nil to type int`,
@@ -10401,7 +9884,6 @@ func TestCheckCompositeLitExprSliceBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{true}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -10420,7 +9902,6 @@ func TestCheckCompositeLitExprSliceBoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{true, 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -10438,7 +9919,6 @@ func TestCheckCompositeLitExprSliceBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{true, "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10460,7 +9940,6 @@ func TestCheckCompositeLitExprSliceBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{true, nil}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`cannot convert nil to type int`,
@@ -10480,7 +9959,6 @@ func TestCheckCompositeLitExprSliceBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -10498,7 +9976,6 @@ func TestCheckCompositeLitExprSliceBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10520,7 +9997,6 @@ func TestCheckCompositeLitExprSliceBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index must be non-negative integer constant`,
@@ -10539,7 +10015,6 @@ func TestCheckCompositeLitExprSliceBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{true, a: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10560,7 +10035,6 @@ func TestCheckCompositeLitExprSliceBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10584,7 +10058,6 @@ func TestCheckCompositeLitExprSliceBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{true, b: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`undefined: b`,
@@ -10604,7 +10077,6 @@ func TestCheckCompositeLitExprSliceBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{true, c: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10626,7 +10098,6 @@ func TestCheckCompositeLitExprSliceIntKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1: 1}`, env, reflect.TypeOf([]int{1: 1}))
 }
 
@@ -10642,7 +10113,6 @@ func TestCheckCompositeLitExprSliceIntKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectType(t, `[]int{1: 1, 1}`, env, reflect.TypeOf([]int{1: 1, 1}))
 }
 
@@ -10657,7 +10127,6 @@ func TestCheckCompositeLitExprSliceIntKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: 1, "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -10678,7 +10147,6 @@ func TestCheckCompositeLitExprSliceIntKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: 1, nil}`, env,
 		`cannot convert nil to type int`,
 	)
@@ -10697,7 +10165,6 @@ func TestCheckCompositeLitExprSliceIntKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: 1, 1: 1}`, env,
 		`duplicate index in array literal: 1`,
 	)
@@ -10715,7 +10182,6 @@ func TestCheckCompositeLitExprSliceIntKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: 1, 1: "a"}`, env,
 		`duplicate index in array literal: 1`,
@@ -10737,7 +10203,6 @@ func TestCheckCompositeLitExprSliceIntKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: 1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -10755,7 +10220,6 @@ func TestCheckCompositeLitExprSliceIntKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: 1, a: 1}`, env,
 		`undefined: a`,
@@ -10775,7 +10239,6 @@ func TestCheckCompositeLitExprSliceIntKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -10798,7 +10261,6 @@ func TestCheckCompositeLitExprSliceIntKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: 1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -10817,7 +10279,6 @@ func TestCheckCompositeLitExprSliceIntKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: 1, c: 1}`, env,
 		`undefined: c`,
@@ -10838,7 +10299,6 @@ func TestCheckCompositeLitExprSliceIntKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: true}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -10857,7 +10317,6 @@ func TestCheckCompositeLitExprSliceIntKBoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: true, 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 	)
@@ -10875,7 +10334,6 @@ func TestCheckCompositeLitExprSliceIntKBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: true, "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10897,7 +10355,6 @@ func TestCheckCompositeLitExprSliceIntKBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: true, nil}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`cannot convert nil to type int`,
@@ -10917,7 +10374,6 @@ func TestCheckCompositeLitExprSliceIntKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`duplicate index in array literal: 1`,
@@ -10936,7 +10392,6 @@ func TestCheckCompositeLitExprSliceIntKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10959,7 +10414,6 @@ func TestCheckCompositeLitExprSliceIntKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`array index must be non-negative integer constant`,
@@ -10978,7 +10432,6 @@ func TestCheckCompositeLitExprSliceIntKBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: true, a: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -10999,7 +10452,6 @@ func TestCheckCompositeLitExprSliceIntKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -11023,7 +10475,6 @@ func TestCheckCompositeLitExprSliceIntKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{1: true, b: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
 		`undefined: b`,
@@ -11043,7 +10494,6 @@ func TestCheckCompositeLitExprSliceIntKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{1: true, c: 1}`, env,
 		`cannot use true (type bool) as type int in array element`,
@@ -11065,7 +10515,6 @@ func TestCheckCompositeLitExprSliceFloatKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.4): 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -11084,7 +10533,6 @@ func TestCheckCompositeLitExprSliceFloatKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.4): 1, 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -11102,7 +10550,6 @@ func TestCheckCompositeLitExprSliceFloatKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{float32(1.4): 1, "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -11124,7 +10571,6 @@ func TestCheckCompositeLitExprSliceFloatKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.4): 1, nil}`, env,
 		`array index must be non-negative integer constant`,
 		`cannot convert nil to type int`,
@@ -11144,7 +10590,6 @@ func TestCheckCompositeLitExprSliceFloatKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.4): 1, 1: 1}`, env,
 		`array index must be non-negative integer constant`,
 	)
@@ -11162,7 +10607,6 @@ func TestCheckCompositeLitExprSliceFloatKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{float32(1.4): 1, 1: "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -11184,7 +10628,6 @@ func TestCheckCompositeLitExprSliceFloatKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.4): 1, float32(1.5): 1}`, env,
 		`array index must be non-negative integer constant`,
 		`array index must be non-negative integer constant`,
@@ -11203,7 +10646,6 @@ func TestCheckCompositeLitExprSliceFloatKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{float32(1.4): 1, a: 1}`, env,
 		`array index must be non-negative integer constant`,
@@ -11224,7 +10666,6 @@ func TestCheckCompositeLitExprSliceFloatKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{float32(1.4): 1, a: "a"}`, env,
 		`array index must be non-negative integer constant`,
@@ -11248,7 +10689,6 @@ func TestCheckCompositeLitExprSliceFloatKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{float32(1.4): 1, b: 1}`, env,
 		`array index must be non-negative integer constant`,
 		`undefined: b`,
@@ -11268,7 +10708,6 @@ func TestCheckCompositeLitExprSliceFloatKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{float32(1.4): 1, c: 1}`, env,
 		`array index must be non-negative integer constant`,
@@ -11290,7 +10729,6 @@ func TestCheckCompositeLitExprSliceAKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11310,7 +10748,6 @@ func TestCheckCompositeLitExprSliceAKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: 1, 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11329,7 +10766,6 @@ func TestCheckCompositeLitExprSliceAKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: 1, "a"}`, env,
 		`undefined: a`,
@@ -11352,7 +10788,6 @@ func TestCheckCompositeLitExprSliceAKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: 1, nil}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11373,7 +10808,6 @@ func TestCheckCompositeLitExprSliceAKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: 1, 1: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11392,7 +10826,6 @@ func TestCheckCompositeLitExprSliceAKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: 1, 1: "a"}`, env,
 		`undefined: a`,
@@ -11415,7 +10848,6 @@ func TestCheckCompositeLitExprSliceAKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: 1, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11435,7 +10867,6 @@ func TestCheckCompositeLitExprSliceAKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: 1, a: 1}`, env,
 		`undefined: a`,
@@ -11457,7 +10888,6 @@ func TestCheckCompositeLitExprSliceAKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -11482,7 +10912,6 @@ func TestCheckCompositeLitExprSliceAKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: 1, b: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11503,7 +10932,6 @@ func TestCheckCompositeLitExprSliceAKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: 1, c: 1}`, env,
 		`undefined: a`,
@@ -11526,7 +10954,6 @@ func TestCheckCompositeLitExprSliceAKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: true}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11547,7 +10974,6 @@ func TestCheckCompositeLitExprSliceAKBoolInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: true, 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11567,7 +10993,6 @@ func TestCheckCompositeLitExprSliceAKBoolString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: true, "a"}`, env,
 		`undefined: a`,
@@ -11591,7 +11016,6 @@ func TestCheckCompositeLitExprSliceAKBoolNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: true, nil}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11613,7 +11037,6 @@ func TestCheckCompositeLitExprSliceAKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: true, 1: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11633,7 +11056,6 @@ func TestCheckCompositeLitExprSliceAKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: true, 1: "a"}`, env,
 		`undefined: a`,
@@ -11657,7 +11079,6 @@ func TestCheckCompositeLitExprSliceAKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: true, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11678,7 +11099,6 @@ func TestCheckCompositeLitExprSliceAKBoolAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: true, a: 1}`, env,
 		`undefined: a`,
@@ -11701,7 +11121,6 @@ func TestCheckCompositeLitExprSliceAKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: true, a: "a"}`, env,
 		`undefined: a`,
@@ -11727,7 +11146,6 @@ func TestCheckCompositeLitExprSliceAKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{a: true, b: 1}`, env,
 		`undefined: a`,
 		`array index must be non-negative integer constant`,
@@ -11749,7 +11167,6 @@ func TestCheckCompositeLitExprSliceAKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{a: true, c: 1}`, env,
 		`undefined: a`,
@@ -11773,7 +11190,6 @@ func TestCheckCompositeLitExprSliceBKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -11793,7 +11209,6 @@ func TestCheckCompositeLitExprSliceBKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1, 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -11812,7 +11227,6 @@ func TestCheckCompositeLitExprSliceBKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{b: 1, "a"}`, env,
 		`undefined: b`,
@@ -11835,7 +11249,6 @@ func TestCheckCompositeLitExprSliceBKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1, nil}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -11856,7 +11269,6 @@ func TestCheckCompositeLitExprSliceBKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1, 1: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -11875,7 +11287,6 @@ func TestCheckCompositeLitExprSliceBKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{b: 1, 1: "a"}`, env,
 		`undefined: b`,
@@ -11898,7 +11309,6 @@ func TestCheckCompositeLitExprSliceBKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1, float32(1.5): 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -11918,7 +11328,6 @@ func TestCheckCompositeLitExprSliceBKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{b: 1, a: 1}`, env,
 		`undefined: b`,
@@ -11940,7 +11349,6 @@ func TestCheckCompositeLitExprSliceBKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{b: 1, a: "a"}`, env,
 		`undefined: b`,
@@ -11965,7 +11373,6 @@ func TestCheckCompositeLitExprSliceBKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{b: 1, b: 1}`, env,
 		`undefined: b`,
 		`array index must be non-negative integer constant`,
@@ -11986,7 +11393,6 @@ func TestCheckCompositeLitExprSliceBKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{b: 1, c: 1}`, env,
 		`undefined: b`,
@@ -12009,7 +11415,6 @@ func TestCheckCompositeLitExprSliceCKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{c: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -12029,7 +11434,6 @@ func TestCheckCompositeLitExprSliceCKIntInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{c: 1, 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -12048,7 +11452,6 @@ func TestCheckCompositeLitExprSliceCKIntString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{c: 1, "a"}`, env,
 		`undefined: c`,
@@ -12071,7 +11474,6 @@ func TestCheckCompositeLitExprSliceCKIntNil(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{c: 1, nil}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -12092,7 +11494,6 @@ func TestCheckCompositeLitExprSliceCKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{c: 1, 1: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -12111,7 +11512,6 @@ func TestCheckCompositeLitExprSliceCKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{c: 1, 1: "a"}`, env,
 		`undefined: c`,
@@ -12134,7 +11534,6 @@ func TestCheckCompositeLitExprSliceCKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{c: 1, float32(1.5): 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -12154,7 +11553,6 @@ func TestCheckCompositeLitExprSliceCKIntAKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{c: 1, a: 1}`, env,
 		`undefined: c`,
@@ -12176,7 +11574,6 @@ func TestCheckCompositeLitExprSliceCKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{c: 1, a: "a"}`, env,
 		`undefined: c`,
@@ -12201,7 +11598,6 @@ func TestCheckCompositeLitExprSliceCKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `[]int{c: 1, b: 1}`, env,
 		`undefined: c`,
 		`array index must be non-negative integer constant`,
@@ -12222,7 +11618,6 @@ func TestCheckCompositeLitExprSliceCKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `[]int{c: 1, c: 1}`, env,
 		`undefined: c`,
@@ -12245,8 +11640,7 @@ func TestCheckCompositeLitExprMapXX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
-	expectType(t, `map[int] int{}`, env, reflect.TypeOf(map[int] int{}))
+	expectType(t, `map[int] int{}`, env, reflect.TypeOf(map[int]int{}))
 }
 
 // Test Map{1}
@@ -12260,7 +11654,6 @@ func TestCheckCompositeLitExprMapXInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1}`, env,
 		`missing key in map literal`,
@@ -12280,7 +11673,6 @@ func TestCheckCompositeLitExprMapXString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{"a"}`, env,
 		`missing key in map literal`,
 	)
@@ -12298,7 +11690,6 @@ func TestCheckCompositeLitExprMapXNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{nil}`, env,
 		`missing key in map literal`,
@@ -12318,8 +11709,7 @@ func TestCheckCompositeLitExprMapXIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
-	expectType(t, `map[int] int{1: 1}`, env, reflect.TypeOf(map[int] int{1: 1}))
+	expectType(t, `map[int] int{1: 1}`, env, reflect.TypeOf(map[int]int{1: 1}))
 }
 
 // Test Map{1: "a"}
@@ -12333,7 +11723,6 @@ func TestCheckCompositeLitExprMapXIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: "a"}`, env,
 		`cannot convert "a" to type int`,
@@ -12354,7 +11743,6 @@ func TestCheckCompositeLitExprMapXFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.5): 1}`, env,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
 	)
@@ -12373,7 +11761,6 @@ func TestCheckCompositeLitExprMapXAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1}`, env,
 		`undefined: a`,
 	)
@@ -12391,7 +11778,6 @@ func TestCheckCompositeLitExprMapXAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: "a"}`, env,
 		`undefined: a`,
@@ -12413,7 +11799,6 @@ func TestCheckCompositeLitExprMapXBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1}`, env,
 		`undefined: b`,
 	)
@@ -12431,7 +11816,6 @@ func TestCheckCompositeLitExprMapXCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{c: 1}`, env,
 		`undefined: c`,
@@ -12451,7 +11835,6 @@ func TestCheckCompositeLitExprMapIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1}`, env,
 		`missing key in map literal`,
 	)
@@ -12469,7 +11852,6 @@ func TestCheckCompositeLitExprMapIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1, 1}`, env,
 		`missing key in map literal`,
@@ -12490,7 +11872,6 @@ func TestCheckCompositeLitExprMapIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1, "a"}`, env,
 		`missing key in map literal`,
 		`missing key in map literal`,
@@ -12509,7 +11890,6 @@ func TestCheckCompositeLitExprMapIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1, nil}`, env,
 		`missing key in map literal`,
@@ -12530,7 +11910,6 @@ func TestCheckCompositeLitExprMapIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1, 1: 1}`, env,
 		`missing key in map literal`,
 	)
@@ -12548,7 +11927,6 @@ func TestCheckCompositeLitExprMapIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1, 1: "a"}`, env,
 		`missing key in map literal`,
@@ -12570,7 +11948,6 @@ func TestCheckCompositeLitExprMapIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1, float32(1.5): 1}`, env,
 		`missing key in map literal`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -12590,7 +11967,6 @@ func TestCheckCompositeLitExprMapIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1, a: 1}`, env,
 		`missing key in map literal`,
 		`undefined: a`,
@@ -12609,7 +11985,6 @@ func TestCheckCompositeLitExprMapIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1, a: "a"}`, env,
 		`missing key in map literal`,
@@ -12632,7 +12007,6 @@ func TestCheckCompositeLitExprMapIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1, b: 1}`, env,
 		`missing key in map literal`,
 		`undefined: b`,
@@ -12651,7 +12025,6 @@ func TestCheckCompositeLitExprMapIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1, c: 1}`, env,
 		`missing key in map literal`,
@@ -12672,7 +12045,6 @@ func TestCheckCompositeLitExprMapNilX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{nil}`, env,
 		`missing key in map literal`,
 	)
@@ -12690,7 +12062,6 @@ func TestCheckCompositeLitExprMapNilInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{nil, 1}`, env,
 		`missing key in map literal`,
@@ -12711,7 +12082,6 @@ func TestCheckCompositeLitExprMapNilString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{nil, "a"}`, env,
 		`missing key in map literal`,
 		`missing key in map literal`,
@@ -12730,7 +12100,6 @@ func TestCheckCompositeLitExprMapNilNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{nil, nil}`, env,
 		`missing key in map literal`,
@@ -12751,7 +12120,6 @@ func TestCheckCompositeLitExprMapNilIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{nil, 1: 1}`, env,
 		`missing key in map literal`,
 	)
@@ -12769,7 +12137,6 @@ func TestCheckCompositeLitExprMapNilIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{nil, 1: "a"}`, env,
 		`missing key in map literal`,
@@ -12791,7 +12158,6 @@ func TestCheckCompositeLitExprMapNilFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{nil, float32(1.5): 1}`, env,
 		`missing key in map literal`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -12811,7 +12177,6 @@ func TestCheckCompositeLitExprMapNilAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{nil, a: 1}`, env,
 		`missing key in map literal`,
 		`undefined: a`,
@@ -12830,7 +12195,6 @@ func TestCheckCompositeLitExprMapNilAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{nil, a: "a"}`, env,
 		`missing key in map literal`,
@@ -12853,7 +12217,6 @@ func TestCheckCompositeLitExprMapNilBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{nil, b: 1}`, env,
 		`missing key in map literal`,
 		`undefined: b`,
@@ -12872,7 +12235,6 @@ func TestCheckCompositeLitExprMapNilCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{nil, c: 1}`, env,
 		`missing key in map literal`,
@@ -12893,7 +12255,6 @@ func TestCheckCompositeLitExprMapBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{true}`, env,
 		`missing key in map literal`,
 	)
@@ -12911,7 +12272,6 @@ func TestCheckCompositeLitExprMapBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{true, 1}`, env,
 		`missing key in map literal`,
@@ -12932,7 +12292,6 @@ func TestCheckCompositeLitExprMapBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{true, "a"}`, env,
 		`missing key in map literal`,
 		`missing key in map literal`,
@@ -12951,7 +12310,6 @@ func TestCheckCompositeLitExprMapBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{true, nil}`, env,
 		`missing key in map literal`,
@@ -12972,7 +12330,6 @@ func TestCheckCompositeLitExprMapBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{true, 1: 1}`, env,
 		`missing key in map literal`,
 	)
@@ -12990,7 +12347,6 @@ func TestCheckCompositeLitExprMapBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{true, 1: "a"}`, env,
 		`missing key in map literal`,
@@ -13012,7 +12368,6 @@ func TestCheckCompositeLitExprMapBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{true, float32(1.5): 1}`, env,
 		`missing key in map literal`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -13032,7 +12387,6 @@ func TestCheckCompositeLitExprMapBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{true, a: 1}`, env,
 		`missing key in map literal`,
 		`undefined: a`,
@@ -13051,7 +12405,6 @@ func TestCheckCompositeLitExprMapBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{true, a: "a"}`, env,
 		`missing key in map literal`,
@@ -13074,7 +12427,6 @@ func TestCheckCompositeLitExprMapBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{true, b: 1}`, env,
 		`missing key in map literal`,
 		`undefined: b`,
@@ -13093,7 +12445,6 @@ func TestCheckCompositeLitExprMapBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{true, c: 1}`, env,
 		`missing key in map literal`,
@@ -13114,8 +12465,7 @@ func TestCheckCompositeLitExprMapIntKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
-	expectType(t, `map[int] int{1: 1}`, env, reflect.TypeOf(map[int] int{1: 1}))
+	expectType(t, `map[int] int{1: 1}`, env, reflect.TypeOf(map[int]int{1: 1}))
 }
 
 // Test Map{1: 1, 1}
@@ -13129,7 +12479,6 @@ func TestCheckCompositeLitExprMapIntKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: 1, 1}`, env,
 		`missing key in map literal`,
@@ -13149,7 +12498,6 @@ func TestCheckCompositeLitExprMapIntKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: 1, "a"}`, env,
 		`missing key in map literal`,
 	)
@@ -13167,7 +12515,6 @@ func TestCheckCompositeLitExprMapIntKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: 1, nil}`, env,
 		`missing key in map literal`,
@@ -13187,7 +12534,6 @@ func TestCheckCompositeLitExprMapIntKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: 1, 1: 1}`, env,
 		`duplicate key 1 in map literal`,
 	)
@@ -13205,7 +12551,6 @@ func TestCheckCompositeLitExprMapIntKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: 1, 1: "a"}`, env,
 		`duplicate key 1 in map literal`,
@@ -13227,7 +12572,6 @@ func TestCheckCompositeLitExprMapIntKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: 1, float32(1.5): 1}`, env,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
 	)
@@ -13246,7 +12590,6 @@ func TestCheckCompositeLitExprMapIntKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: 1, a: 1}`, env,
 		`undefined: a`,
 	)
@@ -13264,7 +12607,6 @@ func TestCheckCompositeLitExprMapIntKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -13286,7 +12628,6 @@ func TestCheckCompositeLitExprMapIntKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: 1, b: 1}`, env,
 		`undefined: b`,
 	)
@@ -13304,7 +12645,6 @@ func TestCheckCompositeLitExprMapIntKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: 1, c: 1}`, env,
 		`undefined: c`,
@@ -13324,7 +12664,6 @@ func TestCheckCompositeLitExprMapIntKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: true}`, env,
 		`cannot use true (type bool) as type int in map value`,
 	)
@@ -13342,7 +12681,6 @@ func TestCheckCompositeLitExprMapIntKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: true, 1}`, env,
 		`cannot use true (type bool) as type int in map value`,
@@ -13363,7 +12701,6 @@ func TestCheckCompositeLitExprMapIntKBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: true, "a"}`, env,
 		`cannot use true (type bool) as type int in map value`,
 		`missing key in map literal`,
@@ -13382,7 +12719,6 @@ func TestCheckCompositeLitExprMapIntKBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: true, nil}`, env,
 		`cannot use true (type bool) as type int in map value`,
@@ -13403,7 +12739,6 @@ func TestCheckCompositeLitExprMapIntKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: true, 1: 1}`, env,
 		`cannot use true (type bool) as type int in map value`,
 		`duplicate key 1 in map literal`,
@@ -13422,7 +12757,6 @@ func TestCheckCompositeLitExprMapIntKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: true, 1: "a"}`, env,
 		`cannot use true (type bool) as type int in map value`,
@@ -13445,7 +12779,6 @@ func TestCheckCompositeLitExprMapIntKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: true, float32(1.5): 1}`, env,
 		`cannot use true (type bool) as type int in map value`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -13465,7 +12798,6 @@ func TestCheckCompositeLitExprMapIntKBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: true, a: 1}`, env,
 		`cannot use true (type bool) as type int in map value`,
 		`undefined: a`,
@@ -13484,7 +12816,6 @@ func TestCheckCompositeLitExprMapIntKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: true, a: "a"}`, env,
 		`cannot use true (type bool) as type int in map value`,
@@ -13507,7 +12838,6 @@ func TestCheckCompositeLitExprMapIntKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{1: true, b: 1}`, env,
 		`cannot use true (type bool) as type int in map value`,
 		`undefined: b`,
@@ -13526,7 +12856,6 @@ func TestCheckCompositeLitExprMapIntKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{1: true, c: 1}`, env,
 		`cannot use true (type bool) as type int in map value`,
@@ -13547,7 +12876,6 @@ func TestCheckCompositeLitExprMapFloatKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.4): 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
 	)
@@ -13565,7 +12893,6 @@ func TestCheckCompositeLitExprMapFloatKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{float32(1.4): 1, 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
@@ -13586,7 +12913,6 @@ func TestCheckCompositeLitExprMapFloatKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.4): 1, "a"}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
 		`missing key in map literal`,
@@ -13605,7 +12931,6 @@ func TestCheckCompositeLitExprMapFloatKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{float32(1.4): 1, nil}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
@@ -13626,7 +12951,6 @@ func TestCheckCompositeLitExprMapFloatKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.4): 1, 1: 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
 	)
@@ -13644,7 +12968,6 @@ func TestCheckCompositeLitExprMapFloatKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{float32(1.4): 1, 1: "a"}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
@@ -13666,7 +12989,6 @@ func TestCheckCompositeLitExprMapFloatKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.4): 1, float32(1.5): 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -13686,7 +13008,6 @@ func TestCheckCompositeLitExprMapFloatKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.4): 1, a: 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
 		`undefined: a`,
@@ -13705,7 +13026,6 @@ func TestCheckCompositeLitExprMapFloatKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{float32(1.4): 1, a: "a"}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
@@ -13728,7 +13048,6 @@ func TestCheckCompositeLitExprMapFloatKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{float32(1.4): 1, b: 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
 		`undefined: b`,
@@ -13747,7 +13066,6 @@ func TestCheckCompositeLitExprMapFloatKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{float32(1.4): 1, c: 1}`, env,
 		`cannot use float32(1.4) (type float32) as type int in map key`,
@@ -13768,7 +13086,6 @@ func TestCheckCompositeLitExprMapAKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1}`, env,
 		`undefined: a`,
 	)
@@ -13786,7 +13103,6 @@ func TestCheckCompositeLitExprMapAKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: 1, 1}`, env,
 		`undefined: a`,
@@ -13807,7 +13123,6 @@ func TestCheckCompositeLitExprMapAKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1, "a"}`, env,
 		`undefined: a`,
 		`missing key in map literal`,
@@ -13826,7 +13141,6 @@ func TestCheckCompositeLitExprMapAKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: 1, nil}`, env,
 		`undefined: a`,
@@ -13847,7 +13161,6 @@ func TestCheckCompositeLitExprMapAKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1, 1: 1}`, env,
 		`undefined: a`,
 	)
@@ -13865,7 +13178,6 @@ func TestCheckCompositeLitExprMapAKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: 1, 1: "a"}`, env,
 		`undefined: a`,
@@ -13887,7 +13199,6 @@ func TestCheckCompositeLitExprMapAKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -13907,7 +13218,6 @@ func TestCheckCompositeLitExprMapAKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1, a: 1}`, env,
 		`undefined: a`,
 		`undefined: a`,
@@ -13926,7 +13236,6 @@ func TestCheckCompositeLitExprMapAKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: 1, a: "a"}`, env,
 		`undefined: a`,
@@ -13949,7 +13258,6 @@ func TestCheckCompositeLitExprMapAKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: 1, b: 1}`, env,
 		`undefined: a`,
 		`undefined: b`,
@@ -13968,7 +13276,6 @@ func TestCheckCompositeLitExprMapAKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: 1, c: 1}`, env,
 		`undefined: a`,
@@ -13989,7 +13296,6 @@ func TestCheckCompositeLitExprMapAKBoolX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: true}`, env,
 		`undefined: a`,
 		`cannot use true (type bool) as type int in map value`,
@@ -14008,7 +13314,6 @@ func TestCheckCompositeLitExprMapAKBoolInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: true, 1}`, env,
 		`undefined: a`,
@@ -14030,7 +13335,6 @@ func TestCheckCompositeLitExprMapAKBoolString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: true, "a"}`, env,
 		`undefined: a`,
 		`cannot use true (type bool) as type int in map value`,
@@ -14050,7 +13354,6 @@ func TestCheckCompositeLitExprMapAKBoolNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: true, nil}`, env,
 		`undefined: a`,
@@ -14072,7 +13375,6 @@ func TestCheckCompositeLitExprMapAKBoolIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: true, 1: 1}`, env,
 		`undefined: a`,
 		`cannot use true (type bool) as type int in map value`,
@@ -14091,7 +13393,6 @@ func TestCheckCompositeLitExprMapAKBoolIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: true, 1: "a"}`, env,
 		`undefined: a`,
@@ -14114,7 +13415,6 @@ func TestCheckCompositeLitExprMapAKBoolFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: true, float32(1.5): 1}`, env,
 		`undefined: a`,
 		`cannot use true (type bool) as type int in map value`,
@@ -14135,7 +13435,6 @@ func TestCheckCompositeLitExprMapAKBoolAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: true, a: 1}`, env,
 		`undefined: a`,
 		`cannot use true (type bool) as type int in map value`,
@@ -14155,7 +13454,6 @@ func TestCheckCompositeLitExprMapAKBoolAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: true, a: "a"}`, env,
 		`undefined: a`,
@@ -14179,7 +13477,6 @@ func TestCheckCompositeLitExprMapAKBoolBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{a: true, b: 1}`, env,
 		`undefined: a`,
 		`cannot use true (type bool) as type int in map value`,
@@ -14199,7 +13496,6 @@ func TestCheckCompositeLitExprMapAKBoolCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{a: true, c: 1}`, env,
 		`undefined: a`,
@@ -14221,7 +13517,6 @@ func TestCheckCompositeLitExprMapBKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1}`, env,
 		`undefined: b`,
 	)
@@ -14239,7 +13534,6 @@ func TestCheckCompositeLitExprMapBKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{b: 1, 1}`, env,
 		`undefined: b`,
@@ -14260,7 +13554,6 @@ func TestCheckCompositeLitExprMapBKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1, "a"}`, env,
 		`undefined: b`,
 		`missing key in map literal`,
@@ -14279,7 +13572,6 @@ func TestCheckCompositeLitExprMapBKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{b: 1, nil}`, env,
 		`undefined: b`,
@@ -14300,7 +13592,6 @@ func TestCheckCompositeLitExprMapBKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1, 1: 1}`, env,
 		`undefined: b`,
 	)
@@ -14318,7 +13609,6 @@ func TestCheckCompositeLitExprMapBKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{b: 1, 1: "a"}`, env,
 		`undefined: b`,
@@ -14340,7 +13630,6 @@ func TestCheckCompositeLitExprMapBKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1, float32(1.5): 1}`, env,
 		`undefined: b`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -14360,7 +13649,6 @@ func TestCheckCompositeLitExprMapBKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1, a: 1}`, env,
 		`undefined: b`,
 		`undefined: a`,
@@ -14379,7 +13667,6 @@ func TestCheckCompositeLitExprMapBKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{b: 1, a: "a"}`, env,
 		`undefined: b`,
@@ -14402,7 +13689,6 @@ func TestCheckCompositeLitExprMapBKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{b: 1, b: 1}`, env,
 		`undefined: b`,
 		`undefined: b`,
@@ -14421,7 +13707,6 @@ func TestCheckCompositeLitExprMapBKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{b: 1, c: 1}`, env,
 		`undefined: b`,
@@ -14442,7 +13727,6 @@ func TestCheckCompositeLitExprMapCKIntX(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{c: 1}`, env,
 		`undefined: c`,
 	)
@@ -14460,7 +13744,6 @@ func TestCheckCompositeLitExprMapCKIntInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{c: 1, 1}`, env,
 		`undefined: c`,
@@ -14481,7 +13764,6 @@ func TestCheckCompositeLitExprMapCKIntString(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{c: 1, "a"}`, env,
 		`undefined: c`,
 		`missing key in map literal`,
@@ -14500,7 +13782,6 @@ func TestCheckCompositeLitExprMapCKIntNil(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{c: 1, nil}`, env,
 		`undefined: c`,
@@ -14521,7 +13802,6 @@ func TestCheckCompositeLitExprMapCKIntIntKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{c: 1, 1: 1}`, env,
 		`undefined: c`,
 	)
@@ -14539,7 +13819,6 @@ func TestCheckCompositeLitExprMapCKIntIntKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{c: 1, 1: "a"}`, env,
 		`undefined: c`,
@@ -14561,7 +13840,6 @@ func TestCheckCompositeLitExprMapCKIntFloatKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{c: 1, float32(1.5): 1}`, env,
 		`undefined: c`,
 		`cannot use float32(1.5) (type float32) as type int in map key`,
@@ -14581,7 +13859,6 @@ func TestCheckCompositeLitExprMapCKIntAKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{c: 1, a: 1}`, env,
 		`undefined: c`,
 		`undefined: a`,
@@ -14600,7 +13877,6 @@ func TestCheckCompositeLitExprMapCKIntAKString(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{c: 1, a: "a"}`, env,
 		`undefined: c`,
@@ -14623,7 +13899,6 @@ func TestCheckCompositeLitExprMapCKIntBKInt(t *testing.T) {
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
 
-
 	expectCheckError(t, `map[int] int{c: 1, b: 1}`, env,
 		`undefined: c`,
 		`undefined: b`,
@@ -14642,7 +13917,6 @@ func TestCheckCompositeLitExprMapCKIntCKInt(t *testing.T) {
 	env.Types["a2"] = reflect.TypeOf(a2{})
 	env.Types["s1"] = reflect.TypeOf(s1{})
 	env.Types["s2"] = reflect.TypeOf(s2{})
-
 
 	expectCheckError(t, `map[int] int{c: 1, c: 1}`, env,
 		`undefined: c`,

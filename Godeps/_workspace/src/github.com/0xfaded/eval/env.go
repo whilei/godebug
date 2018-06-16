@@ -5,6 +5,7 @@ import (
 )
 
 type envSource int
+
 const (
 	envUnknown envSource = iota
 	envVar
@@ -54,24 +55,24 @@ type Env interface {
 }
 
 func MakeSimpleEnv() *SimpleEnv {
-	return &SimpleEnv {
-		Vars: map[string]reflect.Value{},
-		Funcs: map[string]reflect.Value{},
+	return &SimpleEnv{
+		Vars:   map[string]reflect.Value{},
+		Funcs:  map[string]reflect.Value{},
 		Consts: map[string]reflect.Value{},
-		Types: map[string]reflect.Type{},
-		Pkgs: map[string]Env{},
+		Types:  map[string]reflect.Type{},
+		Pkgs:   map[string]Env{},
 	}
 }
 
 type SimpleEnv struct {
 	// path relative to GOROOT or GOPATH. e.g. github.com/0xfaded/eval
-	Path string
+	Path   string
 	Parent *SimpleEnv
-	Vars map[string]reflect.Value
-	Funcs map[string]reflect.Value
+	Vars   map[string]reflect.Value
+	Funcs  map[string]reflect.Value
 	Consts map[string]reflect.Value
-	Types map[string]reflect.Type
-	Pkgs map[string]Env
+	Types  map[string]reflect.Type
+	Pkgs   map[string]Env
 }
 
 func (env *SimpleEnv) Var(ident string) reflect.Value {

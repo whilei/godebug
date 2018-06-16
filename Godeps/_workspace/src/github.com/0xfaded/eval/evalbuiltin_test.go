@@ -1,6 +1,5 @@
 package eval
 
-
 import (
 	"reflect"
 	"testing"
@@ -35,7 +34,7 @@ func TestBuiltinImag(t *testing.T) {
 
 func TestBuiltinAppend(t *testing.T) {
 	env := MakeSimpleEnv()
-	strings := []string {"one", "two"}
+	strings := []string{"one", "two"}
 	ints := []int{1, 2}
 	env.Vars["strings"] = reflect.ValueOf(&strings)
 	env.Vars["ints"] = reflect.ValueOf(&ints)
@@ -46,8 +45,8 @@ func TestBuiltinAppend(t *testing.T) {
 
 func TestBuiltinAppendSlice(t *testing.T) {
 	env := MakeSimpleEnv()
-	a := []string {"one", "two"}
-	b := []string {"three", "four"}
+	a := []string{"one", "two"}
+	b := []string{"three", "four"}
 	env.Vars["a"] = reflect.ValueOf(&a)
 	env.Vars["b"] = reflect.ValueOf(&b)
 
@@ -56,7 +55,7 @@ func TestBuiltinAppendSlice(t *testing.T) {
 
 func TestBuiltinCap(t *testing.T) {
 	env := MakeSimpleEnv()
-	slice := []int {1, 2}
+	slice := []int{1, 2}
 	env.Vars["slice"] = reflect.ValueOf(&slice)
 
 	expectResult(t, "cap(slice)", env, cap(slice))
@@ -64,7 +63,7 @@ func TestBuiltinCap(t *testing.T) {
 
 func TestBuiltinLen(t *testing.T) {
 	env := MakeSimpleEnv()
-	slice := []int {1, 2}
+	slice := []int{1, 2}
 	env.Vars["slice"] = reflect.ValueOf(&slice)
 
 	expectResult(t, "len(\"abc\")", env, len("abc"))
@@ -83,8 +82,8 @@ func TestBuiltinNew(t *testing.T) {
 
 func TestBuiltinCopy(t *testing.T) {
 	env := MakeSimpleEnv()
-	a := []int{1,2,3}
-	b := []int{4,5}
+	a := []int{1, 2, 3}
+	b := []int{4, 5}
 	env.Vars["a"] = reflect.ValueOf(&a)
 	env.Vars["b"] = reflect.ValueOf(&b)
 	expectResult(t, "copy(a, b)", env, copy(a, b))
